@@ -39,8 +39,7 @@ New Transition
 ============
 Cover
 -----
-The page transitioning out will not move and the page transitioning in will slide in from the left and cover the original page.
-```data-transition="cover"```
+The page transitioning out will not move and the page transitioning in will slide in from the left and cover the original page.```data-transition="cover"```
 
 New Controls
 ============
