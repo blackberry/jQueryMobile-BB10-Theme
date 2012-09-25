@@ -47,7 +47,7 @@ New Controls
 **Note**: All of the core jQuery Mobile controls are still available for use.
 Action Bar
 ----------
-![Actionbar](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/Actionbar.png)
+![Actionbar](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Actionbar.png)
 
 To create a actionbar use ```<div data-role="actionbar">```.
 
@@ -89,7 +89,7 @@ A complete example of this can be found in samples/actionbar.
 
 Container
 ---------
-![Container](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/Container.png)
+![Container](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Container.png)
 
 A container to wrap content in.
     
@@ -101,7 +101,7 @@ An example of this can be found in kitchenSink/building_blocks.html
 
 Divider
 -------
-![Dividers](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/Dividers.png)
+![Dividers](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers.png)
 
 Three new dividers have been added for both the dark and light themes
 An example of all these can be found in kitchenSink/building_blocks.html
@@ -118,7 +118,7 @@ An example of all these can be found in kitchenSink/building_blocks.html
 
 Gridview
 --------
-![Gridview](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/Gridview.png)
+![Gridview](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Gridview.png)
 
 To create a grid view use ```<div data-role="gridview">```.
 Each row in the grid needs to be separated by ```<div data-role="row">```.
@@ -149,7 +149,7 @@ An example of this can be found in kitchenSink/gridview.html.
 
 Progress Indicator
 ------------------
-![Progress](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/Progress.png)
+![Progress](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Progress.png)
 
 To create a progress indicator use the HTML5 progress tag. ```<progress id="p" value="40" max="100"></progress>```
 
@@ -163,9 +163,9 @@ An example of this can be found in kitchenSink/progress.html
 
 BlackBerry Activity Indicator
 -------
-![BlackBerry Activity Indicator](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/bb-activity-small.png)
-![BlackBerry Activity Indicator](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/bb-activity-medium.png)
-![BlackBerry Activity Indicator](/jasscott/JQM-BB10-Theme/raw/master/docs/figures/bb-activity-large.png)
+![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-small.png)
+![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-medium.png)
+![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-large.png)
 
 Activity indicators are used to notify the user that a processes is in progress. They typically denote a process that will complete in an unspecified amount of time. Alternately they are suitable for processes that will complete relatively quickly; where progress bars are not meaningful. 
 
