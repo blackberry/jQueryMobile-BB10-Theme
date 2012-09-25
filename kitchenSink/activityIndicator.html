@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BB10 Activity Indicator</title>
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<link rel="stylesheet" href="../dist/BlackBerry-JQM-all.min.css" />
+	<script src="../dist/BlackBerry-JQM-all.min.js"></script>
+	<script>
+		$('#show').live('click', function () {
+			$.mobile.loading('show');
+		});
+		$('#text').live('click', function() {
+			$.mobile.loading('show', {
+				text: 'Loading',
+				textVisible: true,
+				textonly: true,
+				theme: 'a'
+			});
+		});
+		$('#swatch-a').live('click', function() {
+			$.mobile.loading( 'show', {
+				text: 'Loading',
+				textVisible: true,
+				theme: 'a'
+			});
+		});
+		$('#swatch-a-notext').live('click', function() {
+			$.mobile.loading( 'show', {
+				theme: 'a'
+			});
+		});
+		$('#swatch-c').live('click', function() {
+			$.mobile.loading( 'show', {
+				text: 'Loading',
+				textVisible: true,
+				theme: 'c'
+			});
+		});
+		$('#swatch-c-notext').live('click', function() {
+			$.mobile.loading( 'show', {
+				theme: 'c'
+			});
+		});
+		$('#hide').live('click', function () {
+			$.mobile.loading('hide');
+		});
+	</script>
+</head>
+<body>
+	<div data-role="page" data-theme="c">
+		<div data-role="header" data-theme="c"> 
+			<h1>Activity Indicator</h1>
+		</div>
+		<div data-role="content">
+		<ul data-role="listview">
+			<li><a href="" id="show">Default Loader</a></li>
+			<li><a href="" id="text">Text only</a></li>
+			<li><a href="" id="swatch-a">Swatch A</a></li>
+			<li><a href="" id="swatch-a-notext">Swatch A - No Text</a></li>
+			<li><a href="" id="swatch-c">Swatch C</a></li>
+			<li><a href="" id="swatch-c-notext">Swatch C - No Text</a></li>
+			<li><a href="" id="hide">Hide Loader</a></li>
+		</ul> 
+		</div>
+		<!--/content-->
+		<div data-role="footer" data-position="fixed">
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

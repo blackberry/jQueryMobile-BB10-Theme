@@ -1,0 +1,91 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+/* Page Loading (Static Activity Indicator)*/
+div.ui-loader {
+
+	background-position: center 10px;
+	background-repeat: no-repeat;
+	background-size: 93px 93px;
+
+	h1 {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&:not(.ui-loader-textonly):not(.ui-loader-verbose){
+		background-color: transparent;
+		opacity: 1;
+	}
+
+	/*Swatch A*/
+	&.ui-body-a {
+		background-image: @activity-bg-medium-a;
+	}
+
+	/*Swatch C*/
+	&.ui-body-c {
+		background-image: @activity-bg-medium-c;
+	}
+
+	&.ui-loader-textonly, &.ui-loader-verbose {
+		opacity: .88;
+	}
+
+	&.ui-loader-textonly {
+		background-image: none;
+		background-size: 100% 100%;
+	}
+
+	&.ui-loader-verbose {
+		span.ui-icon.ui-icon-loading {
+			padding: 0px 0 0 1px;
+		}
+	}
+
+	&.ui-loader-default {
+		width: 93px;
+		height: 93px;
+		margin-left: -46.5px;
+		margin-top: -46.5px;
+		background-position: center 0;
+	}
+}
+
+span.ui-icon.ui-icon-loading {
+	opacity: 1;
+	width: 93px;
+	height: 93px;
+	padding: 0;
+	border: none;
+	border-radius: 50%;
+	background-color: transparent;
+	background-size: 93px 93px;
+	background-image: @activity-swirl-medium;
+	-webkit-animation: activity-spin 2s infinite linear 0;
+}
+
+@-webkit-keyframes activity-spin {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+	}
+}

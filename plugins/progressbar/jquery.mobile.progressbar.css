@@ -1,0 +1,118 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+
+/* ================================================= 
+   Progress Bar
+   =================================================*/
+
+.bb-progress .outer
+{
+    display: inline-block;
+    padding: 0.2em;
+    border-radius: 0.4em;
+	position: relative;
+    padding: 0px;
+    height: 16px;
+    text-align: left;
+    border-radius: 0.2em;
+	width:100%;
+}
+
+.bb-progress-outer-dark
+{
+	background: #070707;
+	border-top: 1px solid rgba(255,255,255,0.05);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    border-left: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.4); 
+}
+
+.bb-progress-outer-idle-background-dark
+{
+	background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEcSURBVDhPnZLZCoMwEEWTuK/gi///ke6iqWfoSEr7IA2kwtzM3JOb2r7v/XmeZhxHs22bKYpCNstaK99pmsyyLCZJElNVldQdPxRprutadhRFsp1zZl3Xe2DbtiaOY9Fs13Uep7IsTZ7nxnv/5ZRlmTihKYm9pnjQaMRV8UDHLU3TG0+6rgWhY5JyKx7Cvu9yV/C0zpc6Ax1OuOie51kEsHWgatTRCcmF6f1qUp0m0iUcBkqqLJpAJIiQQpPVJk1dGkMnBA7LW72fA52QmqYRR9GGYZBGBMIgcjYJ44JOKEpxHIecd7CHeHon3vbjTm8KrTucnuJpqvTIczzB40yIfd1fXuROFjzQlQJBQwrrkurTZPW/yiBHev8k+wJ1EPgBOoEmxwAAAABJRU5ErkJggg=="); 
+	background-repeat:  repeat-x;
+}
+
+.bb-progress-outer-idle-background-light
+{
+	background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAIAAACp9tltAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAEDSURBVChTdZFLjoNADERp8ycgxP2XHINLsOUYSED4k9dxlBkFYNFSF8+ustuUZRlFURzHxhjHcTiHYXg+n77vPx4PEVFxmiZTVVWSJMdxqATEFwQBHFd05ag3dV3rHfTM0XUcx77vPc8zTdMoSh3quR+c67ppmgo4v5dlWdeVJHmek1LFfd/neWaSoig4cbAWpOGSZRkNcEAEIg81iJzEsxxfGIbW4j0v9JlDFErhvnuB1nk136efCPFE+/HDWrx94Yj75yuybRvDiS6Viy6r6zoK9EW+Ytu22sjmu/P9H+bDXfr+iBa98/0Jcz3v5RKEUp2XuDyPvvBZZPd2WT9Lvdv0C8pH7m3sNOD0AAAAAElFTkSuQmCC"); 
+	background-repeat:  repeat-x;
+}
+
+.bb-progress-outer-light
+{
+	background-color: #DEDEDE;
+	border-top: 1px solid #9B9B9B;
+    border-right: 1px solid #9B9B9B;
+    border-left: 1px solid #9B9B9B;
+    border-bottom: 1px solid #C8C8C8; 
+}
+
+.bb-progress-fill {
+    position: absolute;
+    height: 100%;
+    width: 0px;
+    border-radius: 0.2em;
+	background-repeat:  repeat-x;
+	background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABJ0AAASdAHeZh94AAAAB3RJTUUH3AUSDTMT49XRLQAAAShJREFUKM+FkbFqwzAURS8tlNKUfEG/zAR9nb1mCYEoUz4gD20x2j14sYMgGJNn6XWpXDtYyarL1T06gohARBBCgNYaSikhInjvEUJAzP8yJiJcLheMpdPpBKWUGGNmBRGJ2WCMWXVdB2YGhmEYl6y1YOZZab/fQynF1tovZkbbthARzJb6vk/hrZxz6Pt+zMal6eEEzxtjvpkZt9ttzHa7HVCWJbz3s9LhcIBSyltrP6qqwvV6HUmKokCWZZKyF4hozcyzPJa22y2W8IIx5t17PyvleY4sy+R8PqNpmv/i8XiM7/283++Ia7G02WxEa426ruGcwxRPiOgtgS5EhCn69DvWj5KmX/WIvnhbFPEsAxH9pOwtLUVJyUBrjWeSkiJeSUqKeCXpF6EYTkZf/qpKAAAAAElFTkSuQmCC"); 
+}
+
+.bb-progress .inner {
+    top: -1.9em;
+    left: -1.9em;
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+}
+
+.bb10Highlight {
+    font-size: 16pt;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.bb-progress-fill.active {
+	background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABJ0AAASdAHeZh94AAAAB3RJTUUH3AUSDTMT49XRLQAAAShJREFUKM+FkbFqwzAURS8tlNKUfEG/zAR9nb1mCYEoUz4gD20x2j14sYMgGJNn6XWpXDtYyarL1T06gohARBBCgNYaSikhInjvEUJAzP8yJiJcLheMpdPpBKWUGGNmBRGJ2WCMWXVdB2YGhmEYl6y1YOZZab/fQynF1tovZkbbthARzJb6vk/hrZxz6Pt+zMal6eEEzxtjvpkZt9ttzHa7HVCWJbz3s9LhcIBSyltrP6qqwvV6HUmKokCWZZKyF4hozcyzPJa22y2W8IIx5t17PyvleY4sy+R8PqNpmv/i8XiM7/283++Ia7G02WxEa426ruGcwxRPiOgtgS5EhCn69DvWj5KmX/WIvnhbFPEsAxH9pOwtLUVJyUBrjWeSkiJeSUqKeCXpF6EYTkZf/qpKAAAAAElFTkSuQmCC"), 
+        -webkit-gradient(linear, left top, left bottom, from(#6ecded), to(#108cb4)); 
+        animation: processing 1s linear infinite;
+        -moz-animation: processing 1s linear infinite; /* Firefox */
+        -webkit-animation: processing 1s linear infinite; /* Safari and Chrome */
+}
+
+.bb-progress-fill.paused {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f1d56e), to(#ba9510)); 
+}
+
+.bb-progress-fill.completed {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#6ecded), to(#10659a)); 
+}
+
+.bb-progress-fill.error {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e86e6e), to(#ae1010)); 
+}
+
+
+@-webkit-keyframes processing /* Safari and Chrome */
+{
+    from {background-position: 100% 0%;}
+    to {background-position: 0% 0%;}
+}
+

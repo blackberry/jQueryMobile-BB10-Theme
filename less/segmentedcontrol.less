@@ -1,0 +1,183 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+@defaultButtonPadding: .55em 11px .5em;
+/*Segmented Control (non-title)
+-----------------------------------------------------------------------------------------------------------*/
+.ui-navbar, .ui-navbar.ui-mini {
+	box-sizing: border-box;
+	font-size: @segmented-font-size;
+	margin: @segmented-margins;
+	height: 101px; //TODO: this is an estimate, spec gives no height out of title
+	max-height: @segmented-height;
+
+	/*Set Inner button Heights*/
+	.ui-grid-a, .ui-grid-b, .ui-grid-c, .ui-grid-d,  .ui-grid-duo{
+		.insetBorder;
+		-webkit-box-shadow: inset 0px 4px 5px rgba(0,0,0,0.3), inset 0px 0px 0px 2px rgba(0,0,0,0.1), 0px 0px 1px rgba(255,255,255,0.5), 0px 1px 0 rgba(255, 255, 255, .3);
+		box-sizing: border-box;
+		height: 100%;
+	}
+	
+	.ui-block-a, .ui-block-b, .ui-block-c, .ui-block-d, .ui-block-e {
+		height: 100%;
+	}	
+
+	/*Hide controls that possess only 1 item*/
+	.ui-grid-solo{
+		display: none;
+	}
+
+	/*Hide 5th Item*/
+	.ui-grid-d {
+		.ui-block-a, .ui-block-b, .ui-block-c, .ui-block-d {
+			width: 25%;
+		}
+
+		.ui-block-e {
+			display: none;
+		}
+	}
+
+	/*For lists > 5 items show only the first 4*/
+	.ui-grid-duo.ui-grid-a {
+		li {
+			display: none;
+		}
+		.ui-block-a {
+			clear: none;
+		}
+		li:nth-child(-n + 4) {
+			display: block;
+			width: 25%;
+		}
+	}
+
+	/*override individual button inset*/
+	.ui-btn {
+		border: none;
+		background: none;
+		height: 100%;
+		min-width: 0; // should have some minimum width
+		padding:0;
+		width: 100%;
+		top: 0;
+		-webkit-box-shadow: none;
+	}
+	
+	.ui-btn-inner {
+		font-size: @buttonFontSize;
+		margin: 0 1px 0 0;
+		padding: 0 !important;
+		height: 100%;
+		
+		&.ui-controlgroup-last {
+			margin: 0;
+		}
+	}
+	
+	.ui-btn-text {
+		top: 45%;
+		margin-top: -@buttonFontSize/2;
+		text-align: center !important;
+	}
+
+	/*Icons*/
+	.ui-btn-icon-bottom, .ui-btn-icon-top {
+		.icon-set(40px);
+		.ui-btn-text{margin-top: 0;}
+	}
+
+	.iconPos(left, 71px);
+	.iconPos(right,71px);
+	.iconPos(bottom,40px);
+	.iconPos(top,40px);
+
+	.ui-btn-up-a, .ui-btn-up-c {
+		.ui-btn-inner {
+			border: 2px solid transparent;
+			background: transparent;
+			-webkit-box-shadow: none;
+		}
+	}
+	
+	/*Swatch A*/
+	.ui-btn-up-a .ui-btn-text {
+		color: @secondaryWhite;
+	}
+	
+	/*Button active - Swatch A*/
+	.ui-btn-up-a.ui-btn-active {
+		.ui-btn-inner {
+			.ui-btn-state(@a-bup-border, @a-bup-background-color, @a-bup-background-start, @a-bup-background-end, @a-bup-color, @a-bup-shadow);
+			-webkit-box-shadow: inset 0 0 1px rgba(255,255,255,0.5); //inner white glow
+		}
+		
+		.ui-btn-text {
+			color: @primaryWhite;
+		}
+	}
+
+	/*Swatch C*/
+	.ui-btn-up-c .ui-btn-text {
+		color: @secondaryDark;
+	}
+	
+	/*Button Active - Swatch C*/
+	.ui-btn-up-c.ui-btn-active {
+		.ui-btn-inner {
+			.ui-btn-state(@c-bup-border, @c-bup-background-color, @c-bup-background-start, @c-bup-background-end, @c-bup-color, @c-bup-shadow);
+			-webkit-box-shadow: inset 0 0 1px rgba(255,255,255,0.5); //inner white glow
+		}
+		
+		.ui-btn-text {
+			color: @primaryDark;
+		}
+	}
+
+	@hovGradStart: #3cbce7;
+	@hovGradEnd: #05ace3;
+	.ui-btn-hover-a, .ui-btn-down-a, .ui-btn-hover-c, .ui-btn-down-c {
+		.ui-btn-inner{
+			.background-img-gradient(@BBLightBlue, @hovGradStart, @hovGradEnd );
+			-webkit-box-shadow: inset 0px 2px 0 -1px rgba(255,255,255,0.3); //top white highlight, shared with non-title segmented control
+		}
+		
+		.ui-btn-text {
+			color: @primaryWhite;
+			text-shadow: none;
+		}
+	}
+
+	.ui-btn-hover-c.ui-btn-down-c .ui-btn-inner {
+		border-color: #b1b1b1;
+	}
+
+	.ui-grid-a, .ui-grid-b, .ui-grid-c, .ui-grid-d,  .ui-grid-duo{
+		background: rgba(0,0,0,0.12);
+	}
+}
+
+/* In title */
+.ui-header .ui-navbar  {
+	height: @segmented-height - @segmented-margins * 2; // in title
+
+	.ui-btn-icon-bottom, .ui-btn-icon-top {
+		.icon-set(36px);
+	}
+	.iconPos(bottom, 36px);
+	.iconPos(top, 36px);
+}

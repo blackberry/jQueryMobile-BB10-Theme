@@ -1,0 +1,183 @@
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QUnit Test Suite</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.css" />
+        <link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="../dist/BlackBerry-JQM.css" type="text/css" media="screen" />
+
+        <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/latest/jquery.mobile.js"></script>
+        <script src="../dist/BlackBerry-JQM.js"></script>
+
+        <!-- Your project file goes here -->
+        <!-- Your tests file goes here -->
+        <script src="tests.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1 id="qunit-header">QUnit Test Suite</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="divqunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">
+            <a href="" data-role="button" id="button">Button</a>
+
+            <ul id="list" data-role="listview">
+                <li><a href="#">Hello</a></li>
+                <li><a href="#">Hello</a></li>
+            </ul>
+
+            <label for="basic">Label</label>
+            <input type="text" name="text-input" id="basic" placeholder="Enter Text Here"/>
+
+            <label for="flip-off">Select slider:</label>
+            <select name="slider" id="flip-off" data-role="slider">
+                <option value="off">Off</option>
+                <option value="on">On</option>
+            </select>
+
+            <div data-role="header" data-theme="c">
+                <h1>Title</h1>
+            </div>
+			
+			<label for="slider-highlight">Input slider:</label>
+			<input type="range" name="slider-1" id="slider-highlight" value="60" min="0" max="100" data-highlight="true"/>
+			
+			
+			
+			
+			<div data-role="footer" data-position="fixed">
+                <div id="action-bar-area" data-role="actionbar">
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>1 Settings</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>2 Options</p>
+                    </div>
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>3 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>4 Options</p>
+                    </div>
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>5 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>6 Options</p>
+                    </div>
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>7 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>8 Options</p>
+                    </div>
+                </div>
+            </div>
+			
+			<div data-role="footer" data-position="fixed">
+                <div id="action-bar-area2" data-role="actionbar">
+					<div data-role="back"></div>
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>1 Settings</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>2 Options</p>
+                    </div>
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>3 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>4 Options</p>
+                    </div>
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>5 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>6 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>7 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>8 Options</p>
+                    </div>
+                </div>
+            </div>
+			
+			<div data-role="footer" data-position="fixed">
+                <div id="action-bar-area3" data-role="actionbar">
+					<div data-role="back"></div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>1 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>2 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>3 Options</p>
+                    </div>
+                </div>
+            </div>
+			
+			
+			<div data-role="footer" data-position="fixed">
+                <div id="action-bar-area4" data-role="actionbar">
+					<div data-role="back"></div>
+                    <div data-role="tab">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>1 Settings</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>2 Options</p>
+                    </div>
+                    <div data-role="action">
+                        <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+                        <p>3 Options</p>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+    </body>
+</html>
+

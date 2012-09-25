@@ -1,0 +1,29 @@
+{
+  "name": "BlackBerry-JQM",
+  "title": "BlackBerry 10 - jQuery Mobile Theme",
+  "description": "jQuery Mobile Theme for BlackBerry 10",
+  "version": "0.9.0",
+  "homepage": "",
+  "author": {
+    "name": "Research In Motion Limited."
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": [{
+    "type": "MIT"
+  }], 
+  "dependencies": {
+    "grunt": "*",
+    "grunt-css": "*",
+    "grunt-less": "*",
+    "grunt-clean": "*",
+    "grunt-exec": "*",
+    "grunt-html": "*"
+  },
+  "keywords": []
+}

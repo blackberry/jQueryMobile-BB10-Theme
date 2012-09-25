@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Forms Gallery</title>
+		<!--
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		-->
+		<link rel="stylesheet" href="../dist/BlackBerry-JQM-all.min.css" />
+		<script src="../dist/BlackBerry-JQM-all.min.js"></script>
+		<style type="text/css" media="screen">
+			.ui-radio, .ui-radio * { 
+				outline: none;
+			}
+			
+			textarea.ui-input-text {
+				width: 708px;
+			}
+			input.ui-input-text {
+				width: 708px;
+			}
+			.ui-field-contain .ui-slider.ui-slider-switch {
+				float:right;
+			}
+			
+			.ui-controlgroup.ui-controlgroup-horizontal {
+				float: right;
+			}
+			
+			.ui-field-contain div.ui-slider:not(.ui-slider-switch), .ui-field-contain .ui-controlgroup-controls, .ui-field-contain .ui-controlgroup .ui-controlgroup-controls {
+				float: right;
+				width: 75%;
+			}
+		</style>
+	</head>
+	<body>
+		<div data-role="page" data-theme="a" >
+			<div data-role="header" data-position="fixed">
+				<h1>Form Gallery</h1>
+			</div><!-- /header -->
+			
+			<div data-role="content">
+			<!-- Toggle Off -->
+			<div data-role="fieldcontain">
+				<label for="flip-on">Toggle Off</label>
+				<select name="slider" id="flip-off" data-role="slider">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</div>
+
+			<hr class="gradient">
+			
+			<!-- Toggle On -->
+			<div data-role="fieldcontain">
+				<label for="flip-off">Toggle ON</label>
+				<select name="slider" id="flip-on" data-role="slider">
+					<option value="on">On</option>
+					<option value="off">Off</option>
+				</select>
+			</div>
+			
+			<hr class="gradient">
+			
+			<!-- Slider -->
+			<div data-role="fieldcontain">
+			<label for="slider-highlight">Input slider:</label>
+				<input type="range" name="slider-1" id="slider-highlight" value="60" min="0" max="100" data-highlight="true"/>
+			</div>
+
+			<hr class="gradient">
+
+			<!-- Drop Down -->
+			<div data-role="fieldcontain">
+				<label for="select-choice-custom" class="select">Drop Down</label>
+				<!--<select name="select-choice-1" id="select-choice-custom" data-native-menu="false">-->
+				<select name="select-choice-1" id="select-choice-custom">
+					<option value="standard">Standard: 7 day</option>
+					<option value="rush">Rush: 3 days</option>
+					<option value="express">Express: next day</option>
+					<option value="overnight">Overnight</option>
+				</select>
+			</div>
+
+			<hr class="gradient">
+			
+			<!-- Text field -->
+			<div data-role="fieldcontain">
+				<label for="basic">Input</label>
+				<input type="text" name="text-input" id="basic" placeholder="Enter Text Here"/>
+			</div>
+			<hr class="gradient">
+			
+			<!-- Text Gradient -->
+			<div data-role="fieldcontain">
+				<label for="textarea">Textarea</label>
+				<textarea name="textarea" id="textarea">I'm a basic textarea. If this is pre-populated with content, the height will be automatically adjusted to fit without needing to scroll. That is a pretty handy usability feature.
+				</textarea>
+			</div>
+
+			<hr class="gradient">
+			
+			<!-- Radio -->
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<legend>Radio</legend>
+					<input type="radio" name="radio-choice-1" id="radio-choice-1-1" value="choice-1" checked="checked" data-iconpos="right"/>
+					<label for="radio-choice-1-1">Radio Button A</label>
+					<input type="radio" name="radio-choice-1" id="radio-choice-1-2" value="choice-2" data-iconpos="right"/>
+					<label for="radio-choice-1-2">Radio Button B</label>
+				</fieldset>
+			</div>
+			
+			<hr class="gradient">
+			
+			<!-- Checkbox -->
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<legend>Checkbox</legend>
+					<input type="checkbox" name="checkbox-choice-1" id="checkbox-choice-1-1" value="choice-1" checked="checked" data-iconpos="right"/>
+					<label for="checkbox-choice-1-1">Checkbox A</label>
+					<input type="checkbox" name="checkbox-choice-1" id="checkbox-choice-1-2" value="choice-2" data-iconpos="right"/>
+					<label for="checkbox-choice-1-2">Checkbox B</label>
+				</fieldset>	
+			</div>
+			<hr class="gradient">
+			
+			<h2>Progress Bar</h2>
+			<progress value="20" max="100"></progress>
+			<progress value="100" max="100"></progress>
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed">
+				<div id="action-bar-area" data-role="actionbar">
+					<div data-role="back"></div>
+				</div>
+			</div>
+		</div><!-- /page -->
+	</body>
+</html>

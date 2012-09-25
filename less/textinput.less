@@ -1,0 +1,185 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+/* Global Search & Text Input
+-----------------------------------------------------------------------------------------------------------*/
+input.ui-input-text, textarea.ui-input-text {
+	/*font*/
+	font-size: @inputFontSize;
+	font-style: normal;
+	font-weight: normal;
+	font-family: @global-font-family;
+
+	/*Dimensions*/
+	height: @inputHeight;
+	max-height: @inputHeight;
+	width: @inputWidth;
+	//max-width: @inputMaxWidth;
+	display: block;
+
+	/*Spacing*/
+	margin: @inputMargins;
+	padding: @inputPadding;
+
+	/*Misc*/
+	.rounded(@inputRounding);
+
+	/*overrides*/
+	border: none;
+	-webkit-box-shadow: inset 0 0 1px 2px #bebebe, inset 0 3px 5px -1px #aaaaaa;
+
+	/*Global Input Swatches*/
+	background: @snow;
+	text-shadow: none;
+	color: @primaryDark;
+
+	&.ui-focus {
+		.inputFocused();
+	}
+
+	&.ui-disabled {
+		.inputDisabled();
+	}
+}
+
+.ui-input-search {
+	display: block;
+	font-size: @inputFontSize;
+
+	/*dimensions*/
+	height: @inputHeight;
+	max-height: @inputHeight;
+	width: @inputWidth;
+	//max-width: @inputMaxWidth;
+
+	/*overrides*/
+	padding: 0px;
+	background: transparent;
+	border: none !important;
+	-webkit-box-shadow: none;
+	margin: @inputMargins;
+
+	.ui-input-clear-hidden {
+		display: none !important;
+	}
+
+	&.ui-focus {
+		-webkit-box-shadow: none;
+		.ui-input-text {
+			.inputFocused();
+		}
+	}
+
+	.ui-input-text.ui-disabled {
+		.inputDisabled();
+	}
+
+	input.ui-input-text {
+		width: 100%;
+		height: 100%;
+		max-height: none;
+		max-width: none;
+		display: inline-block;
+		background: @snow; /*background is overrided in search. Gotta override the override*/
+		padding: @inputPadding-y @inputPadding-x + 0.8em @inputPadding-y @inputPadding-x;
+	}
+}
+
+/*search clear button*/
+.ui-btn.ui-input-clear {
+	display: inline-block;
+	height: auto;
+	width: auto;
+	.noBorder;
+	background: none;
+	min-width: 0;
+	text-align: left;
+	top: 0;
+
+	.ui-btn-inner {
+		font-size: @inputFontSize;
+		display: block;
+		height: @inputHeight;
+		width: 1.6em;
+		min-width: 0;
+		margin: 0;
+		padding: 0;
+
+		-webkit-box-shadow: none;
+		background: none;
+		border: none;
+	}
+	
+	.ui-icon {
+		/*this is currently overriding the iconset image, since it does not have the proper icon*/
+		background-image: url("images_bb/core_textinput_icon_delete.png");
+		background-position: 0% 0%;
+		width: 0.6em;
+		height: 0.6em;
+		margin: 0 auto;
+		display: block;
+		position: relative;
+		top: @inputHeight/2 - 0.3;
+	}
+
+	/* Button Down Image */
+	&.ui-btn-down-c .ui-icon,
+	&.ui-btn-down-a .ui-icon {
+		background-image: url("images_bb/core_textinput_icon_delete_pressed.png");
+	}
+}
+
+textarea.ui-input-text {
+	max-height: none;
+}
+
+/*Placeholder text*/
+::-webkit-input-placeholder {
+	color: @secondaryWhite;
+	font-family: @input-font-family;
+	font-size: @inputFontSize;
+	font-style: italic;
+	font-weight: normal;
+}
+
+/*Search icon override*/
+.ui-icon-searchfield::after{
+	background-image: none !important;
+}
+
+/*Listview Filters*/
+.ui-listview-filter {
+	box-sizing: border-box;
+	border-bottom-width: 10px;
+	height: 131px;
+	position: relative;
+	
+	div.ui-input-search {
+		display: block;
+		margin: 20px;
+		width: auto%;
+	}
+}
+
+/*Listview Filter After Header*/
+.ui-header + .ui-content > .ui-listview-filter:first-child {
+	top: 1px;
+	z-index: 3;	
+}
+
+.ui-content:first-child  > .ui-listview-filter:first-child{
+	.dropDown;
+}

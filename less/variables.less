@@ -1,0 +1,365 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+//Functional Colors
+@BBGreen:       #00b800;
+@BBYellow:      #e6b400;
+@BBRed:         #d60000;
+@BBDarkBlue:    #0073bc;
+@BBLightBlue:   #00a8df;
+
+//Backgrounds
+@obsidian:  #121212;
+@titan:     #272727;
+@snow:      #f8f8f8;
+@snow10:    #f9f7dd;
+
+//Text colors
+@primaryDark:       #262626;
+@secondaryDark:     #606060;
+@primaryWhite:      #fafafa;
+@secondaryWhite:    #909090;
+
+//Accesnt States
+@slateBlue:             #57697a;
+@slateBlueHighlight:    #57697a;
+@skyBlue:               #005c7b;
+@skyBlueHighlight:      #008ab8;
+@tealBlue:              #00457A;
+@tealBlueHighlight:     #006bb8;
+@royalPurple:           #51187B;
+@royalPurpleHighlight:  #7a2588;
+@hotPink:               #7A184A;
+@hotPinkHighlight:      #88005F;
+@auqaGreen:             #2A524C;
+@auqaGreenHighlight:    #00B89C;
+@freshGreen:            #9BAD00;
+@freshGreenHighlight:   #C9E000;
+@warmSilver:            #8C8880;
+@warmSilverHighlight:   #C1BCB4;
+
+@jqm-icons-white: url('images_bb/icons-71-white.png');
+@jqm-icons-black: url('images_bb/icons-71-black.png');
+@jqm-icons-white-18: url('images_bb/icons-18-white.png');
+@jqm-icons-black-18: url('images_bb/icons-18-black.png');
+@jqm-icons-white-36: url('images_bb/icons-36-white.png');
+@jqm-icons-black-36: url('images_bb/icons-36-black.png');
+
+// Variables
+@global-active-background-color: @BBLightBlue;
+@global-active-background-end: @BBLightBlue;
+@global-active-background-start: @BBLightBlue;
+@global-active-border: 1px solid @BBLightBlue;
+@global-active-color: #fff;
+@global-active-shadow-color: #145072;
+@global-active-shadow-radius: 1px;
+@global-active-shadow-x: 0;
+@global-active-shadow-y: -1px;
+@global-active-shadow:   @global-active-shadow-x  @global-active-shadow-y  @global-active-shadow-radius @global-active-shadow-color;
+@global-box-shadow-color: rgba(0,0,0,0.3);
+@global-box-shadow-nosupport: none !important;
+@global-box-shadow-size: 4px;
+@global-font-family: Slate, 'Slate Pro', 'Myriad Pro', 'BBAlpha Sans';
+@global-icon-color: #FFF;
+@global-icon-disc: transparent;
+@global-icon-loading: url(images_bb/ajax-loader.png);
+@global-icon-set: @jqm-icons-white;
+@global-icon-size: 71px; //default button icon size
+@global-icon-shadow: 0px 1px 0  transparent;
+@global-radii-blocks: 0.2em;
+@global-radii-buttons: 0.3em;
+@global-font-size: 40px;
+@global-screen-width: 768px;
+
+
+//Font Sizes
+//Font Size(px) = points / (72/ppi) where ppi = 356
+@p1: 14pt;
+@p2: 11pt;
+@p3: 8pt;
+@p4: 6pt;
+@p5: 5pt;
+
+//Listview
+@global-listview-height: 121px;
+@global-listview-title-font-size: 54px;
+@global-listview-title-font-color: @primaryWhite;
+@global-listview-subtitle-font-color: @secondaryWhite;
+
+//Textfields
+@input-font-family: 'Slate Light', Slate, 'Slate Pro';
+@input-entered-font-family: @global-font-family; //current not in use
+@inputLabelSize: 40px;
+@inputFontSize: 40px;
+@inputHeight: 2.125em;
+@inputWidth: 351px; //8.775em spec default;
+@inputMaxWidth: 100%;
+@inputMargins: 0.5em;
+@inputPadding-y: 0.25em ;
+@inputPadding-x: 0.5em;
+@inputPadding: @inputPadding-y @inputPadding-x;
+@inputDisabledColour: #b8b8b8;
+@inputValidationHighlight: @BBRed;
+@inputRounding: 5px;
+
+//Toggle Switches & Sliders
+
+	//Common
+	@slider-font-size: 40px;
+	@pillRound: 1em;
+
+	//Toggle
+	@toggle-margin: 0.5em;
+	@toggle-width: 5.35em;
+	@toggle-height: 1.8em;
+
+	//Slider
+	@slider-margins: 1em 0.5em;
+	@slider-height: 0.4em;
+
+//----------------------------
+
+//Title Bar
+@titleBarHeight: 2.426em;//2.2407em; box-sizing: default;
+@titleFontSize: 54px;
+@titleMargin: 0.3703em;
+@titleButtonWidth: 214px;
+@titleButtonHeight: 81px;
+@titleButtonMinWidth: 167px;
+@input-cancel-width: 194px;
+
+//Buttons
+@buttonFontSize: 40px;
+@buttonTextPadding: 0.85em; //34px;
+@buttonPadding: 0 @buttonTextPadding 0 @buttonTextPadding;
+@buttonWidth: 8.85em; //354px;
+@buttonHeight: 2.525em; //101px;
+@buttonMargins: 0.5em;
+@buttonIconSize: @global-icon-size;
+
+//Segmented Control
+@segmented-margins: 0.5em;
+@segmented-font-size: 40px;
+@segmented-height: 3.025em;
+
+//Control Groups - JQM Style
+@controlgroup-margin: 20px;
+@controlgroup-btn-height: 91px;
+
+//Labels
+@label-font-size: 40px;
+@label-margin: 20px 20px 10px;
+
+//Activity Indicator
+
+@activity-padding: 10px;
+@activity-margin: 20px;
+
+//Activity Indicator Background - Swatch A
+@activity-bg-small-a: url('images_bb/core_activityindicator_bg_small_dark.png');
+@activity-bg-medium-a: url('images_bb/core_activityindicator_bg_medium_dark.png');
+@activity-bg-large-a: url('images_bb/core_activityindicator_bg_large_dark.png');
+
+//Activity Indicator Background - Swatch C
+@activity-bg-small-c: url('images_bb/core_activityindicator_bg_small.png');
+@activity-bg-medium-c: url('images_bb/core_activityindicator_bg_medium.png');
+@activity-bg-large-c: url('images_bb/core_activityindicator_bg_large.png');
+
+//Activity Indicator Swirl
+@activity-swirl-small: url('images_bb/core_activityindicator_swirl_large.png');
+@activity-swirl-medium: url('images_bb/core_activityindicator_swirl_large.png');
+@activity-swirl-large: url('images_bb/core_activityindicator_swirl_large.png');
+
+//Swatch Variables
+@a-bar-border: none;
+@a-bar-background-color: #000;
+@a-bar-background-end: #202020;
+@a-bar-background-start: #292929;
+@a-bar-color: @primaryWhite;
+@a-bar-link-active: #2489CE;
+@a-bar-link-color: #7cc4e7;
+@a-bar-link-hover: #2489CE;
+@a-bar-link-visited: #2489CE;
+@a-bar-shadow-color: #fff;
+@a-bar-shadow-radius: 0;
+@a-bar-shadow-x: 0;
+@a-bar-shadow-y: 0;
+@a-bar-shadow:   @a-bar-shadow-x  @a-bar-shadow-y  @a-bar-shadow-radius @a-bar-shadow-color;
+@a-bdown-background-color: @BBLightBlue; //#098CEE;
+@a-bdown-background-end: @skyBlue;
+@a-bdown-background-start: #5583A3; // @skyBlueHighlight;
+@a-bdown-border: 2px solid black; // #0060E6;
+@a-bdown-color: #fff;
+@a-bdown-shadow-color: #fff;
+@a-bdown-shadow-radius: 0;
+@a-bdown-shadow-x: 0;
+@a-bdown-shadow-y: 0;
+@a-bdown-shadow: none;
+@a-body-border: none;//1px solid #B3B3B3;
+@a-body-background-color: @obsidian;
+@a-body-background-end: @obsidian;
+@a-body-background-start: @obsidian;
+@a-body-color: @primaryWhite;
+@a-body-link-active: @BBLightBlue;
+@a-body-link-color: @BBLightBlue;
+@a-body-link-hover: @BBLightBlue;
+@a-body-link-visited: @BBLightBlue;
+@a-body-shadow-color: #fff;
+@a-body-shadow-radius: 0;
+@a-body-shadow-x: 0;
+@a-body-shadow-y: 0;
+@a-body-shadow:   @a-body-shadow-x  @a-body-shadow-y  @a-body-shadow-radius @a-body-shadow-color;
+@a-bup-border: 2px solid black;
+@a-bup-background-color: @obsidian;
+@a-bup-background-end: #272727; // @obsidian;
+@a-bup-background-start: #404040; //@obsidian;
+@a-bup-color: @primaryWhite;
+@a-bup-shadow-color: @obsidian;
+@a-bup-shadow-radius: 1em;
+@a-bup-shadow-x: 0;
+@a-bup-shadow-y: 0;
+@a-bup-shadow:  none;
+@a-bhover-background-color: @BBLightBlue;
+@a-bhover-background-end: @BBLightBlue;
+@a-bhover-background-start: @BBLightBlue;
+@a-bhover-border: 2px solid black; //1px solid  #0060E6;
+@a-bhover-color: #fff;
+@a-bhover-shadow-color: #fff;
+@a-bhover-shadow-radius: 0;
+@a-bhover-shadow-x: 0;
+@a-bhover-shadow-y: 0;
+@a-bhover-shadow: none;
+
+
+@b-bar-border: none;
+@b-bar-background-color: @slateBlue;
+@b-bar-background-end: @slateBlue;
+@b-bar-background-start: @slateBlue;
+@b-bar-color: white;
+@b-bar-link-active: #2489CE;
+@b-bar-link-color: #7cc4e7;
+@b-bar-link-hover: #2489CE;
+@b-bar-link-visited: #2489CE;
+@b-bar-shadow-color: #fff;
+@b-bar-shadow-radius: 1px;
+@b-bar-shadow-x: 0;
+@b-bar-shadow-y: 1px;
+@b-bar-shadow: none;
+@b-body-background-color: #DDD;
+@b-body-background-end: #F9F9F9;
+@b-body-background-start: #C0C0C0;
+@b-body-border: 1px solid #B3B3B3;
+@b-body-color: #fff;
+@b-body-link-active: #2489CE;
+@b-body-link-color: #2489CE;
+@b-body-link-hover: #2489CE;
+@b-body-link-visited: #2489CE;
+@b-body-shadow-color: #fff;
+@b-body-shadow-radius: 0;
+@b-body-shadow-x: 0;
+@b-body-shadow-y: 1px;
+@b-body-shadow:   @b-body-shadow-x  @b-body-shadow-y  @b-body-shadow-radius @b-body-shadow-color;
+@b-bup-border: 1px solid  #ccc;
+@b-bup-background-color: #eee;
+@b-bup-background-end: #eee;
+@b-bup-background-start: #fdfdfd;
+@b-bup-color: #2F3E46;
+@b-bup-shadow-color: #f6f6f6;
+@b-bup-shadow-radius: 1px;
+@b-bup-shadow-x: 0;
+@b-bup-shadow-y: 1px;
+@b-bup-shadow:   @b-bup-shadow-x  @b-bup-shadow-y  @b-bup-shadow-radius @b-bup-shadow-color;
+@b-bhover-background-color: #dadada;
+@b-bhover-background-end: #dadada;
+@b-bhover-background-start: #ededed;
+@b-bhover-border: 1px solid  #bbb;
+@b-bhover-color: #2F3E46;
+@b-bhover-shadow-color: #fff;
+@b-bhover-shadow-radius: 1px;
+@b-bhover-shadow-x: 0;
+@b-bhover-shadow-y: 1px;
+@b-bhover-shadow:   @b-bhover-shadow-x  @b-bhover-shadow-y  @b-bhover-shadow-radius @b-bhover-shadow-color;
+@b-bdown-background-color: #dadada;
+@b-bdown-background-end: #dadada;
+@b-bdown-background-start: #ededed;
+@b-bdown-border: 1px solid  #bbb;
+@b-bdown-color: #2F3E46;
+@b-bdown-shadow-color: #fff;
+@b-bdown-shadow-radius: 1px;
+@b-bdown-shadow-x: 0;
+@b-bdown-shadow-y: 1px;
+@b-bdown-shadow:   @b-bdown-shadow-x  @b-bdown-shadow-y  @b-bdown-shadow-radius @b-bdown-shadow-color;
+
+@c-bar-border: 1px solid  #B3B3B3;
+@c-bar-background-color: #e9eaeb;
+@c-bar-background-end: #9E9F9F;
+@c-bar-background-start: #D5D6D7;
+@c-bar-color: #000;
+@c-bar-link-active: #2489CE;
+@c-bar-link-color: #7cc4e7;
+@c-bar-link-hover: #2489CE;
+@c-bar-link-visited: #2489CE;
+@c-bar-shadow-color: #fff;
+@c-bar-shadow-radius: 1px;
+@c-bar-shadow-x: 0;
+@c-bar-shadow-y: 1px;
+@c-bar-shadow: none;
+@c-body-background-color: @snow;
+@c-body-background-end: @snow;
+@c-body-background-start: @snow;
+@c-body-border: none;
+@c-body-color: @primaryDark;
+@c-body-link-active: @BBDarkBlue;
+@c-body-link-color: @BBDarkBlue;
+@c-body-link-hover: @BBDarkBlue;
+@c-body-link-visited: @BBDarkBlue;
+@c-body-shadow-color: #fff;
+@c-body-shadow-radius: 0;
+@c-body-shadow-x: 0;
+@c-body-shadow-y: 1px;
+@c-body-shadow:   @c-body-shadow-x  @c-body-shadow-y  @c-body-shadow-radius @c-body-shadow-color;
+@c-bup-border: 2px solid  #b1b1b1;
+@c-bup-background-color: @primaryWhite;
+@c-bup-background-end: #dddddd;
+@c-bup-background-start: @primaryWhite;
+@c-bup-color: #2F3E46;
+@c-bup-shadow-color: #f6f6f6;
+@c-bup-shadow-radius: 1px;
+@c-bup-shadow-x: 0;
+@c-bup-shadow-y: 1px;
+@c-bup-shadow:   @c-bup-shadow-x  @c-bup-shadow-y  @c-bup-shadow-radius @c-bup-shadow-color;
+@c-bhover-background-color: #dadada;
+@c-bhover-background-end: #dadada;
+@c-bhover-background-start: #ededed;
+@c-bhover-border: 1px solid  #bbb;
+@c-bhover-color: #2F3E46;
+@c-bhover-shadow-color: #fff;
+@c-bhover-shadow-radius: 1px;
+@c-bhover-shadow-x: 0;
+@c-bhover-shadow-y: 1px;
+@c-bhover-shadow:   @c-bhover-shadow-x  @c-bhover-shadow-y  @c-bhover-shadow-radius @c-bhover-shadow-color;
+@c-bdown-background-color: #444;
+@c-bdown-background-end: #0d6398; //383838;
+@c-bdown-background-start: #2f719a; //555;
+@c-bdown-border: 2px solid #666666; //@c-bup-border; //1px solid  #000;
+@c-bdown-color: #fff;
+@c-bdown-shadow-color: #000;
+@c-bdown-shadow-radius: 1px;
+@c-bdown-shadow-x: 0;
+@c-bdown-shadow-y: 1px;
+
+@c-bdown-shadow:   @c-bdown-shadow-x  @c-bdown-shadow-y  @c-bdown-shadow-radius @c-bdown-shadow-color;
+

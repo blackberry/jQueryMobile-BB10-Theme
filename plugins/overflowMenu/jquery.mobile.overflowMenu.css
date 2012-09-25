@@ -1,0 +1,96 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+.overflowMenu {
+	height: 100%;
+	width: 563px;
+	border-image: url('images_bb/core_crosscutmenu_bg.png') 1 1 1 15 fill / 0 0 0 0 repeat;
+	-webkit-box-shadow: -10px 0px 25px #121212;
+	-webkit-transition-duration: 0.25s;
+	-webkit-animation-timing-function: ease-out;
+	position: fixed;
+	right: -583px;
+	top: 0px;
+	bottom: 0px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-pack: center;
+	z-index: 10001;
+	-webkit-transform: translate3d(0,0,0);
+}
+.left {
+	right: auto;
+	-webkit-transition-duration: 0.25s;
+	-webkit-animation-timing-function: ease-out;
+	width: 630px;
+	z-index: 0;
+}
+
+.showTabHelper {
+	-webkit-transition-duration: 0.25s;
+	-webkit-animation-timing-function: ease-out;
+}
+
+.showTabOverflow,
+.ui-mobile [data-role="page"].showTabOverflow, .ui-page.showTabOverflow{
+	left: 613px !important;
+}
+
+.showMenu {
+	-webkit-transform:translate(-583px,0);
+}
+
+.hideMenu {
+	-webkit-transform:translate(0px,0);
+}
+
+.overflowMenuContent {
+	font-size: 1.35em;
+}
+
+.menuItem {
+	border-bottom: 2px solid #414141;
+	height: 119px;
+	white-space: nowrap;
+	color: #FAFAFA;
+	font-size: 30pt;
+	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro", "BBAlpha Sans";
+}
+.left .menuItem {
+	font-size: 39pt;
+}
+
+.menuItem:first-child {
+	border-top: 2px solid #414141;
+}
+
+.menuItem img {
+	margin: 20px 19px;
+	vertical-align: middle;
+	max-height: 81px;
+	max-width: 81px;
+}
+
+.menuItem:active {
+	background: url('images_bb/core_crosscutmenu_selected.png') no-repeat left center;
+}
+
+.menuImage {
+	width: 81px;
+	height: 81px;
+}

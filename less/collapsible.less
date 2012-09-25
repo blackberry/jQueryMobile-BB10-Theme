@@ -1,0 +1,180 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+
+.ui-collapsible {
+	margin: 20px;
+	
+	//OJM
+	.ui-collapsible-heading .ui-btn-inner {
+		font-size: @buttonFontSize;
+		padding: @buttonPadding;
+	}
+	
+	.ui-collapsible-heading-toggle > .ui-btn-inner > .ui-btn-text {
+		text-align: left;
+	}
+	
+	.ui-collapsible-heading-toggle {
+		height: @buttonHeight - 0.25em;
+		max-height: none;
+	}
+
+	.ui-collapsible-heading {
+		margin: 0;
+	}
+
+	.ui-collapsible-content {
+		margin: 0;
+	}
+	
+	/*Expanded Icon*/
+	.ui-icon {
+		.ui-icon-arrow-d();
+	}
+	
+	/*Collapsed Icon*/
+	&.ui-collapsible-collapsed .ui-icon { 
+		.ui-icon-arrow-r();
+	}
+
+	.ui-li {
+		height: 97px;
+		line-height: 100px;
+		font-size: 29pt;
+	}
+}
+
+/*Expandable Set*/
+div.ui-collapsible-set {
+	margin: 20px;
+	overflow: hidden;
+	
+	.ui-collapsible-heading-toggle .ui-btn-inner {
+		.rounded(0px);
+	}
+	
+	.ui-collapsible-heading-toggle {
+		.noBorder();
+		background: transparent;
+	}
+	
+	/*Shift buttons upward to slim shared borders*/
+	div.ui-collapsible:not(:first-child) {
+		margin-top: -2px;
+	}
+
+	/*Expanded*/
+	.ui-collapsible:not(.ui-collapsible-collapsed) {
+		.ui-collapsible-heading-toggle:after{
+			content: "";
+			display: block;
+			border-bottom-width: 10px;
+			position: relative;
+			top: -4px;
+			z-index: 1;
+		}
+
+		.ui-collapsible-heading-toggle .ui-btn-inner {
+			.rounded(bottom, 5px);
+			z-index: 2;
+		}
+
+		&:first-child .ui-collapsible-heading-toggle .ui-btn-inner {
+			.rounded(5px);
+		}
+		
+		&+ div.ui-collapsible {
+			.ui-collapsible-heading-toggle:before {
+				content: "";
+				display: block;
+				border-bottom-width: 10px;
+				position: relative;
+				top: 2px;
+			}
+			
+			.ui-collapsible-heading-toggle .ui-btn-inner {
+				.rounded(top, 5px);
+			}
+			
+			.ui-collapsible-heading-toggle {
+				top: -13px;
+			}
+		}
+
+		&:last-child .ui-collapsible-content:after {
+			content: "";
+			display: block;
+			border-bottom-width: 10px;
+			position: relative;
+			top: 14px;
+		}
+	}
+
+	/*Collapsed*/
+	div.ui-collapsible.ui-collapsible-collapsed {
+
+		&:first-child .ui-collapsible-heading-toggle .ui-btn-inner {
+			.rounded(top, 5px);
+		}
+
+		&:last-child .ui-collapsible-heading-toggle .ui-btn-inner {
+			.rounded(bottom, 5px);
+		}
+	}
+}
+
+/*Expandable Blocks*/
+div[data-content-theme].ui-collapsible {
+	overflow: hidden;
+
+	.ui-collapsible-heading-toggle {
+		.noBorder();
+		background: transparent;
+	}
+	
+	.ui-collapsible-heading-toggle .ui-btn-inner {
+		z-index:2;
+	}
+	
+	/*Expanded*/
+	&:not(.ui-collapsible-collapsed) {
+	
+		/* Button Bottom Shadow */
+		.ui-collapsible-heading-toggle:after {
+			content: "";
+			display: block;
+			border-bottom-width: 10px;
+			position: relative;
+			top: -4px;
+			z-index: 1;
+		}
+		
+		/* Content Bottom Shadow */
+		.ui-collapsible-content {
+			background: transparent;
+
+			/*bottom shadow*/
+			&:after {
+				content: "";
+				display: block;
+				border-bottom-width: 10px;
+				position: relative;
+				top: 14px;
+			}
+		}
+	}
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sliders</title>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<link rel="stylesheet" href="../dist/BlackBerry-JQM-all.min.css" />
+<script src="../dist/BlackBerry-JQM-all.min.js"></script>
+<script type="text/javascript">
+	$(document).live('pageinit', function () {
+		$('#slider-disabled').slider('disable');
+		$('#slider-disabled-highlight').slider('disable');
+	});
+</script>	
+</head>
+<body>
+	<div data-role="page" data-theme="c">
+		<div data-role="header" data-theme="c"> 
+			<h1>Sliders</h1>
+		</div>
+		<div data-role="content">
+			<label for="slider-highlight">Input slider:</label>
+			<input type="range" name="slider-1" id="slider-highlight" value="60" min="0" max="100" data-highlight="true"/>
+			<label for="slider-disabled-highlight">Input slider disabled:</label>
+			<input type="range" name="slider-1" id="slider-disabled-highlight" value="60" min="0" max="100" data-highlight="true"/>
+			
+			<h2>No Highlight Fallbacks</h2>
+			<label for="slider-1">Input slider:</label>
+			<input type="range" name="slider-1" id="slider-1" value="60" min="0" max="100" />
+			<label for="slider-disabled">Input slider disabled:</label>
+			<input type="range" name="slider-1" id="slider-disabled" value="60" min="0" max="100"/>
+		</div>
+		<!--/content-->
+		<div data-role="footer" data-position="fixed">
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

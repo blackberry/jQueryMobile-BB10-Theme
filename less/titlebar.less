@@ -1,0 +1,155 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+
+/* Title Bar
+-----------------------------------------------------------------------------------------------------------*/
+.ui-header  {
+	border: none;
+	box-sizing: border-box;
+	font-size: @titleFontSize;
+	height: @titleBarHeight;
+	min-width: 100%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	z-index: 2;
+
+	/*Title Text*/
+	.ui-title{
+		font-size: 1em;
+		font-weight: normal;
+		text-overflow: clip;
+		position: relative;
+		top: 0.575em;
+		box-sizing: border-box;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	/*Lone Title & Title First*/
+	.ui-title:only-child, .ui-title:first-child {
+		display: inline-block;
+		margin: 0 0 0 @titleMargin;
+		text-align: left;
+	}
+
+	/*Title Sandwiched between buttons*/
+	.ui-btn + .ui-title:not(:last-child) {
+		text-align: center;
+		width: 36%;
+		margin: 0 32%;
+		padding: 0;
+	}
+
+	/*Title after lone button*/
+	.ui-btn:only-of-type + .ui-title {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+	}
+
+	/*Title Buttons*/
+	.ui-btn {
+		position: absolute;
+		height: @titleButtonHeight;
+		width: @titleButtonWidth;
+		min-width: @titleButtonMinWidth;
+		top: 20px;
+		z-index: 1;
+
+		.ui-btn-text {
+			line-height: 100%;
+		}
+	}
+	
+	/*Lone Button Before Title*/
+	.ui-btn:only-of-type:first-child {
+		position: relative;
+		float: left;
+	}
+
+	/*Lone button that come after an element, float right*/
+	.ui-btn:only-of-type:not(:first-child) {
+		right: 0;
+		left: auto;
+	}
+	
+	.ui-btn-right {
+		margin: 0 20px 0;
+		right: 0px;
+	}
+
+	.ui-btn-left {
+		left: 0px;
+		margin: 0 20px 0;
+	}
+	
+	//OJM
+	.ui-btn-inner {
+		font-size: @buttonFontSize;
+		padding: @buttonPadding;
+	} 
+
+	/*Title Text Input
+	------------*/
+	label {
+		display: none;
+	}
+
+	/*TODO: Migrate sizing to media queries*/
+	input.ui-input-text, div.ui-input-search {
+		display: inline-block;
+		width: 66.7%; //514px;
+		margin-left: 20px;
+		box-sizing: border-box;
+		margin-right: 0px;
+	}
+
+	div.ui-input-search {
+		width: 66.7%;
+		input.ui-input-text {
+			width: 100%;
+			margin: 0;
+		}
+	}
+
+	/*Search Cancel Buttons*/
+	input.ui-input-text + .ui-btn:not(.ui-input-clear), div.ui-input-search + .ui-btn {
+		width: 25.3%;//@input-cancel-width;
+	}
+}
+
+/*Title Bar Fixed*/
+.ui-header.ui-header-fixed {
+	position: fixed;
+	z-index: 5;
+}
+
+/* Title Bar Fixed & Hidden*/
+.ui-header.ui-fixed-hidden {
+	position: absolute;
+}
+
+/*Shift content upward so title shadow sits on top*/
+.ui-header + .ui-content, .ui-listview-filter + .ui-listview {
+	position: relative;
+	top: -10px;
+}
+
+.ui-content .ui-header {
+	z-index: 0;
+}

@@ -1,0 +1,75 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+/*Pressed Elements - Gradient Background used for
+all pressed widgets (buttons, check boxes, sliders)
+Defaults:
+#3abbe7 - top
+#01a8df - bottom
+@BBLightBlue - colour
+*/
+
+
+/*Text*/
+p {
+	font-size: @p1;
+}
+
+p.p2 {
+	font-size: @p2;
+}
+
+p.p3 {
+	font-size: @p3;
+}
+
+p.p4 {
+	font-size: @p4;
+	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro", "BBAlpha Sans";
+}
+
+p.p5 {
+	font-size: @p5;
+	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro", "BBAlpha Sans";
+}
+
+/*Accessibility Outline*/
+/*This removes the outline around all clickable elements*/
+* {
+	outline: 0 !important;
+}
+
+/*Disable Selection on non-text elements*/
+/*user-select is not part of any css specification or css working draft*/
+* {
+	-webkit-user-select: none;
+}
+
+p, h1, h2, h3, h4, h5, h6, a:not(.ui-btn):not(.ui-link-inherit), input {
+	-webkit-user-select: text;
+}
+
+.ui-footer {
+	border: none;
+}
+
+/* Labels */
+label, label.ui-input-text, label.ui-slider, label.ui-select, .ui-controlgroup-label{
+	font-size: @label-font-size;
+	margin: @label-margin;
+	text-overflow: ellipsis;
+}
+

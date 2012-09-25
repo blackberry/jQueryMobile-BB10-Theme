@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<html>
+<head>
+<title>Text Validation</title>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.css" />
+<link rel="stylesheet" href="../dist/BlackBerry-JQM.css" />
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="../dist/BlackBerry-JQM-Init.js"></script>
+<script src="http://code.jquery.com/mobile/latest/jquery.mobile.js"></script>
+<script src="../dist/BlackBerry-JQM.js" type="text/javascript"></script>
+</head>
+<body>
+	<div data-role="page" data-position="fixed">
+		<div data-role="header" data-theme="c" data-position="fixed"> 
+			<h1>Text Validation</h1>
+		</div>
+		<div data-role="content">
+			<h2>Enter "valid" to validate</h2>
+			<hr class="group">
+			<form>
+				<label for="text-valid">Text Validation</label>
+				<input type="text" name="text-input" id="text-valid" data-role="bb-inputvalidator" required="required" pattern="^valid$" placeholder="Input Text..."/>
+				
+				<label for="text-nonrequired">Non-required Text Field</label>
+				<input type="text" name="text-nonrequired" id="text-nonrequired" data-role="bb-inputvalidator" pattern="^valid$" placeholder="Input Text..."/>
+				
+				<hr class="BB10group"/>
+				<label for="search-valid">Search Validation</label>
+				<input type="search" name="search-input" id="search-valid" data-role="bb-inputvalidator" placeholder="Search..." required="required" pattern="^valid$" />
+				
+				<label for="search-nonrequired">Non-required Search Field</label>
+				<input type="search" name="search-nonrequired" id="search-nonrequired" data-role="bb-inputvalidator" placeholder="Search..." pattern="^valid$" />
+		</div> <!--/content-->
+		<div data-role="footer" data-position="fixed">
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

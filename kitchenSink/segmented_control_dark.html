@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Segmented Control</title>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<link rel="stylesheet" href="../dist/BlackBerry-JQM-all.min.css" />
+<script src="../dist/BlackBerry-JQM-all.min.js"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="a" data-position="fixed">
+		<div data-role="header">
+			<h1> Segmented Control </h1>
+		</div>
+		<div data-role="content">
+			<p> Segmented Controls are BB10's equivalent of nav bars. They must contain a minimum of 2 items, and a maximum of 4 items </p>
+			<!-- Titlebar Segmented Control w/ 2 items -->
+			<h2> 2 Items </h2>
+			<div data-role="header" >
+				<!-- nav with normal buttons -->
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+					</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /header -->
+			
+			<!-- Titlebar Segmented Control w/ 3 items -->
+			<h2> 3 Items </h2>
+			<div data-role="header" >
+				<!-- nav with normal buttons -->
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+					</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /header -->
+			
+			<!-- Titlebar Segmented Control w/ 4 items-->
+			<h2> 4 Items </h2>
+			<div data-role="header" >
+				<!-- nav with normal buttons -->
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+					</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /header -->
+			
+			<!-- Titlebar Segmented Control w/ 5 items-->
+			<h2> 5+ Items</h2> 
+			<p>Only the first 4 Items will be shown.</p>
+			<div data-role="header" >
+				<!-- nav with normal buttons -->
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+						<li><a href="#">Title</a></li>
+					</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /header -->
+			
+			<!-- Titlebar Segmented Control w/ 5 items-->
+			<h2>1 Item</h2>
+			<p>The control will be hidden should only one item be present. When a single item is required, use a button instead.</p>
+			<div data-role="header" >
+				<!-- nav with normal buttons -->
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#">Title</a></li>
+					</ul>
+				</div>
+				<!-- /navbar -->
+			</div>
+			<!-- /header -->
+			<h2> Segmented Control - Non-title </h2>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#">Title</a></li>
+					<li><a href="#">Title</a></li>
+					<li><a href="#">Title</a></li>
+				</ul>
+			</div>
+			<!-- /header -->
+			<h2> Segmented Control - Icons </h2>
+			<div data-role="navbar" data-iconpos="left">
+				<ul>
+					<li><a href="#" data-icon="gear">Title</a></li>
+					<li><a href="#" data-icon="gear">Title</a></li>
+					<li><a href="#" data-icon="gear">Title</a></li>
+				</ul>
+			</div>
+			<!-- /header -->
+			<h2> Segmented Control - Icons: Right</h2>
+			<div data-role="navbar" data-iconpos="right">
+				<ul>
+					<li><a href="#" data-icon="gear">Title</a></li>
+					<li><a href="#" data-icon="gear">Title</a></li>
+					<li><a href="#" data-icon="gear">Title</a></li>
+				</ul>
+			</div>
+			<!-- /header -->
+			<h2> Segmented Control Header - Icons: Bottom </h2>
+			<div data-role="header" >
+				<div data-role="navbar" data-iconpos="bottom">
+					<ul>
+						<li><a href="#" data-icon="gear">Title</a></li>
+						<li><a href="#" data-icon="gear">Title</a></li>
+						<li><a href="#" data-icon="gear">Title</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /header -->
+			
+			<h2> Segmented Control Header - Icons: Top </h2>
+			<div data-role="header" >
+				<div data-role="navbar" data-iconpos="top">
+					<ul>
+						<li><a href="#" data-icon="gear">Title</a></li>
+						<li><a href="#" data-icon="gear">Title</a></li>
+						<li><a href="#" data-icon="gear">Title</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /header -->
+		</div>
+		<!-- /content -->
+		<div data-role="footer" data-position="fixed">
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
+		</div>
+	</div>
+	<!-- /page -->
+</body>
+</html>

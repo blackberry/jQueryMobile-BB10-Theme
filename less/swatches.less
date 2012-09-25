@@ -1,0 +1,779 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+/* Swatches */
+/* a
+-----------------------------------------------------------------------------------------------------------*/
+.ui-bar-a {
+    .ui-bar(@a-bar-border, @a-bar-background-color, @a-bar-color, @a-bar-shadow, @a-bar-background-start, @a-bar-background-end, @a-bar-link-color, @a-bar-link-hover, @a-bar-link-active, @a-bar-link-visited);
+}
+
+.ui-body-a {
+    .ui-body(@a-body-color, @a-body-link-color, @a-body-link-hover, @a-body-link-visited);
+	/*Text Selection*/
+	::selection {
+		background: rgba(0,168,223,0.5);//@BBLightBlue;
+	}
+
+	/*Using quarter alpha for links because the spec
+	  selection colour seems to drown out the actual link text.
+	  The pdf showed links as having a lighter background.*/
+	.ui-link::selection {
+		background: rgba(0,168,223,0.25);//@BBLightBlue;
+	}
+	.ui-link > *::selection {
+		background: rgba(0,168,223,0.25);//@BBLightBlue;
+	}
+}
+
+.ui-body-a,
+.ui-overlay-a {
+    .ui-overlay(@a-body-border, @a-body-color, @a-body-shadow, @a-body-background-color, @a-body-background-start, @a-body-background-end);
+}
+
+/*Button States*/
+
+/*Up & Hover*/
+.ui-btn-up-a , .ui-btn-hover-a{
+	.ui-btn-inner {
+		.ui-btn-state(@a-bup-border, @a-bup-background-color, @a-bup-background-start, @a-bup-background-end, @a-bup-color, @a-bup-shadow);
+		-webkit-box-shadow:inset 0 0 1px rgba(255,255,255,0.5); //inner white glow
+		.ui-btn-text {
+			color: @primaryWhite;
+		}
+	}
+}
+
+/* hover state is the same as up state for global buttons : possible removal
+.ui-btn-hover-a {
+}
+*/
+
+/* Pressed */
+.ui-btn-down-a {
+	.ui-btn-inner {
+		.ui-btn-state(@a-bdown-border, @a-bdown-background-color, @a-bdown-background-end , @a-bdown-background-end, @a-bdown-color, @a-bdown-shadow);
+		-webkit-box-shadow:inset 0 20px 5px -15px rgba(0,0,0,0.4);//top dark shadow
+	}
+}
+
+/*Shared Properties*/
+.ui-btn-up-a,
+.ui-btn-hover-a,
+.ui-btn-down-a {
+    .ui-btn-font();
+
+    &.ui-btn {
+        .insetBorder-A;
+    }
+
+    .ui-icon {
+        background-image: @jqm-icons-white;
+    }
+
+	&.ui-disabled {
+		.ui-btn-inner {
+			background: @titan;
+			border-color: @obsidian;
+			-webkit-box-shadow: none;
+		}
+	}
+}
+
+/* Title Bar A */
+@titleTextShadow:  0 1px 20% rgba(0,0,0,0.2); //move to global variables
+.ui-header.ui-bar-a, .ui-listview-filter.ui-bar-a {
+	background: @obsidian;
+	background-image: -webkit-linear-gradient(#252525, #0b0b0b);
+	border-width: 0px;
+	border-bottom-width: 10px;
+	border-image: url('images_bb/core_titlebar_shadow_dark.png') 0 0 10 stretch;
+	background-clip: padding-box;
+
+	.ui-title {
+		color: @primaryWhite;
+		text-shadow: @titleTextShadow;
+	}
+}
+
+/*Toggle Specific - A*/
+.ui-slider.ui-slider-switch.ui-btn-down-c {
+
+	/*On/off textarea*/
+	.ui-slider-label {
+		text-shadow: 0 1px 1px #000000;
+	}
+
+	a.ui-slider-handle.ui-btn{
+		/*Toggle Off: handle grey*/
+		&[aria-valuenow="off"] .ui-btn-inner {
+			.background-img-gradient(@a-bup-background-color, @a-bup-background-start, @a-bup-background-end);
+		}
+
+		/*Toggle On: handle blue*/
+		&[aria-valuenow="on"] .ui-btn-inner {
+			/*gradient colours sampled from spec image*/
+			.background-img-gradient(@tealBlueHighlight, #3c94cc, #0174bc);
+			-webkit-box-shadow: inset 0 1px 1px 0px rgba(255,255,255,0.3);
+		}
+	}
+}
+
+/* Toggle Switch / Slider - A */
+.ui-slider.ui-slider-switch.ui-btn-down-a, .ui-slider.ui-btn-down-a {
+
+	/*Bounding*/
+	.sliderBorder-A;
+
+	/*Slider Handle*/
+	a.ui-slider-handle.ui-btn{
+
+		/*Toggle Off: handle grey*/
+		&.ui-btn-up-a .ui-btn-inner {
+			.background-img-gradient(@a-bup-background-color, @a-bup-background-start, @a-bup-background-end);
+		}
+
+		/*Toggle On: handle blue*/
+		&[aria-valuenow="on"] .ui-btn-inner { //change selector //common?
+			/*gradient colours sampled from spec image*/
+			.background-img-gradient(@tealBlueHighlight, #3c94cc, #0174bc);
+			-webkit-box-shadow: inset 0 1px 1px 0px rgba(255,255,255,0.3);
+		}
+
+		/* Pressed State*/ //common
+		&.ui-btn-hover-a, &.ui-btn-hover-c {
+			/*Aura*/
+			background: rgba(0,168,223,0.2); //common
+			-webkit-box-shadow: inset 0 0 15px 5px rgba(0,168,223,0.6);
+
+			.ui-btn-inner {
+				/*Gradient colours sampled from spec image: light = #3cbce7, dark = #01a8df */
+				.background-img-gradient(@BBLightBlue, rgb(60,188,231), rgb(1,168,233));
+			}
+
+			&:before {
+				background: black;
+			}
+		}
+
+		/*Handle Common Properties*/
+		.ui-btn-inner {
+			border: 0.05em solid #000; //outer border
+			-webkit-box-shadow: inset 0 0 1px 2px rgba(255,255,255,0.2); // white inner glow
+		}
+	}
+
+	/*Disabled Toggle State*/
+	&.ui-disabled {
+
+		span.ui-slider-label {
+			opacity: 0.2;
+			color: @primaryWhite;
+			text-shadow: none;
+		}
+
+		a.ui-slider-handle.ui-btn  {
+			&.ui-btn-up-a .ui-btn-inner {
+				background: @primaryDark;
+				-webkit-box-shadow: none;
+			}
+		}
+	}
+}
+
+/*Slider Fill - Swatch A*/
+div.ui-slider.ui-btn-down-a {
+	.ui-slider-bg {
+		.background-img-gradient(@BBLightBlue, #3a93cb, #0676be);
+		-webkit-box-shadow: inset 0 1px 1px 1px rgba(49,118,163,0.8) /*#64a9d6*/, inset 0 -1px 1px 1px rgba(2,94,151,0.8);/*#025e97*/
+	}
+
+	&.ui-disabled .ui-slider-bg{
+		.background-img-gradient(@titan, #353535, #282828);
+		-webkit-box-shadow: inset 0 1px 1px 1px rgba(61,61,61,0.8) /*#3d3d3d*/, inset 0 -1px 1px 1px rgba(31,31,31,0.8);/*#1f1f1f*/
+	}
+}
+
+/*Control Group Swatch A*/
+div[data-role="page"][data-theme="a"] {
+	.ui-controlgroup, fieldset.ui-controlgroup {
+		.ui-controlgroup-controls {
+			.insetBorder-A;
+		}
+	}
+}
+
+/*Expandable Block - Swatch A*/
+.ui-body-a div[data-content-theme].ui-collapsible {
+	.insetBorder-A;
+	&:not(.ui-collapsible-collapsed) {
+		.ui-btn:after {
+			border-image: url('images_bb/core_titlebar_shadow_dark.png') 0 0 10 stretch;
+		}
+
+		.ui-collapsible-content {
+			/*bottom shadow*/
+			&:after {
+				border-image: url('images_bb/core_titlebar_shadow_dark_flipped.png') 0 0 10 stretch;
+			}
+		}
+	}
+}
+
+/*Accordion - Swatch A*/
+.ui-body-a div.ui-collapsible-set {
+	div.ui-collapsible { .noBorder(); }
+	.insetBorder-A;
+	/*Expanded*/
+	div.ui-collapsible:not(.ui-collapsible-collapsed) {
+		.ui-btn:after{
+			border-image: url('images_bb/core_titlebar_shadow_dark.png') 0 0 10 stretch;
+		}
+
+		&+ div.ui-collapsible {
+			.ui-btn:before {
+				border-image: url('images_bb/core_titlebar_shadow_dark_flipped.png') 0 0 10 stretch;
+			}
+		}
+
+		&:last-child {
+			.ui-collapsible-content:after {
+				border-image: url('images_bb/core_title_bar_shadow_dark_flipped.png') 0 0 10 stretch;
+			}
+		}
+	}
+}
+
+/* b
+-----------------------------------------------------------------------------------------------------------*/
+.ui-bar-b {
+    .ui-bar(@b-bar-border, @b-bar-background-color, @b-bar-color, @b-bar-shadow, @b-bar-background-start, @b-bar-background-end, @b-bar-link-color, @b-bar-link-hover, @b-bar-link-active, @b-bar-link-visited);
+}
+
+.ui-body-b {
+    .ui-body(@b-body-color, @b-body-link-color, @b-body-link-hover, @b-body-link-visited);
+}
+
+.ui-body-b,
+.ui-overlay-b {
+    .ui-overlay(@b-body-border, @b-body-color, @b-body-shadow, @b-body-background-color, @b-body-background-start, @b-body-background-end);
+}
+
+.ui-btn-up-b {
+    .ui-btn-state(@b-bup-border, @b-bup-background-color, @b-bup-background-start, @b-bup-background-end, @b-bup-color, @b-bup-shadow);
+}
+
+.ui-btn-hover-b {
+    .ui-btn-state(@b-bhover-border, @b-bhover-background-color, @b-bhover-background-start, @b-bhover-background-end, @b-bhover-color, @b-bhover-shadow);
+}
+.ui-btn-down-b {
+    .ui-btn-state(@b-bdown-border, @b-bdown-background-color, @b-bdown-background-start, @b-bdown-background-end, @b-bdown-color, @b-bdown-shadow);
+}
+
+.ui-btn-up-b,
+.ui-btn-hover-b,
+.ui-btn-down-b {
+    .ui-btn-font();
+}
+
+
+/* c
+-----------------------------------------------------------------------------------------------------------*/
+.ui-bar-c {
+    .ui-bar(@c-bar-border, @c-bar-background-color, @c-bar-color, @c-bar-shadow, @c-bar-background-start, @c-bar-background-end, @c-bar-link-color, @c-bar-link-hover, @c-bar-link-active, @c-bar-link-visited);
+}
+
+.ui-body-c {
+    .ui-body(@c-body-color, @c-body-link-color, @c-body-link-hover, @c-body-link-visited);
+	/*Text Selection*/
+	::selection {
+		background: rgba(0,168,223,0.5);//@BBLightBlue;
+	}
+}
+
+.ui-body-c,
+.ui-overlay-c {
+    .ui-overlay(@c-body-border, @c-body-color, @c-body-shadow, @c-body-background-color, @c-body-background-start, @c-body-background-end);
+}
+
+
+/*Button States*/
+
+/*Shared Properties*/
+@disabledBG-c: #c1c1c1;
+
+.ui-btn-up-c,
+.ui-btn-hover-c,
+.ui-btn-down-c {
+    .ui-btn-font();
+
+	&.ui-disabled {
+		.ui-btn-inner {
+			background: @disabledBG-c;
+		}
+	}
+
+    &.ui-btn {
+        .insetBorder-C;
+    }
+
+    .ui-icon {
+        background-image: @jqm-icons-black;
+    }
+}
+
+/*Up & Hover*/
+.ui-btn-up-c, .ui-btn-hover-c {
+	.ui-btn-inner {
+		.ui-btn-state(@c-bup-border, @c-bup-background-color, @c-bup-background-start, @c-bup-background-end, @c-bup-color, @c-bup-shadow);
+		-webkit-box-shadow:inset 0 0 1px rgba(255,255,255,0.5); //inner white glow
+		.ui-btn-text {
+			color: @primaryDark;
+		}
+	}
+}
+
+@boundingBG-down: #9e9e9e;
+/* Pressed */
+.ui-btn-down-c {
+	&.ui-btn {background: @boundingBG-down;}
+	.ui-btn-inner {
+		.ui-btn-state(@c-bdown-border, @c-bdown-background-color, @skyBlueHighlight , @skyBlueHighlight, @c-bdown-color, @a-bdown-shadow);
+		-webkit-box-shadow:inset 0 20px 5px -15px rgba(0,0,0,0.4);//top dark shadow
+
+		.ui-btn-text {
+			color: @primaryWhite;
+		}
+	}
+}
+
+
+/* Title Bar C */
+.ui-header.ui-bar-c, .ui-listview-filter.ui-bar-c {
+	background: @snow;
+	background-image: -webkit-linear-gradient(#f2f2f2, #d5d5d5);
+	border-width: 0px;
+	border-bottom-width: 10px;
+	border-image: url('images_bb/core_title_bar_shadow.png') 0 0 10 stretch;
+	background-clip: padding-box;
+
+	.ui-title {
+		color: @primaryDark;
+		text-shadow: @titleTextShadow;
+	}
+}
+
+/*Toggle Specific - C*/
+.ui-slider.ui-slider-switch.ui-btn-down-c {
+
+	/*On/off textarea*/
+	.ui-slider-label {
+		color: @primaryDark;
+		text-shadow: 0 1px 1px #fff;
+	}
+
+	a.ui-slider-handle.ui-btn{
+		/*Toggle Off: handle grey*/
+		&[aria-valuenow="off"] .ui-btn-inner {
+			.background-img-gradient(#eaeaea, #fafafa, #dddddd);
+			/*Thicker white glow for swatch C*/
+			-webkit-box-shadow: inset 0 0 1px 2px rgba(255,255,255,0.8); // white inner glow
+		}
+
+		/*Toggle On: handle blue*/
+		&[aria-valuenow="on"] .ui-btn-inner {
+			//swatch A
+			/*gradient colours sampled from spec image*/
+			.background-img-gradient(@tealBlueHighlight, #3c94cc, #0174bc);
+			-webkit-box-shadow: inset 0 1px 1px 0px rgba(255,255,255,0.3);
+		}
+	}
+}
+
+/* Toggle Switch / Slider - C */
+.ui-slider.ui-slider-switch.ui-btn-down-c, .ui-slider.ui-btn-down-c {
+
+	/*Bounding*/
+	.sliderBorder-C;
+	/*override outer glow*/
+	-webkit-box-shadow: inset 0px 2px 4px rgba(0,0,0,0.2)/*top black fade*/, 0px 0px 1px 1px rgba(225,223,225,0.16)/*outer white shadow*/, 0px 1px 2px rgba(225, 223, 225, 0.3)/*bottom heavy white shadow*/;
+
+	/*Slider Handle*/
+	a.ui-slider-handle.ui-btn{
+
+		/*Toggle Off: handle grey*/
+		&.ui-btn-up-c .ui-btn-inner {
+			.background-img-gradient(#eaeaea, #fafafa, #dddddd);
+			/*Thicker white glow for swatch C*/
+			-webkit-box-shadow: inset 0 0 1px 2px rgba(255,255,255,0.8); // white inner glow
+		}
+
+		/*Toggle On: handle blue - active*/
+		&[aria-valuenow="on"] .ui-btn-inner { // change selector //common?
+			/*gradient colours sampled from spec image*/
+			.background-img-gradient(@tealBlueHighlight, #3c94cc, #0174bc);
+			-webkit-box-shadow: inset 0 1px 1px 0px rgba(255,255,255,0.3);
+		}
+
+		/* Pressed State*/ //common
+		&.ui-btn-hover-a, &.ui-btn-hover-c {
+			/*Aura*/
+			background: rgba(0,168,223,0.2); //common
+			-webkit-box-shadow: inset 0 0 15px 5px rgba(0,168,223,0.6);
+
+			.ui-btn-inner {
+				/*Gradient colours sampled from spec image: light = #3cbce7, dark = #01a8df */
+				.background-img-gradient(@BBLightBlue, rgb(60,188,231), rgb(1,168,233));
+
+				/*override*/
+				-webkit-box-shadow: inset 0 0 1px 2px rgba(255,255,255,0.2); // white inner glow
+			}
+		}
+
+		/*Handle Common Properties*/
+		.ui-btn-inner {
+			border: 0.05em solid rgba(0,0,0,0.2); /*outer border*/
+			-webkit-box-shadow: inset 0 0 1px 2px rgba(255,255,255,0.2); /*white inner glow*/
+			background-clip: padding-box;
+		}
+	}
+
+	/*Disabled Toggle State*/
+	&.ui-disabled {
+
+		span.ui-slider-label {
+			opacity: 0.2;
+			color: @primaryDark;
+			text-shadow: none;
+		}
+
+		a.ui-slider-handle.ui-btn  {
+
+			&.ui-btn-up-c .ui-btn-inner {
+				background: #c1c1c1;
+				border: solid 2px rgba(0,0,0,0.2);
+				-webkit-box-shadow: inset 0 0 1px 1px rgb(255,255,255);
+			}
+
+		}
+	}
+}
+
+/*Slider Fill - C*/
+div.ui-slider.ui-btn-down-c{
+	.ui-slider-bg {
+		.background-img-gradient(@BBLightBlue, #3a93cb, #0676be);
+		-webkit-box-shadow: inset 0 1px 1px 1px rgba(100,169,214,0.8) /*#64a9d6*/, inset 0 -1px 1px 1px rgba(2,94,151,0.8);/*#025e97*/
+	}
+
+	&.ui-disabled .ui-slider-bg{
+		.background-img-gradient(@titan, #c7c7c7, #c1c1c1);
+		-webkit-box-shadow: none;
+	}
+}
+
+/*Control Group Swatch C*/
+div[data-role="page"][data-theme="c"] {
+	.ui-controlgroup, fieldset.ui-controlgroup {
+		
+		.ui-controlgroup-controls {
+			.insetBorder-C;
+		}
+	}
+}
+
+/*Expandable Block - Swatch C*/
+.ui-body-c div[data-content-theme].ui-collapsible {
+	.insetBorder-C;
+	&:not(.ui-collapsible-collapsed) {
+		.ui-btn:after {
+			border-image: url('images_bb/core_title_bar_shadow.png') 0 0 10 stretch;
+		}
+
+		.ui-collapsible-content {
+			/*bottom shadow*/
+			&:after {
+				border-image: url('images_bb/core_title_bar_shadow_flipped.png') 0 0 10 stretch;
+			}
+		}
+	}
+}
+
+/*Accordion - Swatch C*/
+.ui-body-c div.ui-collapsible-set {
+	div.ui-collapsible { .noBorder(); }
+	.insetBorder-C;
+	/*Expanded*/
+	div.ui-collapsible:not(.ui-collapsible-collapsed) {
+		.ui-btn:after{
+			border-image: url('images_bb/core_title_bar_shadow.png') 0 0 10 stretch;
+		}
+
+		&+ div.ui-collapsible {
+			.ui-btn:before {
+				border-image: url('images_bb/core_title_bar_shadow_flipped.png') 0 0 10 stretch;
+			}
+		}
+
+		&:last-child {
+			.ui-collapsible-content:after {
+				border-image: url('images_bb/core_title_bar_shadow_flipped.png') 0 0 10 stretch;
+			}
+		}
+	}
+}
+
+/* Global */
+
+/* links within "buttons"
+-----------------------------------------------------------------------------------------------------------*/
+a.ui-link-inherit {
+    text-decoration: none !important;
+}
+
+/* Active class used as the "on" state across all themes
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn-active {
+    cursor: pointer;
+    text-decoration: none;
+    font-family: @global-font-family;
+    .ui-btn-state(@global-active-border, @global-active-background-color, @global-active-background-start, @global-active-background-end, @global-active-color, @global-active-shadow);
+}
+
+/* corner rounding classes
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-corner-tl {
+    .rounded(topleft,@global-radii-blocks);
+}
+
+.ui-corner-tr {
+    .rounded(topright,@global-radii-blocks);
+}
+
+.ui-corner-bl {
+    .rounded(bottomleft,@global-radii-blocks);
+}
+
+.ui-corner-br {
+    .rounded(bottomright,@global-radii-blocks);
+}
+
+.ui-corner-top {
+    .rounded(topleft,@global-radii-blocks);
+    .rounded(topright,@global-radii-blocks);
+}
+
+.ui-corner-bottom {
+    .rounded(bottomleft,@global-radii-blocks);
+    .rounded(bottomright,@global-radii-blocks);
+}
+
+.ui-corner-right {
+    .rounded(topright,@global-radii-blocks);
+    .rounded(bottomright,@global-radii-blocks);
+}
+
+.ui-corner-left {
+    .rounded(topleft,@global-radii-blocks);
+    .rounded(bottomleft,@global-radii-blocks);
+}
+.ui-corner-all {
+    .rounded(@global-radii-blocks);
+}
+.ui-corner-none {
+    .rounded(0);
+}
+
+/* Interaction cues
+-----------------------------------------------------------------------------------------------------------*/
+.ui-disabled {
+    .opacity(0.3);
+}
+.ui-disabled,
+.ui-disabled a {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Icons
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-icon,
+.ui-icon-searchfield:after {
+    background: @global-icon-color;
+    background: @global-icon-disc;
+    background-image: @global-icon-set;
+    background-repeat: no-repeat;
+    .rounded(9px);
+}
+
+/* Alt icon color
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-icon-alt {
+    background: #fff;
+    background: rgba(255,255,255,.3);
+    background-image: @global-icon-set;
+    background-repeat: no-repeat;
+}
+
+.icon-set(@global-icon-size); // see icon mixin for icon positioning
+
+/* checks,radios */
+.ui-checkbox .ui-icon {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.ui-icon-checkbox-off,
+.ui-icon-radio-off {
+	background-color: transparent;
+}
+.ui-checkbox-on .ui-icon,
+.ui-radio-on .ui-icon {
+	background-color:  #387bbe  /*{global-active-background-color}*/; /* NOTE: this hex should match the active state color. It's repeated here for cascade */
+}
+/* loading icon */
+.ui-icon-loading {
+    background-image: @global-icon-loading;
+    width: 40px;
+    height: 40px;
+    .rounded(20px);
+    background-size: 35px 35px;
+}
+
+/* Button corner classes
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn-corner-tl {
+    .rounded(topleft, @global-radii-buttons);
+}
+.ui-btn-corner-tr {
+    .rounded(topright, @global-radii-buttons);
+}
+.ui-btn-corner-bl {
+    .rounded(bottomleft, @global-radii-buttons);
+}
+.ui-btn-corner-br {
+    .rounded(bottomright, @global-radii-buttons);
+}
+.ui-btn-corner-top {
+    .rounded(top, @global-radii-buttons);
+}
+.ui-btn-corner-bottom {
+    .rounded(bottom, @global-radii-buttons);
+}
+.ui-btn-corner-right {
+    .rounded(right, @global-radii-buttons);
+}
+.ui-btn-corner-left {
+    .rounded(left, @global-radii-buttons);
+}
+.ui-btn-corner-all {
+    .rounded(@global-radii-buttons);
+}
+
+/* radius clip workaround for cleaning up corner trapping */
+.ui-corner-tl,
+.ui-corner-tr,
+.ui-corner-bl,
+.ui-corner-br,
+.ui-corner-top,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-left,
+.ui-corner-all,
+.ui-btn-corner-tl,
+.ui-btn-corner-tr,
+.ui-btn-corner-bl,
+.ui-btn-corner-br,
+.ui-btn-corner-top,
+.ui-btn-corner-bottom,
+.ui-btn-corner-right,
+.ui-btn-corner-left,
+.ui-btn-corner-all {
+    .clip(padding-box);
+}
+
+
+/* Overlay / modal
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-overlay {
+    .opacity(0.5);
+    background: #666;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.ui-overlay-shadow {
+    -webkit-box-shadow:0px, 0px, 12px, rgba(0,0,0,.6);
+}
+
+.ui-shadow {
+    -webkit-box-shadow:@global-box-shadow-size, @global-box-shadow-color;
+}
+
+.ui-shadow-inset {
+    .inset-shadow(0, 1px, 4px, 0.2);
+}
+
+.ui-icon-shadow {
+    -webkit-box-shadow:@global-icon-shadow;
+}
+
+/* Focus state - set here for specificity
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-focus {
+    -webkit-box-shadow:0px, 0px, 12px, @global-active-background-color;
+}
+
+/* unset box shadow in browsers that don't do it right
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-mobile-nosupport-boxshadow * {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* ...and bring back focus */
+.ui-mobile-nosupport-boxshadow .ui-focus {
+	outline-width: 2px;
+}
+
+
+/*Overrides
+--------------------------------------------------*/
+/*Inset List*/
+.ui-listview-filter.ui-listview-filter-inset {
+	background: transparent;
+	border-bottom-image: none 100% 1 0 stretch;
+	border-bottom-width: 0;
+	margin: 0;
+	& + .ui-listview {
+		top: 0px;
+		margin-top: 0;
+		& li:first-child .ui-btn-inner {
+			border-top-width: 2px;
+		}
+	}
+}
+

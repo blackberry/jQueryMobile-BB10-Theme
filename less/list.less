@@ -1,0 +1,192 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+/*Global List
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn-hover-a .ui-li-desc {
+	color: #fff;
+}
+
+li .ui-btn-inner .ui-icon-arrow-r {
+    background-image: none;
+}
+
+li.ui-btn.ui-btn-icon-right .ui-btn-inner {
+	padding-right: 0;
+}
+
+.ui-bar-b {
+    text-align: left;
+    text-shadow: none;
+    border: none;
+}
+
+//should encapsulate with list specific selector
+.ui-btn-hover-a .ui-btn-icon-right {
+    background-image : @global-icon-set;
+    border: 2px solid red;
+}
+
+/* List-view item */
+.ui-li {
+    height: @global-listview-height;
+    text-align: left;
+
+    /*button overrides*/
+    &.ui-btn {
+        max-height: none;
+        .noBorder();
+		background: transparent;
+
+        .ui-btn-inner {
+            .rounded(0);
+            border-width: 1px;
+            border-left-width: 0px;
+            border-right-width: 0px;
+			background: transparent;
+		}
+		
+		.ui-btn-inner .ui-link-inherit {
+			text-align: left;
+			padding: 0;
+			padding-left: 20px;
+			.ui-btn-text {
+				padding-left: 20px;
+			}
+		}
+		
+		&.ui-btn-active .ui-link-inherit{
+			background: @BBLightBlue;
+			color: @primaryWhite;
+		}
+
+		&.ui-btn-down-c .ui-link-inherit{
+		   color: @c-bup-color;
+		}
+	}
+	
+	&.ui-btn-down-c, &.ui-btn-down-a {
+		.ui-btn-inner {
+			border-color: @BBLightBlue;
+			box-shadow: inset 0px 0px 0px 4px @BBLightBlue;
+			border-width: 4px;
+		}
+		.ui-li-thumb, .ui-listview .ui-li-icon {
+			max-height: 113px;
+			max-width: 113px;
+		}
+	}
+	
+	.ui-btn-text {
+		margin-top: 0;
+		top: 0px;
+		line-height: @global-listview-height;
+	}
+
+    &:last-child {
+        .ui-btn-inner {
+		    border-bottom-width: 2px;
+	    }
+    }
+
+    .ui-li-desc {
+        color: @global-listview-subtitle-font-color;
+        font-size: 40px;
+        line-height: normal;
+        margin-top: 0;
+    }
+
+    .ui-li-aside {
+        color: @global-listview-subtitle-font-color;
+        margin-top: 0;
+        margin-right: 20px;
+        max-width: 45%;
+        width: auto;
+        font-size: 30px;
+    }
+	
+    &.ui-li-static{
+        padding: 0;
+        border: @c-bup-border;
+        border-bottom-width: 0;
+        font-size: @global-listview-title-font-size;
+        font-weight: normal;
+        line-height: @global-listview-height;
+        padding-left: 20px;
+        .ui-li-thumb {
+            margin-left: -20px;
+        }
+    }
+}
+
+.ui-li.ui-btn-inner {
+	padding: 0;
+}
+
+.ui-li-heading {
+    margin: 0;
+    padding-left: 0;
+    line-height: normal;
+}
+
+.ui-li-aside.ui-li-desc {
+    padding-top: 22px;
+}
+
+.ui-li-divider {
+    padding: 0 15px 0 20px;
+    height: 50px;
+    font-size: 40px;
+
+    .ui-li-heading {
+        font-size: 40px;
+        margin-bottom: 0;
+    }
+
+    .ui-li-aside.ui-li-desc {
+        padding-top: 9px;
+        margin-bottom: 0;
+    }
+}
+
+.ui-li-thumb {
+    margin-left: -20px;
+}
+
+.ui-li-heading, .ui-li .ui-btn-text {
+    font-size: @global-listview-title-font-size;
+    font-weight: normal;
+    & , .ui-li-desc {
+        margin-left: 20px;
+    }
+}
+
+.ui-li-thumb, .ui-listview .ui-li-icon {
+   max-height: 119px;
+   max-width: 119px;
+   margin-left: -20px;
+   margin-right: 0;
+   position: static;
+   padding-right: 20px;
+   height: 100%;
+}
+
+.ui-li-heading, .ui-li .ui-btn-inner .ui-btn-text,
+    .ui-li-heading .ui-li-desc,
+    .ui-li .ui-btn-inner .ui-btn-text .ui-li-desc {
+   margin-left: 0;
+}

@@ -1,0 +1,106 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+ 
+.ui-controlgroup-controls.ui-grid-b:nth-child(3):last-child {
+}
+
+div.ui-controlgroup.bb-buttongroup {
+	display: block;
+	margin: 20px;
+}
+
+.bb-buttongroup-controls {
+	padding-right: 0 !important;
+}
+
+
+/* Margin correction offsets to counteract pixel arounding on subpixels */
+
+/* Correction for button groups multiples of 3*/
+.bb-buttongroup-controls.bb-buttongroup-stacked {
+	margin-right: -4px;
+}
+/* Correction for button groups multiples of 2*/
+.bb-buttongroup-controls.ui-grid-a,
+.bb-buttongroup-controls-extra.ui-grid-a {
+	margin-right: -2px;
+}
+
+/* Button Highlights */
+.bb-buttongroup-controls-c > .bb-buttongroup-controls > .ui-btn > .ui-btn-inner,
+.bb-buttongroup-controls-extra > .ui-btn > .ui-btn-inner {
+	/*-webkit-box-shadow: inset 0 0 1px 1px rgba(255,255,255,1);*/
+}
+
+/* Shift extra buttons upward to avoid duplicate borders*/
+.bb-buttongroup-controls-extra {
+	margin-top: -2px;
+}
+.bb-buttongroup-controls > .ui-btn:nth-child(n+4) {
+	margin-top: -2px;
+}
+
+/* Single Buttons should fill width*/
+.bb-buttongroup-controls.ui-grid-solo > .ui-btn,
+.bb-buttongroup-controls-extra.ui-grid-solo > .ui-btn {
+	width: 100%;
+}
+
+/* Corner Classes */
+
+/* top left corner */
+.bb-buttongroup-controls > .ui-btn > .ui-btn-inner.ui-corner-tl,
+.bb-buttongroup-controls-extra > .ui-btn > .ui-btn-inner.ui-corner-tl { 
+	-webkit-border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+/* top right corner*/ 
+.bb-buttongroup-controls > .ui-btn > .ui-btn-inner.ui-corner-tr,
+.bb-buttongroup-controls-extra > .ui-btn > .ui-btn-inner.ui-corner-tr { 
+	-webkit-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+/* bottom right corner*/
+.bb-buttongroup-controls > .ui-btn > .ui-btn-inner.ui-corner-br,
+.bb-buttongroup-controls-extra > .ui-btn > .ui-btn-inner.ui-corner-br { 
+	-webkit-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+/* bottom left corner*/
+.bb-buttongroup-controls > .ui-btn > .ui-btn-inner.ui-corner-bl,
+.bb-buttongroup-controls-extra > .ui-btn > .ui-btn-inner.ui-corner-bl { 
+	-webkit-border-bottom-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+/* right corner  */
+.bb-buttongroup-controls > .ui-btn > .ui-btn-inner.ui-corner-right,
+.bb-buttongroup-controls-extra > .ui-btn > .ui-btn-inner.ui-corner-right { 
+	-webkit-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+
+	-webkit-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+/* left corner */
+.bb-buttongroup-controls > .ui-btn > .ui-btn-inner.ui-corner-left,
+.bb-buttongroup-controls-extra > .ui-btn > .ui-btn-inner.ui-corner-left { 
+	-webkit-border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
+
+	-webkit-border-bottom-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}

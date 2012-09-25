@@ -1,0 +1,187 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+/* Checkboxes and Radios */
+.ui-checkbox {
+	.ui-btn, .ui-btn-inner {
+		border: none;
+		background: transparent;
+		-webkit-box-shadow: none;
+	}
+
+	input {
+		display: none;
+	}
+
+	.ui-btn-down-c, .ui-btn-hover-c {
+		.ui-btn-text {
+			color: @primaryDark;
+		}
+	}
+}
+.ui-btn {
+	.ui-icon-radio-on, .ui-icon-radio-off, .ui-icon-checkbox-on, .ui-icon-checkbox-off {
+
+		&.ui-icon {
+			background-color: transparent;
+			background-position: 50%;
+			margin: 20px;
+			width: 56px;
+			height: 56px;
+			-webkit-transition: background-size 0.1s ease-in-out;
+		}
+	}
+}
+
+
+/*Font sizing must be reset, since buttons rely on ems to display properly*/
+.ui-controlgroup .ui-checkbox .ui-btn, .ui-controlgroup .ui-radio .ui-btn {
+    font-size: 40px;
+}
+
+.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+    background-color: transparent;
+}
+
+.ui-icon-checkbox-off, .ui-icon-radio-off {
+    background-size: 0%, auto, auto;
+}
+
+.ui-checkbox, .ui-radio {
+    .ui-btn-icon-left > .ui-btn-inner > .ui-icon, .ui-btn-icon-right > .ui-btn-inner > .ui-icon {
+        margin-top: 20px;
+        top: 0px;
+    }
+
+    .ui-btn.ui-btn-icon-right .ui-btn-text {
+        text-align: left;
+    }
+
+    .ui-btn.ui-btn-icon-left .ui-btn-text {
+        text-align: right;
+    }
+
+}
+
+.ui-btn-inner {
+    .ui-checkbox.ui-disabled .ui-icon-checkbox-on, .ui-radio.ui-disabled .ui-icon-radio-on {
+        background-size: 50%, auto, auto;
+    }
+}
+
+/* Checkboxes - Dark */
+[data-theme='a'] {
+	&.ui-btn-down-a .ui-btn-inner {
+		.ui-icon-radio-off, .ui-icon-radio-on {
+			background-image: url("images_bb/core_radiobutton_active_mark_dark.png"), url("images_bb/core_radiobutton_pressed_dark.png");
+		}
+		.ui-icon-checkbox-off, .ui-icon-checkbox-on {
+			background-image: url("images_bb/core_checkbox_active_mark_dark.png"), url("images_bb/core_checkbox_pressed_dark.png"), url("images_bb/core_checkbox_moat_dark.png");
+		}
+	}
+	.ui-btn-inner {
+		.ui-icon-checkbox-on {
+			background-image: url("images_bb/core_checkbox_active_mark_dark.png"), url("images_bb/core_checkbox_active_dark.png"), url("images_bb/core_checkbox_moat_dark.png");
+			background-size: 50%, auto, auto;
+		}
+
+		.ui-icon-checkbox-off {
+			background-image: url("images_bb/core_checkbox_active_mark_dark.png"), url("images_bb/core_checkbox_inactive_dark.png"), url("images_bb/core_checkbox_moat_dark.png");
+		}
+
+
+		.ui-checkbox.ui-disabled .ui-icon-checkbox-on {
+			background-image: url("images_bb/core_checkbox_disabled_mark_dark.png"), url("images_bb/core_checkbox_disabled_dark.png"), url("images_bb/core_checkbox_moat_dark.png");
+		}
+
+		/* Radio - Dark */
+		.ui-icon-radio-on {
+			background-image: url("images_bb/core_radiobutton_active_mark_dark.png"), url("images_bb/core_radiobutton_active_dark.png"), url("images_bb/core_radiobutton_inactive_dark.png");
+			background-size: 37%, auto, auto;
+		}
+
+		.ui-icon-radio-off {
+			background-image: url("images_bb/core_radiobutton_active_mark_dark.png"), url("images_bb/core_radiobutton_inactive_dark.png"), url("images_bb/core_radiobutton_inactive_dark.png");
+		}
+
+
+		.ui-radio.ui-disabled .ui-icon-radio-on {
+			background-image: url("images_bb/core_radiobutton_disabled_active_dark.png"), url("images_bb/core_radiobutton_disabled_dark.png"), url("images_bb/core_radiobutton_inactive_dark.png");
+		}
+	}
+}
+
+.ui-btn-down-c {
+	.ui-btn-inner {
+		.ui-icon-checkbox-off, .ui-icon-checkbox-on {
+			background-image: url("images_bb/core_checkbox_active_mark.png"), url("images_bb/core_checkbox_pressed.png"), url("images_bb/core_checkbox_moat.png");
+		}
+
+		.ui-icon-radio-off, .ui-icon-radio-on {
+			background-image: url("images_bb/core_radiobutton_active_mark.png"), url("images_bb/core_radiobutton_pressed.png");
+		}
+	}
+}
+
+.ui-btn-inner {
+	/* Checkboxes - Default - Light */
+    .ui-icon-checkbox-on {
+        background-image: url("images_bb/core_checkbox_active_mark.png"), url("images_bb/core_checkbox_active.png"), url("images_bb/core_checkbox_moat.png");
+        background-size: 50%, auto, auto;
+    }
+
+    .ui-icon-checkbox-off {
+        background-image: url("images_bb/core_checkbox_active_mark.png"), url("images_bb/core_checkbox_inactive.png"), url("images_bb/core_checkbox_moat.png");
+    }
+
+
+    .ui-checkbox.ui-disabled .ui-icon-checkbox-on {
+        background-image: url("images_bb/core_checkbox_disabled_mark.png"), url("images_bb/core_checkbox_disabled.png"), url("images_bb/core_checkbox_moat.png");
+    }
+
+
+    /* Radio - Default - Light*/
+    .ui-icon-radio-on {
+        background-image: url("images_bb/core_radiobutton_active_mark.png"), url("images_bb/core_radiobutton_active.png"), url("images_bb/core_radiobutton_inactive.png");
+        background-size: 37%, auto, auto;
+    }
+
+    .ui-icon-radio-off {
+        background-image: url("images_bb/core_radiobutton_active_mark.png"), url("images_bb/core_radiobutton_inactive.png"), url("images_bb/core_radiobutton_inactive.png");
+    }
+
+
+    .ui-radio.ui-disabled .ui-icon-radio-on {
+        background-image: url("images_bb/core_radiobutton_disabled_active.png"), url("images_bb/core_radiobutton_disabled.png"), url("images_bb/core_radiobutton_inactive.png");
+    }
+}
+
+.ui-radio img {
+    position: absolute;
+    margin: -7px 0px;
+}
+
+.ui-radio .ui-btn-icon-right img {
+    right: 65px;
+}
+.ui-radio .ui-btn-icon-left img {
+    left: 65px;
+}
+
+.ui-radio img {
+    max-height: 71px;
+    max-width: 71px;
+}

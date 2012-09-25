@@ -1,0 +1,62 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+*/
+
+.ui-content .ui-gridview {
+    margin: -15px;
+}
+
+.ui-gridview {
+    list-style: none;
+    padding: 0;
+}
+
+.ui-grid-li, .ui-grid-li.ui-field-contain {
+    display: block;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    border-width: 0;
+    border-top-width: 1px;
+}
+
+.ui-grid-li img {
+    float: left;
+    margin-bottom: .78125%;
+    margin-right: .78125%;
+}
+
+.ui-grid-li.ui-li-divider{
+    margin-bottom: .78125%;
+}
+
+[data-role='row'] > *:first-child img {
+    margin-left: .78125%;
+}
+
+.ui-grid-item-details {
+    background-color: black;
+    position: absolute;
+    bottom: 6px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    opacity: 0.7;
+    width: 100%;
+    margin: 0;
+    text-decoration: none;
+    padding: 1em 0;
+}

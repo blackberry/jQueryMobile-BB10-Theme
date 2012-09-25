@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<html>
+	<head>
+		<!--
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		-->
+		<meta charset="utf-8">
+		<title>List View</title>
+		<link rel="stylesheet" href="../dist/BlackBerry-JQM-all.min.css" />
+		<script src="../dist/BlackBerry-JQM-all.min.js"></script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-theme="c">
+				<h1>Title</h1>
+			</div><!-- /header -->
+			<div data-role="content">
+				<ul data-filter="true" data-role="listview">
+					<li><a href="#">Simple list item</a></li>
+					<li><a href="#">Simple list item, selected</a></li>
+					<li><a href="#">Simple list item, checked</a></li>
+					<li><a href="#">Simple list item, drilldown</a></li>
+					<li><a href="#">Simple list item, optional drilldown</a></li>
+					<li><a href="#">
+						<h1>Advanced, drilldown</h1>
+						<p>Clicking the row drills to a new view</p>
+						<p class="ui-li-aside">6:24 PM</p>
+					</a></li>
+					<li><a href="#">
+						<h1>Advanced, optional drilldown</h1>
+						<p>Clicking the row selects, blue arrow drills</p>
+						<p class="ui-li-aside">6:24 PM</p>
+					</a></li>
+					<li><a href="#">
+						<img src="img/profile.png" alt="list thumbnail">
+						Thumbnail
+					</a></li>
+					<li><a href="#">
+						<img src="img/profile.png" alt="list thumbnail">
+						Thumbnail, drilldown
+					</a></li>
+					<li><a href="#">
+						<img src="img/profile.png" alt="list thumbnail">
+						Thumbnail, optional drilldown
+					</a></li>
+					<li><a href="#">
+						<img src="img/profile.png" alt="list thumbnail">
+						<h1>Adv. Thumbnail, drilldown</h1>
+						<p>Each has a 119px image</p>
+						<p class="ui-li-aside">6:24 PM</p>
+					</a></li>
+					<li><a href="#">
+						<img src="img/profile.png" alt="list thumbnail">
+						<h1>Adv. Thumbnail, optional drilldown</h1>
+						<p>Each has a 119px image</p>
+						<p class="ui-li-aside">6:24 PM</p>
+					</a></li>
+					<li data-role="list-divider" role="heading">
+						<h1>Grouping</h1>
+						<p class="ui-li-count">3</p>
+					</li>
+					<li><a href="#">Grouping</a></li>
+					<li data-role="list-divider" role="heading">
+						<h1>List Divider</h1>
+					</li>
+					<li><a href="#">Simple list item</a></li>
+					<li data-role="list-divider" role="heading">
+						<h1>List Divider</h1>
+						<p class='ui-li-aside'>2nd Str</p>
+					</li>
+					<li><a href="#">Simple list item</a></li>
+				</ul>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div id="action-bar-area" data-role="actionbar">
+					<div data-role="back"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
