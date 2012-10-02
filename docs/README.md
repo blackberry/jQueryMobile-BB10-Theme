@@ -52,7 +52,10 @@ To create a actionbar use ```<div data-role="actionbar">```.
 
 To create an optional back button add ```<div data-role="back"></div>```
 
-Add actions to the action bar using ```<div data-role="action">```. Each action should have an image. If there are more than three actions in the actionbar an overflow button will be automatically added to the action bar and the remaining action items will be added to the overflow menu.
+Add tabs to the action bar using ```<div data-role="tab">```. Each tab should have an image. If there are more than 5 tabs in the actionbar a tab overflow button will be automatically added to the action bar and the remaining tab items will be added to the tab overflow menu.
+Each action should have an ```img``` and a ```p```
+
+Add actions to the action bar using ```<div data-role="action">```. Each action should have an image. If there are more than 3 actions in the actionbar an action overflow button will be automatically added to the action bar and the remaining action items will be added to the action overflow menu.
 Each action should have an ```img``` and a ```p```
 
 An action bar should always been used in a fixed footer.
