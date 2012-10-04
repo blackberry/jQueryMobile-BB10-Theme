@@ -152,7 +152,7 @@ module.exports = function(grunt) {
         },
         watch: {
             watchables: {
-                files: ['<config:lint.files>', 'less/*.less', 'plugins/**/*.css'],
+                files: ['<config:lint.files>', 'src/less/*.less', 'src/plugins/**/*.css'],
                 tasks: 'default'
             }
         },
