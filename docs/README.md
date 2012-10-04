@@ -67,19 +67,19 @@ An action bar should always been used in a fixed footer.
     <div data-role="actionbar">
         <div data-role="back"></div>
         <div id="o1" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>1 Settings</p>
         </div>
         <div id="o2" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>2 Options</p>
         </div>
         <div id="o3" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>3 Options</p>
         </div>
         <div id="o4" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>4 Options</p>
         </div>
     </div>
