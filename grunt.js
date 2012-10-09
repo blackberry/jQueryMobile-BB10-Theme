@@ -92,12 +92,12 @@ module.exports = function(grunt) {
             },
             all_js: {
                 src: ['lib/jquery-1.7.1.js', '<config:concat.init_js.dest>',
-                    'lib/jquery.mobile-1.2.0-alpha.1.js', '<config:concat.theme_js.dest>'
+                    'lib/jquery.mobile.js', '<config:concat.theme_js.dest>'
                 ],
                 dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-all-<%= pkg.version %>.js'
             },
             all_css: {
-                src: ['lib/jquery.mobile.structure-1.2.0-alpha.1.css', '<config:concat.theme_css.dest>'],
+                src: ['lib/jquery.mobile.structure.css', '<config:concat.theme_css.dest>'],
                 dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-all-<%= pkg.version %>.css'
             },
 
