@@ -2422,9 +2422,6 @@ textarea.ui-input-text {
 .ui-btn-hover-a .ui-li-desc {
   color: #fff;
 }
-li .ui-btn-inner .ui-icon-arrow-r {
-  background-image: none;
-}
 li.ui-btn.ui-btn-icon-right .ui-btn-inner {
   padding-right: 0;
 }
@@ -3300,7 +3297,8 @@ h4,
 h5,
 h6,
 a:not(.ui-btn):not(.ui-link-inherit),
-input {
+input,
+textarea {
   -webkit-user-select: text;
 }
 .ui-footer {
