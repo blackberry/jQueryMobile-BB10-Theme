@@ -79,7 +79,9 @@
 						item.remove();
 						continue;
 					} else {
-						clone.attr('data-for',clone.attr("id")).attr('id',"");
+						if(cloneId = clone.attr("id")) {
+							clone.attr('data-for', cloneId).attr('id',"");
+						}
 					}
 				}
 				//Create Tab item
