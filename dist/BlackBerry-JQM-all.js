@@ -18481,7 +18481,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 		},
 
 		_create: function() {
-
 			this.actionBarArea = $( this.element );
 			this.showActionOverflow = this.showTabOverflow = false;
 
@@ -18523,15 +18522,17 @@ $( document ).bind( "pagecreate create", function( e ) {
 			for (var i = 0; i < tabList.length; i++) {
 				item = tabList.eq(i);
 				//add to tab overflow
-				if(overflowNeeded) {
+				if(overflowNeeded || item.data("overflow")) {
 					var clone = item.clone();
 					this._addToTabOverflow(clone);
 
-					if (i > maxTabs - 1 ) {
+					if (i > maxTabs - 1 || item.data("overflow")) {
 						item.remove();
 						continue;
 					} else {
-						clone.attr('data-for',clone.attr("id")).attr('id',"");
+						if(cloneId = clone.attr("id")) {
+							clone.attr('data-for', cloneId).attr('id',"");
+						}
 					}
 				}
 				//Create Tab item
@@ -18540,7 +18541,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 			for (i = 0; i < actionList.length; i++) {
 				item = actionList.eq(i);
-				if (i > maxActions - 1) {
+				if (i > maxActions - 1 || item.data("overflow")) {
 					//add to action overflow
 					this._addToActionOverflow(item);
 					continue;
@@ -18608,13 +18609,19 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 			this.actionBarArea.append(bar);
 
-			var itemsLen = this.actionBarArea.find(".action-bar-action-item, .action-bar-overflow").length,
-				itemsize = "action-bar-grid-" + ( tabList.length > 0 ? ( actionList.length > 0 ? "tabAction" : "tabs" ) : "actions");
+			var itemsLen, actionBarItems;
 
+			if (tabList.length > 0) {
+				actionBarItems = this.actionBarArea.find(".action-bar-tab-item").not(".tabs");
+				itemsize = "action-bar-grid-" + ( actionList.length > 0 ? "tabAction" : "tabs");
+			} else {
+				actionBarItems = this.actionBarArea.find(".action-bar-action-item");
+				itemsize = "action-bar-grid-actions";
+			}
+
+			itemsLen = actionBarItems.length;
 			itemsize +=  "-" + ( ( itemsLen > 5 ) ? "e" : String.fromCharCode( 96 + itemsLen ) );
-
-			$(".action-bar-action-item").addClass(itemsize);
-
+			actionBarItems.addClass(itemsize);
 
 			$( '.action-bar-action-item' )
 				.bind( 'vmousedown', function( event ) {
