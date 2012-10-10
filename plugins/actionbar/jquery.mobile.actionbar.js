@@ -10,7 +10,7 @@
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and 
+* See the License for the specific language governing permissions and
 * limitations under the License.
 */
 
@@ -29,7 +29,6 @@
 		},
 
 		_create: function() {
-
 			this.actionBarArea = $( this.element );
 			this.showActionOverflow = this.showTabOverflow = false;
 
@@ -71,11 +70,11 @@
 			for (var i = 0; i < tabList.length; i++) {
 				item = tabList.eq(i);
 				//add to tab overflow
-				if(overflowNeeded) {
+				if(overflowNeeded || item.data("overflow")) {
 					var clone = item.clone();
 					this._addToTabOverflow(clone);
 
-					if (i > maxTabs - 1 ) {
+					if (i > maxTabs - 1 || item.data("overflow")) {
 						item.remove();
 						continue;
 					} else {
@@ -90,7 +89,7 @@
 
 			for (i = 0; i < actionList.length; i++) {
 				item = actionList.eq(i);
-				if (i > maxActions - 1) {
+				if (i > maxActions - 1 || item.data("overflow")) {
 					//add to action overflow
 					this._addToActionOverflow(item);
 					continue;
@@ -158,13 +157,19 @@
 
 			this.actionBarArea.append(bar);
 
-			var itemsLen = this.actionBarArea.find(".action-bar-action-item, .action-bar-overflow").length,
-				itemsize = "action-bar-grid-" + ( tabList.length > 0 ? ( actionList.length > 0 ? "tabAction" : "tabs" ) : "actions");
+			var itemsLen, actionBarItems;
 
+			if (tabList.length > 0) {
+				actionBarItems = this.actionBarArea.find(".action-bar-tab-item").not(".tabs");
+				itemsize = "action-bar-grid-" + ( actionList.length > 0 ? "tabAction" : "tabs");
+			} else {
+				actionBarItems = this.actionBarArea.find(".action-bar-action-item");
+				itemsize = "action-bar-grid-actions";
+			}
+
+			itemsLen = actionBarItems.length;
 			itemsize +=  "-" + ( ( itemsLen > 5 ) ? "e" : String.fromCharCode( 96 + itemsLen ) );
-
-			$(".action-bar-action-item").addClass(itemsize);
-
+			actionBarItems.addClass(itemsize);
 
 			$( '.action-bar-action-item' )
 				.bind( 'vmousedown', function( event ) {
