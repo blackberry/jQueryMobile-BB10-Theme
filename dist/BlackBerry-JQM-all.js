@@ -19242,6 +19242,8 @@ $( document ).bind( "pagecreate create", function( e ) {
 				self._setHeader(item.text());
 				$(".checked").removeClass("checked");
 				item.addClass("checked");
+				select.prop('value', select.find('option:contains("' + item.text() + '")').attr('value'));
+				collapse.trigger('collapse');
 			});
 		},
 
