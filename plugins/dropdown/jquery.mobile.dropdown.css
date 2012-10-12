@@ -16,8 +16,13 @@
 
 .checked {
 	background-color: #f8f8f8;
-	background-image: url("images_bb/check.png");
+	background-image: url("images_bb/core_dropdown_checkmark.png");
 	background-position: 95% 50%;
 	background-repeat: no-repeat;
 }
 
+.ui-btn-up-a.checked {
+	color: #fff;
+	background-color: #1c1c1c;
+	background-image:url("images_bb/core_dropdown_checkmark_dark.png");
+}

@@ -2751,6 +2751,9 @@ span.ui-slider-label-a {
 span.ui-slider-label-b {
   text-indent: 1.2em;
 }
+a.ui-btn.ui-slider-handle .ui-btn-inner {
+  height: 1.6em;
+}
 /* Checkboxes and Radios */
 .ui-checkbox .ui-btn,
 .ui-checkbox .ui-btn-inner {
@@ -3128,6 +3131,8 @@ fieldset.ui-controlgroup .ui-controlgroup-controls .ui-btn-inner.ui-corner-right
   height: 97px;
   line-height: 100px;
   font-size: 29pt;
+  border-left: none;
+  border-right: none;
 }
 /*Expandable Set*/
 div.ui-collapsible-set {
@@ -4084,8 +4089,13 @@ div.ui-input-search.bb-text-invalid + .bb-validation-icon{
 
 .checked {
 	background-color: #f8f8f8;
-	background-image: url("images_bb/check.png");
+	background-image: url("images_bb/core_dropdown_checkmark.png");
 	background-position: 95% 50%;
 	background-repeat: no-repeat;
 }
 
+.ui-btn-up-a.checked {
+	color: #fff;
+	background-color: #1c1c1c;
+	background-image:url("images_bb/core_dropdown_checkmark_dark.png");
+}
