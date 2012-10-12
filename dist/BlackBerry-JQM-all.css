@@ -4514,6 +4514,7 @@ label.ui-select,
 [data-position="bottom"] {
   bottom: 0;
   position: absolute !important;
+  width: 100%;
 }
 
 .action-bar {
