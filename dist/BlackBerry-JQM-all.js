@@ -19208,7 +19208,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 			var	self = this,
 				parent = $(this.element).parent(),
-				collapse = $('<div data-role="collapsible" data-content-theme="c" data-collapsed="true" data-iconpos="right">'),
+				collapse = $('<div data-role="collapsible" data-content-theme=' + $.mobile.getInheritedTheme( parent, "c" ) + ' data-collapsed="true" data-iconpos="right">'),
 				select = $(this.element),
 				list = $('<ul data-role="listview"></ul>').appendTo(collapse);
 
