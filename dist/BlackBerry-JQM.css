@@ -3338,7 +3338,7 @@ label.ui-select,
 
 .action-bar-back.pressed {
 	background: url("images_bb/core_actionbar_icon_back.png") no-repeat 50% 35%,
-				url("images_bb/core_actionbar_back_pressed") no-repeat left center;
+				url("images_bb/core_actionbar_back_pressed.png") no-repeat left center;
 }
 
 .action-bar-back-image {
