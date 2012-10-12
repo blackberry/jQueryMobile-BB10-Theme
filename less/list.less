@@ -26,33 +26,37 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 }
 
 .ui-bar-b {
-    text-align: left;
-    text-shadow: none;
-    border: none;
+	text-align: left;
+	text-shadow: none;
+	border: none;
 }
 
 //should encapsulate with list specific selector
 .ui-btn-hover-a .ui-btn-icon-right {
-    background-image : @global-icon-set;
-    border: 2px solid red;
+	background-image : @global-icon-set;
+	border: 2px solid red;
 }
 
 /* List-view item */
 .ui-li {
-    height: @global-listview-height;
-    text-align: left;
+	height: 100%;
+	text-align: left;
 
-    /*button overrides*/
-    &.ui-btn {
-        max-height: none;
-        .noBorder();
+	&:not(.ui-li-divider){
+		min-height: @global-listview-height;
+	}
+
+	/*button overrides*/
+	&.ui-btn {
+		max-height: none;
+		.noBorder();
 		background: transparent;
 
-        .ui-btn-inner {
-            .rounded(0);
-            border-width: 1px;
-            border-left-width: 0px;
-            border-right-width: 0px;
+		.ui-btn-inner {
+			.rounded(0);
+			border-width: 1px;
+			border-left-width: 0px;
+			border-right-width: 0px;
 			background: transparent;
 		}
 		
@@ -93,40 +97,40 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 		line-height: @global-listview-height;
 	}
 
-    &:last-child {
-        .ui-btn-inner {
-		    border-bottom-width: 2px;
-	    }
-    }
+	&:last-child {
+		.ui-btn-inner {
+			border-bottom-width: 2px;
+		}
+	}
 
-    .ui-li-desc {
-        color: @global-listview-subtitle-font-color;
-        font-size: 40px;
-        line-height: normal;
-        margin-top: 0;
-    }
+	.ui-li-desc {
+		color: @global-listview-subtitle-font-color;
+		font-size: 40px;
+		line-height: normal;
+		margin-top: 0;
+	}
 
-    .ui-li-aside {
-        color: @global-listview-subtitle-font-color;
-        margin-top: 0;
-        margin-right: 20px;
-        max-width: 45%;
-        width: auto;
-        font-size: 30px;
-    }
+	.ui-li-aside {
+		color: @global-listview-subtitle-font-color;
+		margin-top: 0;
+		margin-right: 20px;
+		max-width: 45%;
+		width: auto;
+		font-size: 30px;
+	}
 	
-    &.ui-li-static{
-        padding: 0;
-        border: @c-bup-border;
-        border-bottom-width: 0;
-        font-size: @global-listview-title-font-size;
-        font-weight: normal;
-        line-height: @global-listview-height;
-        padding-left: 20px;
-        .ui-li-thumb {
-            margin-left: -20px;
-        }
-    }
+	&.ui-li-static{
+		padding: 0;
+		border: @c-bup-border;
+		border-bottom-width: 0;
+		font-size: @global-listview-title-font-size;
+		font-weight: normal;
+		line-height: @global-listview-height;
+		padding-left: 20px;
+		.ui-li-thumb {
+			margin-left: -20px;
+		}
+	}
 }
 
 .ui-li.ui-btn-inner {
@@ -134,41 +138,41 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 }
 
 .ui-li-heading {
-    margin: 0;
-    padding-left: 0;
-    line-height: normal;
+	margin: 0;
+	padding-left: 0;
+	line-height: normal;
 }
 
 .ui-li-aside.ui-li-desc {
-    padding-top: 22px;
+	padding-top: 22px;
 }
 
 .ui-li-divider {
-    padding: 0 15px 0 20px;
-    height: 50px;
-    font-size: 40px;
+	padding: 0 15px 0 20px;
+	height: 50px;
+	font-size: 40px;
 
-    .ui-li-heading {
-        font-size: 40px;
-        margin-bottom: 0;
-    }
+	.ui-li-heading {
+		font-size: 40px;
+		margin-bottom: 0;
+	}
 
-    .ui-li-aside.ui-li-desc {
-        padding-top: 9px;
-        margin-bottom: 0;
-    }
+	.ui-li-aside.ui-li-desc {
+		padding-top: 9px;
+		margin-bottom: 0;
+	}
 }
 
 .ui-li-thumb {
-    margin-left: -20px;
+	margin-left: -20px;
 }
 
 .ui-li-heading, .ui-li .ui-btn-text {
-    font-size: @global-listview-title-font-size;
-    font-weight: normal;
-    & , .ui-li-desc {
-        margin-left: 20px;
-    }
+	font-size: @global-listview-title-font-size;
+	font-weight: normal;
+	& , .ui-li-desc {
+		margin-left: 20px;
+	}
 }
 
 .ui-li-thumb, .ui-listview .ui-li-icon {
@@ -182,7 +186,7 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 }
 
 .ui-li-heading, .ui-li .ui-btn-inner .ui-btn-text,
-    .ui-li-heading .ui-li-desc,
-    .ui-li .ui-btn-inner .ui-btn-text .ui-li-desc {
+	.ui-li-heading .ui-li-desc,
+	.ui-li .ui-btn-inner .ui-btn-text .ui-li-desc {
    margin-left: 0;
 }

@@ -3625,10 +3625,13 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 }
 /* List-view item */
 .ui-li {
-  height: 121px;
+  height: 100%;
   text-align: left;
   /*button overrides*/
 
+}
+.ui-li:not(.ui-li-divider) {
+  min-height: 121px;
 }
 .ui-li.ui-btn {
   max-height: none;
