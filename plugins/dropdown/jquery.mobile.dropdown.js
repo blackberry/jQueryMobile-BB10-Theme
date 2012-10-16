@@ -69,8 +69,7 @@
 
 		_setHeader: function(text) {
 			var headerText = this.header.find('.ui-btn-text'),
-					headerStatusText = headerText.find('.ui-collapsible-heading-status'),
-					item = $(event.target);
+				headerStatusText = headerText.find('.ui-collapsible-heading-status');
 
 			//Check if the content has been enhanced yet
 			if(headerText.length === 0){
