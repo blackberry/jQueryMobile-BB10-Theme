@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Count Bubble</title>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<link rel="stylesheet" href="../dist/BlackBerry-JQM-all.min.css" />
+		<script src="../dist/BlackBerry-JQM-all.js"></script>
+		</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header">
+				<a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+				<a href="#" data-icon="search" data-iconpos="notext" data-rel="dialog" data-transition="fade">Search</a>
+			</div><!-- /header -->
+			<div data-role="content">
+				<ul data-role="listview">
+					<li><a href="#">Inbox <span class="ui-li-count">12</span></a></li>
+					<li><a href="#">Outbox <span class="ui-li-count">0</span></a></li>
+					<li><a href="#">Drafts <span class="ui-li-count">4</span></a></li>
+					<li><a href="#">Sent <span class="ui-li-count">328</span></a></li>
+					<li><a href="#">Trash <span class="ui-li-count">62</span></a></li>
+				</ul>
+			</div><!--/content-->		
+			<div data-role="footer" data-theme="a">
+				<div id="action-bar-area" data-role="actionbar">
+					<div data-role="back"></div>
+				</div>
+			</div>
+		</div><!-- /page -->
+	</body>
+</html>
