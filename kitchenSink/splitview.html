@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Split View </title>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<link rel="stylesheet" href="../dist/BlackBerry-JQM-all.min.css" />
+		<script src="../dist/BlackBerry-JQM-all.js"></script>
+</head> 
+<body> 
+	<div data-role="page" class="type-interior" id="album-list">
+		<div data-role="header" data-theme="a">
+			<a href="#" data-icon="home" data-iconpos="left" data-direction="reverse">Home</a>
+			<a href="#" data-icon="search" data-iconpos="right" data-rel="dialog" data-transition="fade">Search</a>
+		</div><!-- /header -->
+	<div data-role="content">
+		<ul data-role="listview" data-split-icon="gear" data-split-theme="c">
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Broken Bells</h3>
+				<p>Broken Bells</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Warning</h3>
+				<p>Hot Chip</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Wolfgang Amadeus Phoenix</h3>
+				<p>Phoenix</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Of The Blue Colour Of The Sky</h3>
+				<p>Ok Go</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Elephant</h3>
+				<p>The White Stripes</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Kid A</h3>
+				<p>Radiohead</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>XX</h3>
+				<p>XX</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Congratulations</h3>
+				<p>MGMT</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Ashes Grammar</h3>
+				<p>A Sunny Day in Glasgow</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>Hot Fuss</h3>
+				<p>Killers</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+			<li><a href="index.html">	
+				<img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" />
+				<h3>The Suburbs</h3>
+				<p>Arcade Fire</p>
+				</a>
+				<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+			</li>
+		</ul>
+		<!-- Popup --> 
+		<div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="c" class="ui-content" style="max-width:420px;">
+			<h3>Purchase Album?</h3>
+			<p>Your download will begin immediately on your mobile device when you purchase.</p>
+			<a href="index.html" data-role="button" data-rel="back" data-theme="c" data-icon="check" data-inline="true">Buy: $10.99</a>
+			<a href="index.html" data-role="button" data-rel="back" data-inline="true">Cancel</a>	
+		</div>	
+		<div data-role="footer" class="footer-docs" data-theme="a">
+				<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
+		</div>
+	</div><!-- /page -->
+	</body>
+</html>
