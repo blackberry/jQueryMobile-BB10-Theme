@@ -4511,6 +4511,11 @@ label.ui-select,
   margin: 20px 20px 10px;
   text-overflow: ellipsis;
 }
+[data-position="bottom"] {
+  bottom: 0;
+  position: absolute !important;
+  width: 100%;
+}
 
 .action-bar {
 	position: absolute;
