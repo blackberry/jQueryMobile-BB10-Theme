@@ -12,14 +12,14 @@ RIM has been committed to providing the best Web support possible for its BlackB
 Quick Start
 -----------
 ```
-<!DOCTYPE html> 
-<html> 
-<head> 
-	<title>My Page</title> 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Page</title>
 	<link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
 	<script src="BlackBerry-JQM-all.min.js"></script>
-</head> 
-<body> 
+</head>
+<body>
 
 <div data-role="page">
 
@@ -27,8 +27,8 @@ Quick Start
 		<h1>My Title</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">	
-		<p>Hello world</p>		
+	<div data-role="content">
+		<p>Hello world</p>
 	</div><!-- /content -->
 
 </div><!-- /page -->
@@ -41,6 +41,15 @@ All of the files you need to get started are in ```dist/``` folder
 You will notice that this example does not include jQuery or jQuery mobile, this is because all of the files need are combined into ```BlackBerry-JQM-all.min.css``` and ```BlackBerry-JQM-all.min.js```, this is done to reduce download overhead on the device and improve overall performance. If you prefer to include each file seperatly please check out the [getting started](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/README.md) documentation.
 
 
+Building the kitchenSink sample
+--------
+1. Clone or download this repo
+2. Using BlackBerry 10 WebWorks SDK, package the following assets:
+ * ./dist
+ * ./kitchenSink
+ * config.xml
+ * index.html
+3. Deploy to BlackBerry 10 device (signing required) or simulator
 
 
 Check out the [docs](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/README.md) for more information.
