@@ -87,7 +87,7 @@ module.exports = function(grunt) {
                 dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.css'
             },
             init_js: {
-                src: 'init/<%= pkg.name %>-Init.js',
+                src: 'src/init/<%= pkg.name %>-Init.js',
                 dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-Init-<%= pkg.version %>.js'
             },
             all_js: {
@@ -212,7 +212,7 @@ module.exports = function(grunt) {
                 dest: 'dist/<%= pkg.version %>/images_bb/'
             },
             init_js: {
-                src: 'init/<%= pkg.name %>-Init.js',
+                src: 'src/init/<%= pkg.name %>-Init.js',
                 dest: 'dist/'
             },
             latest_all_min_js: {
