@@ -94,3 +94,9 @@
 	width: 81px;
 	height: 81px;
 }
+
+.overflowMenuContent [data-position="bottom"] {
+	bottom: 0;
+	position:absolute; 
+	width: 100%;
+}
