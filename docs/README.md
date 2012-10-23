@@ -3,7 +3,7 @@ Getting Started
 **Important note:** The meta tag `<meta name="viewport" content="width=device-width, initial-scale=1">` recommended by jQuery Mobile
 will need to be removed. This is a temporary issue which should be resolved shortly.
 
-The BlackBerry 10 [UI Guidelines](https://developer.blackberry.com/devzone/resources#uiguides) should be followed when
+The BlackBerry 10 [UI Guidelines](https://developer.blackberry.com/html5/documentation/ui_guidelines.html) should be followed when
 using this theme to ensure the best possible user experience.
 
 Head
