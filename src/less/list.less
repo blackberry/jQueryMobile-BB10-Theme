@@ -31,12 +31,6 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 	border: none;
 }
 
-//should encapsulate with list specific selector
-.ui-btn-hover-a .ui-btn-icon-right {
-	background-image : @global-icon-set;
-	border: 2px solid red;
-}
-
 /* List-view item */
 .ui-li {
 	height: 100%;
@@ -105,10 +99,9 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 
 	.ui-li-desc {
 		color: @global-listview-subtitle-font-color;
-		font-size: 40px;
+		font-size: @Small;
 		line-height: normal;
-		margin-top: 0;
-		margin-bottom: 0;
+		margin: 0;
 	}
 
 	.ui-li-aside {
@@ -117,7 +110,7 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 		margin-right: 20px;
 		max-width: 45%;
 		width: auto;
-		font-size: 30px;
+		font-size: @XSmall;
 	}
 
 	&.ui-li-static{
@@ -151,7 +144,8 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 .ui-li-divider {
 	padding: 0 15px 0 20px;
 	height: 50px;
-	font-size: 40px;
+	line-height: 50px;
+	font-size: @XSmall;
 	border: 0;
 	border-bottom: 3px solid  @BBLightBlue;
 	background-image: none;
@@ -169,13 +163,17 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 	}
 
 	.ui-li-heading {
-		font-size: 40px;
 		margin-bottom: 0;
+		font-size: @XSmall;
+		padding-top: 4px;
 	}
 
-	.ui-li-aside.ui-li-desc {
-		padding-top: 9px;
+	.ui-li-desc {
+		padding-top: 6px;
 		margin-bottom: 0;
+	}
+	.ui-li-count.ui-li-desc {
+		padding-top: 10px;
 	}
 }
 
@@ -192,8 +190,8 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 }
 
 .ui-li-thumb, .ui-listview .ui-li-icon {
-   max-height: 119px;
-   max-width: 119px;
+   max-height: @global-listview-height;
+   max-width: @global-listview-height;
    margin-left: -20px;
    margin-right: 0;
    position: static;

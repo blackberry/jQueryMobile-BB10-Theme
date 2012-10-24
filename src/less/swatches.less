@@ -94,10 +94,9 @@
 }
 
 /* Title Bar A */
-@titleTextShadow:  0 1px 20% rgba(0,0,0,0.2); //move to global variables
 .ui-header.ui-bar-a, .ui-listview-filter.ui-bar-a {
 	background: @obsidian;
-	background-image: -webkit-linear-gradient(#252525, #0b0b0b);
+	background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(255, 255, 255, .2)),to(transparent));
 	border-width: 0px;
 	border-bottom-width: 10px;
 	border-image: url('images_bb/core_titlebar_shadow_dark.png') 0 0 10 stretch;
@@ -105,7 +104,7 @@
 
 	.ui-title {
 		color: @primaryWhite;
-		text-shadow: @titleTextShadow;
+		text-shadow: 0 2px rgba(255, 255, 255, .9);
 	}
 }
 
@@ -288,6 +287,13 @@ div[data-role="page"][data-theme="a"] {
 .ui-btn-down-b {
     .ui-btn-font();
 }
+.ui-header.ui-bar-b, .ui-listview-filter.ui-bar-b {
+	background-image: -webkit-gradient(linear,left top,left bottom,from(transparent),to(rgba(0, 0, 0, .2))), -webkit-gradient(linear,left center,right center,from(#0073BC),to(#00A8DF));
+
+	.ui-title {
+		text-shadow: 0 2px rgba(0, 0, 0, .5);
+	}
+}
 
 
 /* c
@@ -363,8 +369,8 @@ div[data-role="page"][data-theme="a"] {
 
 /* Title Bar C */
 .ui-header.ui-bar-c, .ui-listview-filter.ui-bar-c {
-	background: @snow;
-	background-image: -webkit-linear-gradient(#f2f2f2, #d5d5d5);
+	background: @primaryWhite;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(transparent),to(rgba(0, 0, 0, .15)));
 	border-width: 0px;
 	border-bottom-width: 10px;
 	border-image: url('images_bb/core_title_bar_shadow.png') 0 0 10 stretch;
@@ -372,7 +378,7 @@ div[data-role="page"][data-theme="a"] {
 
 	.ui-title {
 		color: @primaryDark;
-		text-shadow: @titleTextShadow;
+		text-shadow: 0 2px rgba(255, 255, 255, .6);
 	}
 }
 
