@@ -199,6 +199,11 @@
 		refresh: function() {
 		},
 
+		destroy: function() {
+			$(this.overflowActionMenu).remove();
+			$(this.overflowTabMenu).remove();
+		},
+
 		_createOverFlowItem: function(item) {
 			item.addClass('menuItem light-text-fade');
 			var content = item.children("p").first().html();
@@ -294,11 +299,10 @@
 				overflowMenuContent = $(document.createElement('div'))
 					.addClass("overflowMenuContent")
 					.appendTo(overflowMenu);
-
 			if(isLeft) {
 				element.closest( '.ui-page' ).first().before(overflowMenu);
 			} else {
-				element.closest( '.ui-page' ).first().children( ".ui-content" ).append( overflowMenu );
+				element.closest( '.ui-page' ).first().append(overflowMenu);
 			}
 			return overflowMenu;
 		},
