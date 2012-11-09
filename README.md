@@ -3,10 +3,11 @@ jQuery Mobile BlackBerry 10 Theme - Beta
 
 Content is subject to change
 
-[Live Demo](http://blackberry.github.com/jQueryMobile-BB10-Theme/)
-
 RIM has been committed to providing the best Web support possible for its BlackBerry platform. Part of that story is to support popular tools and frameworks that Web developers are already familiar with. Our strategy has included experimental efforts such as [bbUI.js](https://github.com/blackberry/bbui.js) where we have honed the details of bringing the BlackBerry 10 design language to the Web, a partnership with [Sencha](http://www.sencha.com/) to make sure the Sencha Touch gets first-class BlackBerry 10 support, and direct contributions and support to [jQuery Mobile](http://www.jquerymobile.com) which today is at the forefront of open source Mobile Web development. This project is the official BlackBerry 10 Theme for jQuery Mobile, which will help developers build Web apps that sport the full BlackBerry 10 look and feel using the framework.
 
+[Live Demo](http://blackberry.github.com/jQueryMobile-BB10-Theme/)
+
+Check out the getting started [guide](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/README.md).
 
 ![logo](/blackberry/jQueryMobile-BB10-Theme/raw/master/kitchenSink/kitchensink.png)
 Quick Start
@@ -50,9 +51,6 @@ Building the kitchenSink sample
  * config.xml
  * index.html
 3. Deploy to BlackBerry 10 device (signing required) or simulator
-
-
-Check out the [docs](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/README.md) for more information.
 
 Advanced
 --------
