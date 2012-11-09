@@ -120,6 +120,7 @@ An example of all these can be found in kitchenSink/building_blocks.html
 `<hr class="BB10gradient">`
 
 ###List Divider
+![Dividers-list-line](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers-list-line.png)
 This is the standard list divider from jQuery Mobile
 ```html
 <ul data-role="listview" data-dividertheme="c">
@@ -127,6 +128,7 @@ This is the standard list divider from jQuery Mobile
 ```
 
 ###Solid List Divider
+![Dividers-list-solid](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers-list-solid.png)
 To creat a solid list divider add `ui-header-solid' class to your list-divider
 ```html
 <ul data-role="listview" data-dividertheme="c">
