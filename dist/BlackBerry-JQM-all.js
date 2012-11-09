@@ -9294,6 +9294,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 	$.mobile.transitionFallbacks.cover = "fade";
 	$.mobile.listview.prototype.options.icon = false;
 	$.mobile.selectmenu.prototype.options.nativeMenu = false;
+	$.mobile.fixedtoolbar.prototype.options.tapToggle = false;
 
   });
 })(jQuery);
@@ -18496,7 +18497,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 				back = this.actionBarArea.children( ":jqmData(role='back')").first(),
 
 				maxTabs = (actionList.length > 0 || tabList.length > 4) ? 3 : 4,
-				maxActions = ( tabList.length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
+				maxActions = ( tabList.not('[data-overflow]').length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
 
 			$("[data-role=footer]").fixedtoolbar({ tapToggle: !o.disableTapToggle });
 
@@ -18569,23 +18570,10 @@ $( document ).bind( "pagecreate create", function( e ) {
 			}
 
 			if( this.showTabOverflow ) {
-				this.overflowTabMenu.find(".menuItem").bind('vclick',function () {
-					$('.ui-page-active, .ui-footer, .ui-header').removeClass('showTabOverflow');
-					$(this).find('img').clone().appendTo($('.tabs').first());
-					$('<div class="action-bar-action-item-text"><p>' + $(this).text() + '</p></div>').appendTo($('.tabs').first());
-					$('.tabs').first().css('background-position-x', '-50%');
-
-					$(".action-bar-tab-item:not(.action-bar-overflow)").one('vclick', function() {
-						$('.tabs').first().css('background-position-x', '50%');
-						$('.tabs').first().find('img').remove();
-						$('.tabs').first().find('.action-bar-action-item-text').remove();
-
-					});
-				});
 				this.overflowTabMenu.bind('vclick', function() {
 					return false;
 				});
-				this._createOverflowButton(this.overflowTabMenu)
+				var tabBtn = this._createOverflowButton(this.overflowTabMenu)
 					.addClass("tabs")
 					.addClass("action-bar-tab-item")
 					.prependTo(actions)
@@ -18605,6 +18593,20 @@ $( document ).bind( "pagecreate create", function( e ) {
 							});
 						}, 0);
 					});
+
+					this.overflowTabMenu.find(".menuItem").bind('vclick',function () {
+						$('.ui-page-active, .ui-footer, .ui-header').removeClass('showTabOverflow');
+						tabBtn.empty();
+						$(this).find('img').clone().appendTo(tabBtn);
+						$('<div class="action-bar-action-item-text"><p>' + $(this).text() + '</p></div>').appendTo(tabBtn);
+						tabBtn.css('background-position-x', '-50%');
+
+						$(".action-bar-tab-item:not(.action-bar-overflow)").one('vclick', function() {
+							tabBtn.css('background-position-x', '50%');
+							tabBtn.find('img').remove();
+							tabBtn.find('.action-bar-action-item-text').remove();
+						});
+					});
 			}
 
 			bar.append(actions);
@@ -18613,7 +18615,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 			var itemsLen, actionBarItems;
 
-			if (tabList.length > 0) {
+			if ( tabList.not('[data-overflow]').length > 0) {
 				actionBarItems = this.actionBarArea.find(".action-bar-tab-item").not(".tabs");
 				itemsize = "action-bar-grid-" + ( actionList.length > 0 ? "tabAction" : "tabs");
 			} else {
@@ -18649,6 +18651,11 @@ $( document ).bind( "pagecreate create", function( e ) {
 		},
 
 		refresh: function() {
+		},
+
+		destroy: function() {
+			$(this.overflowActionMenu).remove();
+			$(this.overflowTabMenu).remove();
 		},
 
 		_createOverFlowItem: function(item) {
@@ -18746,11 +18753,10 @@ $( document ).bind( "pagecreate create", function( e ) {
 				overflowMenuContent = $(document.createElement('div'))
 					.addClass("overflowMenuContent")
 					.appendTo(overflowMenu);
-
 			if(isLeft) {
 				element.closest( '.ui-page' ).first().before(overflowMenu);
 			} else {
-				element.closest( '.ui-page' ).first().children( ".ui-content" ).append( overflowMenu );
+				element.closest( '.ui-page' ).first().append(overflowMenu);
 			}
 			return overflowMenu;
 		},
