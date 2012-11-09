@@ -63,6 +63,7 @@
 				$(".checked").removeClass("checked");
 				item.addClass("checked");
 				select.prop('value', select.find('option:contains("' + item.text() + '")').attr('value'));
+				select.trigger("change");
 				collapse.trigger('collapse');
 			});
 		},
