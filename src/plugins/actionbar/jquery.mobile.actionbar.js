@@ -117,23 +117,10 @@
 			}
 
 			if( this.showTabOverflow ) {
-				this.overflowTabMenu.find(".menuItem").bind('vclick',function () {
-					$('.ui-page-active, .ui-footer, .ui-header').removeClass('showTabOverflow');
-					$(this).find('img').clone().appendTo($('.tabs').first());
-					$('<div class="action-bar-action-item-text"><p>' + $(this).text() + '</p></div>').appendTo($('.tabs').first());
-					$('.tabs').first().css('background-position-x', '-50%');
-
-					$(".action-bar-tab-item:not(.action-bar-overflow)").one('vclick', function() {
-						$('.tabs').first().css('background-position-x', '50%');
-						$('.tabs').first().find('img').remove();
-						$('.tabs').first().find('.action-bar-action-item-text').remove();
-
-					});
-				});
 				this.overflowTabMenu.bind('vclick', function() {
 					return false;
 				});
-				this._createOverflowButton(this.overflowTabMenu)
+				var tabBtn = this._createOverflowButton(this.overflowTabMenu)
 					.addClass("tabs")
 					.addClass("action-bar-tab-item")
 					.prependTo(actions)
@@ -152,6 +139,20 @@
 
 							});
 						}, 0);
+					});
+
+					this.overflowTabMenu.find(".menuItem").bind('vclick',function () {
+						$('.ui-page-active, .ui-footer, .ui-header').removeClass('showTabOverflow');
+						tabBtn.empty();
+						$(this).find('img').clone().appendTo(tabBtn);
+						$('<div class="action-bar-action-item-text"><p>' + $(this).text() + '</p></div>').appendTo(tabBtn);
+						tabBtn.css('background-position-x', '-50%');
+
+						$(".action-bar-tab-item:not(.action-bar-overflow)").one('vclick', function() {
+							tabBtn.css('background-position-x', '50%');
+							tabBtn.find('img').remove();
+							tabBtn.find('.action-bar-action-item-text').remove();
+						});
 					});
 			}
 
