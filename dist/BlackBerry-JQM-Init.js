@@ -27,6 +27,7 @@
 	$.mobile.transitionFallbacks.cover = "fade";
 	$.mobile.listview.prototype.options.icon = false;
 	$.mobile.selectmenu.prototype.options.nativeMenu = false;
+	$.mobile.fixedtoolbar.prototype.options.tapToggle = false;
 
   });
 })(jQuery);
