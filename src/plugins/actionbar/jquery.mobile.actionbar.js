@@ -44,7 +44,7 @@
 				back = this.actionBarArea.children( ":jqmData(role='back')").first(),
 
 				maxTabs = (actionList.length > 0 || tabList.length > 4) ? 3 : 4,
-				maxActions = ( tabList.length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
+				maxActions = ( tabList.not('[data-overflow]').length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
 
 			$("[data-role=footer]").fixedtoolbar({ tapToggle: !o.disableTapToggle });
 
@@ -161,7 +161,7 @@
 
 			var itemsLen, actionBarItems;
 
-			if (tabList.length > 0) {
+			if ( tabList.not('[data-overflow]').length > 0) {
 				actionBarItems = this.actionBarArea.find(".action-bar-tab-item").not(".tabs");
 				itemsize = "action-bar-grid-" + ( actionList.length > 0 ? "tabAction" : "tabs");
 			} else {
