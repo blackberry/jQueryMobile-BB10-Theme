@@ -133,7 +133,7 @@ This is the standard list divider from jQuery Mobile
 
 To creat a solid list divider add `ui-header-solid' class to your list-divider
 ```html
-<ul data-role="listview" data-dividertheme="c">
+<ul data-role="listview" data-dividertheme="b">
     <li data-role="list-divider" class="ui-header-solid">Last Played</li>
 ```
 
