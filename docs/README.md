@@ -119,6 +119,19 @@ An example of all these can be found in kitchenSink/building_blocks.html
 ###Gradient Divider
 `<hr class="BB10gradient">`
 
+###List Divider
+This is the standard list divider from jQuery Mobile
+```html
+<ul data-role="listview" data-dividertheme="c">
+    <li data-role="list-divider">Light Theme</li>
+```
+
+###Solid List Divider
+To creat a solid list divider add `ui-header-solid' class to your list-divider
+```html
+<ul data-role="listview" data-dividertheme="c">
+    <li data-role="list-divider" class="ui-header-solid">Last Played</li>
+```
 
 Gridview
 --------
