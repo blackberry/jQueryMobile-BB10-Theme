@@ -23,7 +23,8 @@
     "grunt-less": "*",
     "grunt-clean": "*",
     "grunt-exec": "*",
-    "grunt-html": "*"
+    "grunt-html": "*",
+    "grunt-image-embed": "*"
   },
   "keywords": []
 }

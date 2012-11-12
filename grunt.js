@@ -220,14 +220,22 @@ module.exports = function(grunt) {
 				dest: 'dist/<%= pkg.name %>-all.min.js'
 			},
 			latest_all_min_css: {
-				src: '<config:cssmin.all.dest>',
+				src: '<config:imageEmbed.all.dest>',
 				dest: 'dist/<%= pkg.name %>-all.min.css'
 			}
-		}
+		},
+		imageEmbed: {
+     		 all: {
+        			src:  '<config:cssmin.all.dest>',
+        			dest: 'dist/<%= pkg.name %>-all.css',
+        			deleteAfterEncoding : false,
+		        options: {}
+			}
+	   	}
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'concat:less less concat min cssmin copy');
+	grunt.registerTask('default', 'concat:less less concat min cssmin imageEmbed copy');
 	grunt.registerTask('htmllint', 'htmllint');
 	grunt.registerTask('samples', 'exec:samples');
 	grunt.loadNpmTasks('grunt-html');
@@ -235,5 +243,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-less');
 	grunt.loadNpmTasks('grunt-clean');
 	grunt.loadNpmTasks('grunt-exec');
+	grunt.loadNpmTasks('grunt-image-embed');
 	grunt.loadTasks('src/tasks');
 };
