@@ -1162,15 +1162,6 @@ a.ui-link-inherit {
   /* NOTE: this hex should match the active state color. It's repeated here for cascade */
 
 }
-/* loading icon */
-.ui-icon-loading {
-  background-image: url(images_bb/ajax-loader.png);
-  width: 40px;
-  height: 40px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-  background-size: 35px 35px;
-}
 /* Button corner classes
 -----------------------------------------------------------------------------------------------------------*/
 .ui-btn-corner-tl {
@@ -2539,6 +2530,18 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
   padding: 0 15px 0 20px;
   height: 50px;
   font-size: 40px;
+  border: 0;
+  border-bottom: 3px solid #00a8df;
+  background-image: none;
+}
+.ui-li-divider.ui-bar-a {
+  background: #121212;
+}
+.ui-li-divider.ui-bar-c {
+  background: #f8f8f8;
+}
+.ui-li-divider.ui-header-solid {
+  border: 0;
 }
 .ui-li-divider .ui-li-heading {
   font-size: 40px;
@@ -2967,7 +2970,7 @@ div.ui-loader.ui-loader-textonly {
   background-image: none;
   background-size: 100% 100%;
 }
-div.ui-loader.ui-loader-verbose span.ui-icon.ui-icon-loading {
+div.ui-loader.ui-loader-verbose .ui-icon.ui-icon-loading {
   padding: 0px 0 0 1px;
 }
 div.ui-loader.ui-loader-default {
@@ -2977,7 +2980,7 @@ div.ui-loader.ui-loader-default {
   margin-top: -46.5px;
   background-position: center 0;
 }
-span.ui-icon.ui-icon-loading {
+.ui-icon.ui-icon-loading {
   opacity: 1;
   width: 93px;
   height: 93px;

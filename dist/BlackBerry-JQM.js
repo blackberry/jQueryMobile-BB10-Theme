@@ -68,7 +68,8 @@
 				actions.append(emptyItem);
 			}
 
-			var overflowNeeded = tabList.length > maxTabs;
+			var overflowNeeded = tabList.length > maxTabs,
+				cloneId;
 			for (var i = 0; i < tabList.length; i++) {
 				item = tabList.eq(i);
 				//add to tab overflow
@@ -162,7 +163,7 @@
 
 			this.actionBarArea.append(bar);
 
-			var itemsLen, actionBarItems;
+			var itemsLen, actionBarItems, itemsize;
 
 			if ( tabList.not('[data-overflow]').length > 0) {
 				actionBarItems = this.actionBarArea.find(".action-bar-tab-item").not(".tabs");
@@ -798,6 +799,7 @@
 				$(".checked").removeClass("checked");
 				item.addClass("checked");
 				select.prop('value', select.find('option:contains("' + item.text() + '")').attr('value'));
+				select.trigger("change");
 				collapse.trigger('collapse');
 			});
 		},
