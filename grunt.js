@@ -220,14 +220,14 @@ module.exports = function(grunt) {
 				dest: 'dist/<%= pkg.name %>-all.min.js'
 			},
 			latest_all_min_css: {
-				src: '<config:imageEmbed.all.dest>',
+				src: '<config:cssmin.all.dest>',
 				dest: 'dist/<%= pkg.name %>-all.min.css'
 			}
 		},
 		imageEmbed: {
 			all: {
-				src:  '<config:cssmin.all.dest>',
-				dest: 'dist/<%= pkg.name %>-all.css',
+				src:  '<config:copy.latest_all_min_css.dest>',
+				dest: 'dist/<%= pkg.name %>-all.min.css',
 				deleteAfterEncoding : false,
 				options: {}
 			}
@@ -235,7 +235,7 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'lint concat:less less concat min cssmin imageEmbed copy');
+	grunt.registerTask('default', 'lint concat:less less concat min cssmin copy imageEmbed');
 	grunt.registerTask('htmllint', 'htmllint');
 	grunt.registerTask('samples', 'exec:samples');
 	grunt.loadNpmTasks('grunt-html');
