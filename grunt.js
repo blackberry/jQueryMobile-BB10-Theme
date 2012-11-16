@@ -73,7 +73,7 @@ module.exports = function(grunt) {
 				dest: 'compiled/<%= pkg.name %>.js'
 			},
 			theme_css : {
-				src: ['<banner:meta.banner>', '<config:imageEmbed.all.dest>',
+				src: ['<banner:meta.banner>', '<config:less.all.dest>',
 					'<file_strip_banner:src/plugins/actionbar/jquery.mobile.actionbar.css>',
 					'<file_strip_banner:src/plugins/activityIndicator/jquery.mobile.activityindicator.css>',
 					'<file_strip_banner:src/plugins/buttonGroup/jquery.mobile.buttonGroup.css>',
@@ -197,9 +197,15 @@ module.exports = function(grunt) {
 
 		},
 		imageEmbed: {
-			all: {
+			less: {
 				src:  '<config:less.all.dest>',
-				dest: 'compiled/<%= pkg.name %>-all.min.css',
+				dest: '<config:less.all.dest>',
+				deleteAfterEncoding : false,
+				options: {}
+			},
+			theme_css: {
+				src:  '<config:concat.theme_css.dest>',
+				dest: '<config:concat.theme_css.dest>',
 				deleteAfterEncoding : false,
 				options: {}
 			}
@@ -207,8 +213,9 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'lint concat:less less copy:images copy:init_js imageEmbed concat min cssmin copy:kitchenLib');
-	grunt.registerTask('release', 'default copy:latest copy:versioned');
+	grunt.registerTask('default', 'lint concat:less less copy:images copy:init_js imageEmbed:less concat imageEmbed:theme_css concat:all_css min cssmin copy:kitchenLib');
+	grunt.registerTask('latest', 'default copy:latest');
+	grunt.registerTask('release', 'latest copy:versioned');
 	grunt.registerTask('htmllint', 'htmllint');
 	grunt.loadNpmTasks('grunt-html');
 	grunt.loadNpmTasks('grunt-css');
