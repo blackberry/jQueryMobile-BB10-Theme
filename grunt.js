@@ -176,9 +176,9 @@ module.exports = function(grunt) {
 				dest: 'compiled/'
 			},
 			kitchenLib: {
-				src: 'compiled/*',
+				src: 'compiled/*-all*',
 				dest: 'kitchenSink/lib/',
-				exclude: [/less/i, /min/, /Init/]
+				exclude: [/min/]
 			},
 			latest: {
 				src: 'compiled/*',
