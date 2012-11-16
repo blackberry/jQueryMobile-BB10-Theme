@@ -58,7 +58,7 @@ module.exports = function(grunt) {
 					'<file_strip_banner:src/less/pageloader.less>','<file_strip_banner:src/less/controlgroup.less>',
 					'<file_strip_banner:src/less/collapsible.less>','<file_strip_banner:src/less/misc.less>'
 				],
-				dest: 'dist/<%= pkg.name %>.less'
+				dest: 'compiled/<%= pkg.name %>.less'
 			},
 			theme_js: {
 				src: ['<banner:meta.banner>',
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
 					'<file_strip_banner:src/plugins/progressbar/jquery.mobile.progressbar.js>',
 					'<file_strip_banner:src/plugins/dropdown/jquery.mobile.dropdown.js>'
 				],
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.js'
+				dest: 'compiled/<%= pkg.name %>.js'
 			},
 			theme_css : {
 				src: ['<banner:meta.banner>', '<config:less.all.dest>',
@@ -84,70 +84,47 @@ module.exports = function(grunt) {
 					'<file_strip_banner:src/transitions/jquery.mobile.transition.cover.css>',
 					'<file_strip_banner:src/plugins/dropdown/jquery.mobile.dropdown.css>'
 				],
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.css'
-			},
-			init_js: {
-				src: 'src/init/<%= pkg.name %>-Init.js',
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-Init-<%= pkg.version %>.js'
+				dest: 'compiled/<%= pkg.name %>.css'
 			},
 			all_js: {
-				src: ['src/lib/jquery-1.7.1.js', '<config:concat.init_js.dest>',
+				src: ['src/lib/jquery-1.7.1.js', '<config:min.init.src>',
 					'src/lib/jquery.mobile.js', '<config:concat.theme_js.dest>'
 				],
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-all-<%= pkg.version %>.js'
+				dest: 'compiled/<%= pkg.name %>-all.js'
 			},
 			all_css: {
 				src: ['src/lib/jquery.mobile.structure.css', '<config:concat.theme_css.dest>'],
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-all-<%= pkg.version %>.css'
-			},
-
-
-			latest_theme_js: {
-				src: '<config:concat.theme_js.dest>',
-				dest: 'dist/<%= pkg.name %>.js'
-			},
-			latest_theme_css: {
-				src: '<config:concat.theme_css.dest>',
-				dest: 'dist/<%= pkg.name %>.css'
-			},
-			latest_all_js: {
-				src: '<config:concat.all_js.dest>',
-				dest: 'dist/<%= pkg.name %>-all.js'
-			},
-			latest_all_css: {
-				src: '<config:concat.all_css.dest>',
-				dest: 'dist/<%= pkg.name %>-all.css'
+				dest: 'compiled/<%= pkg.name %>-all.css'
 			}
-
 		},
 		less: {
 			all: {
 				src: '<config:concat.less.dest>',
-				dest: 'dist/<%= pkg.name %>-Less.css'
+				dest: 'compiled/<%= pkg.name %>-Less.css'
 			}
 		},
 		min: {
 			init: {
-				src: '<config:concat.init_js.dest>',
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-Init-<%= pkg.version %>.min.js'
+				src: 'src/init/<%= pkg.name %>-Init.js',
+				dest: 'compiled/<%= pkg.name %>-Init.min.js'
 			},
 			dist: {
 				src: '<config:concat.theme_js.dest>',
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.min.js'
+				dest: 'compiled/<%= pkg.name %>.min.js'
 			},
 			all: {
 				src: '<config:concat.all_js.dest>',
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-all-<%= pkg.version %>.min.js'
+				dest: 'compiled/<%= pkg.name %>-all.min.js'
 			}
 		},
 		cssmin: {
 			dist: {
 				src: '<config:concat.theme_css.dest>',
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-<%= pkg.version %>.min.css'
+				dest: 'compiled/<%= pkg.name %>.min.css'
 			},
 			all: {
 				src: ['<config:concat.all_css.dest>'],
-				dest: 'dist/<%= pkg.version %>/<%= pkg.name %>-all-<%= pkg.version %>.min.css'
+				dest: 'compiled/<%= pkg.name %>-all.min.css'
 			}
 		},
 		watch: {
@@ -157,7 +134,7 @@ module.exports = function(grunt) {
 			}
 		},
 		clean: {
-			dist: "dist/"
+			dist: "compiled/"
 		},
 		jshint: {
 			options: {
@@ -189,45 +166,46 @@ module.exports = function(grunt) {
 			}
 		},
 		uglify: {},
-		exec: {
-			samples: {
-				command: 'open samples/index.html'
-			}
-		},
 		copy: {
-			latest_images: {
-				src: 'src/assets/*.png',
-				dest: 'dist/images_bb/'
-			},
-			latest_plugin_images: {
-				src: 'src/plugins/**/*.png',
-				dest: 'dist/images_bb/'
-			},
 			images: {
-				src: 'src/assets/*.png',
-				dest: 'dist/<%= pkg.version %>/images_bb/'
-			},
-			plugin_images: {
-				src: 'src/plugins/**/*.png',
-				dest: 'dist/<%= pkg.version %>/images_bb/'
+				src: ['src/plugins/**/*.png', 'src/assets/*.png'],
+				dest: 'compiled/images_bb/'
 			},
 			init_js: {
 				src: 'src/init/<%= pkg.name %>-Init.js',
-				dest: 'dist/'
+				dest: 'compiled/'
 			},
-			latest_all_min_js: {
-				src: '<config:min.all.dest>',
-				dest: 'dist/<%= pkg.name %>-all.min.js'
+			kitchenLib: {
+				src: 'compiled/*-all*',
+				dest: 'kitchenSink/lib/',
+				exclude: [/min/]
 			},
-			latest_all_min_css: {
-				src: '<config:imageEmbed.all.dest>',
-				dest: 'dist/<%= pkg.name %>-all.min.css'
+			latest: {
+				src: 'compiled/*',
+				dest: 'dist/latest/',
+				exclude: [/less/i]
+			},
+			versioned: {
+				src: 'compiled/*',
+				dest: 'dist/<%= pkg.version %>/',
+				exclude: [/less/i],
+				modify : {
+					pattern: /\./,
+					text: '-<%= pkg.version %>'
+				}
 			}
+
 		},
 		imageEmbed: {
-			all: {
-				src:  '<config:cssmin.all.dest>',
-				dest: 'dist/<%= pkg.name %>-all.css',
+			less: {
+				src:  '<config:less.all.dest>',
+				dest: '<config:less.all.dest>',
+				deleteAfterEncoding : false,
+				options: {}
+			},
+			theme_css: {
+				src:  '<config:concat.theme_css.dest>',
+				dest: '<config:concat.theme_css.dest>',
 				deleteAfterEncoding : false,
 				options: {}
 			}
@@ -235,9 +213,10 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'lint concat:less less concat min cssmin imageEmbed copy');
+	grunt.registerTask('default', 'lint concat:less less copy:images copy:init_js imageEmbed:less concat imageEmbed:theme_css concat:all_css min cssmin copy:kitchenLib');
+	grunt.registerTask('latest', 'default copy:latest');
+	grunt.registerTask('release', 'latest copy:versioned');
 	grunt.registerTask('htmllint', 'htmllint');
-	grunt.registerTask('samples', 'exec:samples');
 	grunt.loadNpmTasks('grunt-html');
 	grunt.loadNpmTasks('grunt-css');
 	grunt.loadNpmTasks('grunt-less');
