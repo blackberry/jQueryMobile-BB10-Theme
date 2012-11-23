@@ -2467,11 +2467,11 @@ a.ui-link-inherit {
   border-bottom-width: 0;
   margin: 0;
 }
-.ui-listview-filter.ui-listview-filter-inset  + .ui-listview {
+.ui-listview-filter.ui-listview-filter-inset + .ui-listview {
   top: 0px;
   margin-top: 0;
 }
-.ui-listview-filter.ui-listview-filter-inset  + .ui-listview li:first-child .ui-btn-inner {
+.ui-listview-filter.ui-listview-filter-inset + .ui-listview li:first-child .ui-btn-inner {
   border-top-width: 2px;
 }
 /*GLOBAL BUTTON
@@ -4098,7 +4098,7 @@ a.ui-btn.ui-slider-handle .ui-btn-inner {
 }
 /* Dividers */
 hr {
-  border: 2px solid rgba(0, 0, 0, 0.25);
+  border: 2px solid RGBA(0, 0, 0, 0.25);
   margin: 20px -15px;
 }
 hr.BB10Group {
