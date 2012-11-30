@@ -3,13 +3,13 @@ Getting Started
 **Important note:** The meta tag `<meta name="viewport" content="width=device-width, initial-scale=1">` recommended by jQuery Mobile
 will need to be removed. This is a temporary issue which should be resolved shortly.
 
-The BlackBerry 10 [UI Guidelines](https://developer.blackberry.com/devzone/resources#uiguides) should be followed when
-using this theme to ensure the best possible user experience. 
+The BlackBerry 10 [UI Guidelines](https://developer.blackberry.com/html5/documentation/ui_guidelines.html) should be followed when
+using this theme to ensure the best possible user experience.
 
 Head
 ----
 For the BlackBerry 10 theme it is recommended to use the following head:
-    
+
     <head>
         <title>BlackBerry 10 jQuery Mobile Kitchensink</title>
         <link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
@@ -19,15 +19,15 @@ For the BlackBerry 10 theme it is recommended to use the following head:
 All of the required files are compiled into these two files, increasing the overall performance of the site/application.
 If you choose not to use these compiled versions, the correct order of the head is:
 
-    <head> 
-        <title>My Page</title> 
+    <head>
+        <title>My Page</title>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
         <link rel="stylesheet" href="BlackBerry-JQM.css" />
         <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
         <script src="BlackBerry-JQM-Init.js"></script>
         <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
         <script src="BlackBerry-JQM.js" type="text/javascript"></script>
-    </head> 
+    </head>
 
 
 Swatches
@@ -50,10 +50,15 @@ Action Bar
 
 To create a actionbar use ```<div data-role="actionbar">```.
 
-To create an optional back button add ```<div data-role="back"></div>```
+To create an optional back button add ```<div data-role="back"></div>```. The back button is not present when tabs are in the action bar.
 
-Add actions to the action bar using ```<div data-role="action">```. Each action should have an image. If there are more than three actions in the actionbar an overflow button will be automatically added to the action bar and the remaining action items will be added to the overflow menu.
-Each action should have an ```img``` and a ```p```
+Add tabs to the action bar using ```<div data-role="tab">```. Each tab should have an image. If there are more than 5 tabs in the actionbar a tab overflow button will be automatically added to the action bar and the remaining tab items will be added to the tab overflow menu.
+To manually place a tab item into the overflow menu use ```<div data-role="tab" data-overflow="true">```.
+Each tab should have an ```img``` and a ```p```.
+
+Add actions to the action bar using ```<div data-role="action">```. Each action should have an image. If there are more than 3 actions in the actionbar an action overflow button will be automatically added to the action bar and the remaining action items will be added to the action overflow menu.
+To manually place an action item into the overflow menu use ```<div data-role="action" data-overflow="true">```.
+Each action should have an ```img``` and a ```p```.
 
 An action bar should always been used in a fixed footer.
 
@@ -64,19 +69,19 @@ An action bar should always been used in a fixed footer.
     <div data-role="actionbar">
         <div data-role="back"></div>
         <div id="o1" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>1 Settings</p>
         </div>
         <div id="o2" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>2 Options</p>
         </div>
         <div id="o3" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>3 Options</p>
         </div>
         <div id="o4" data-role="action">
-            <img src="../plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+            <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>4 Options</p>
         </div>
     </div>
@@ -91,11 +96,11 @@ Container
 ![Container](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Container.png)
 
 A container to wrap content in.
-    
+
     <div class="BB10Container">
         <h3>BB10 Container</h3>
     </div>
-    
+
 An example of this can be found in kitchenSink/building_blocks.html
 
 Divider
@@ -114,6 +119,23 @@ An example of all these can be found in kitchenSink/building_blocks.html
 ###Gradient Divider
 `<hr class="BB10gradient">`
 
+###List Divider
+![Dividers-list-line](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers-list-line.png)
+
+This is the standard list divider from jQuery Mobile
+```html
+<ul data-role="listview" data-dividertheme="c">
+    <li data-role="list-divider">Light Theme</li>
+```
+
+###Solid List Divider
+![Dividers-list-solid](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers-list-solid.png)
+
+To creat a solid list divider add `ui-header-solid' class to your list-divider
+```html
+<ul data-role="listview" data-dividertheme="b">
+    <li data-role="list-divider" class="ui-header-solid">Last Played</li>
+```
 
 Gridview
 --------
@@ -166,7 +188,7 @@ BlackBerry Activity Indicator
 ![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-medium.png)
 ![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-large.png)
 
-Activity indicators are used to notify the user that a processes is in progress. They typically denote a process that will complete in an unspecified amount of time. Alternately they are suitable for processes that will complete relatively quickly; where progress bars are not meaningful. 
+Activity indicators are used to notify the user that a processes is in progress. They typically denote a process that will complete in an unspecified amount of time. Alternately they are suitable for processes that will complete relatively quickly; where progress bars are not meaningful.
 
 ## Creation
 To create an activity indicator add the data-role attribute: ```data-role="bb-activity-indicator"``` to a ```div``` element.
@@ -176,7 +198,7 @@ Activity indicators come in 3 different sizes: small, medium and large.
 
 To create activity indicators in their respective sizes add the data-size attributes: ```data-size="small"```, ```data-size="medium"``` or ```data-size="large"```
 
-Activity indicators can also be themed. 
+Activity indicators can also be themed.
 To apply the BlackBerry 10 light theme add the data-theme attribute ```data-theme="c"```. Alternately add ```data-theme="a"``` for dark theme.
 
 ## Option Defaults
@@ -191,6 +213,6 @@ speed: '2s'
 ## Methods
 Speed: To change the speed of an activity indicator call ```$('selector').activityindicator('speed', seconds);``` where seconds is a string formatted as ```[number]s```.
 
-An Example: 
+An Example:
 ```$('selector').activityindicator('speed', '5s');```
 
