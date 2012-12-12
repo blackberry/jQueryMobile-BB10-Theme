@@ -60,6 +60,16 @@ Add actions to the action bar using ```<div data-role="action">```. Each action 
 To manually place an action item into the overflow menu use ```<div data-role="action" data-overflow="true">```.
 Each action should have an ```img``` and a ```p```.
 
+To give actions or tabs an active state add the class ```pressed```.
+The following code will remove the pressed state from all actionbar items add the active state to the tab clicked.
+
+```
+$('[data-role="tab"]').bind('vclick', function(data) {
+	$(".action-bar-tab-item").removeClass('pressed');
+	$(this).addClass('pressed');
+});
+```
+
 An action bar should always been used in a fixed footer.
 
 
