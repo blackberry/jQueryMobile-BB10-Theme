@@ -2467,11 +2467,11 @@ a.ui-link-inherit {
   border-bottom-width: 0;
   margin: 0;
 }
-.ui-listview-filter.ui-listview-filter-inset + .ui-listview {
+.ui-listview-filter.ui-listview-filter-inset  + .ui-listview {
   top: 0px;
   margin-top: 0;
 }
-.ui-listview-filter.ui-listview-filter-inset + .ui-listview li:first-child .ui-btn-inner {
+.ui-listview-filter.ui-listview-filter-inset  + .ui-listview li:first-child .ui-btn-inner {
   border-top-width: 2px;
 }
 /*GLOBAL BUTTON
@@ -3683,6 +3683,7 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
   font-size: 40px;
   line-height: normal;
   margin-top: 0;
+  margin-bottom: 0;
 }
 .ui-li .ui-li-aside {
   color: #909090;
@@ -4098,7 +4099,7 @@ a.ui-btn.ui-slider-handle .ui-btn-inner {
 }
 /* Dividers */
 hr {
-  border: 2px solid RGBA(0, 0, 0, 0.25);
+  border: 2px solid rgba(0, 0, 0, 0.25);
   margin: 20px -15px;
 }
 hr.BB10Group {
@@ -4522,7 +4523,7 @@ label.ui-select,
 	width: 100%;
 	height: 100%;
 	-webkit-transition: opacity 0.25s ease-in;
-	-webkit-box-shadow: 0 -5px 20px #AAA;
+	-webkit-box-shadow: 0px -15px 13px -8px #AAA;
 }
 
 .action-bar-back {
@@ -4598,6 +4599,7 @@ label.ui-select,
 }
 
 .action-bar-overflow.tabs {
+	padding-top: 0;
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAABRCAYAAACqj0o2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNDMxNDAyNTAxMjI2ODExOTEwOUQ3MEEyNjk0NUM2MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxNjE4NThBQzhDQjExMUUxQTU0RjkzMUFGNjYxM0I1NiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxNjE4NThBQjhDQjExMUUxQTU0RjkzMUFGNjYxM0I1NiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjAwQzM5NTMyMDY4MTFCODQwQkE3QkZFQzg0RDU1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkY0MzE0MDI1MDEyMjY4MTE5MTA5RDcwQTI2OTQ1QzYwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3WNeTwAAAZhJREFUeNrsmjGKwkAUhh3xBNsa0iQkTcgJlK08ka2lrTfZGyxYyR4ghIUE0gQEq71CfMIUtjozq/P4fnhMJ7yP//lm/DXTNM2Qm+YgACIQgYiACEQgAhEBEYhABCICIhCBCEQERCACEYgIiEAEIhAREIEIRAREIAJRkRauH9A0TdQA6rrGie8g88yfPMV9SzkOUiuppQIOZ6mT1FaceQ4OUQCWcvxIfSg01Z/UWkD+hh7nvVKAM9vXPvhiMcZslH/FPdwfi+VF98Sjcibf/zHOOzk+FS+WXXAnVlV121y3G+qX1EUJvIvtp7b9hb8n3qtt26jpCbTXP/tkvFks7FYgvoUYZ5wIRMaZccaJOBEn4kSc6O3t3HWd2oylLMvwGUvf9+ozlqIoyFgcRMbiSWQssVxxyFg8jDMZi6sT8zxXnbHY/sLfE+81DEPU9LIs49nHs48fIBBOxIk4ESciIDLOOBGIyPvbeRxHtRlLmqbhMxYBqD5jEZBkLA4iY/EkMpZYtjMZi4dxJmNxdWKSJKozFtvfQ7oKMADEK24WpiEZCgAAAABJRU5ErkJggg==) no-repeat top;
 	-webkit-transition: background-position .5s ease-in;
 }
@@ -4638,12 +4640,12 @@ label.ui-select,
 	opacity: 0.5;
 }
 
-.action-bar-action-item-image {
+.action-bar-action-item-image, .action-bar img {
 	margin-top: 14px;
 	width: 81px;
 	height: 81px;
 }
-.action-bar-tab-item .action-bar-action-item-image {
+.action-bar-tab-item .action-bar-action-item-image, .action-bar-tab-item img {
 	margin-top: 6px;
 }
 
@@ -5078,7 +5080,7 @@ div.ui-input-search.bb-text-invalid + .bb-validation-icon{
 .overflowMenu {
 	height: 100%;
 	width: 563px;
-	border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkIAAAAECAYAAABiOVBYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExOEY2MkMwRTVCQTVCRUI0MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpCRUUwQzIwNDQ1MjUxMUUxQUY3NzhDREUxRkFGMkU3RiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpCRUUwQzIwMzQ1MjUxMUUxQUY3NzhDREUxRkFGMkU3RiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjg0NkRBMTgwNUEyMDY4MTE5NUZFRUYyRjBFMTc5QjA4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4RjYyQzBFNUJBNUJFQjQzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+kCBvmwAAAEVJREFUeNrs2bENwEAIA8DnV2D/EVkBMkNSReKud+PKkmNmDgDARvFlCGXm6e5XwXuvtgGA36iqsE4AgLXCNQYAbPUIMABBcg/9QCgQ9gAAAABJRU5ErkJggg==) 1 1 1 15 fill / 0 0 0 0 repeat;
+	background-color: #121212;
 	-webkit-box-shadow: -10px 0px 25px #121212;
 	-webkit-transition-duration: 0.25s;
 	-webkit-animation-timing-function: ease-out;
@@ -5093,6 +5095,7 @@ div.ui-input-search.bb-text-invalid + .bb-validation-icon{
 	-webkit-box-pack: center;
 	z-index: 10001;
 	-webkit-transform: translate3d(0,0,0);
+	-webkit-overflow-scrolling: -blackberry-touch;
 }
 .left {
 	right: auto;
@@ -5146,14 +5149,29 @@ div.ui-input-search.bb-text-invalid + .bb-validation-icon{
 	max-height: 81px;
 	max-width: 81px;
 }
-
 .menuItem:active {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAB4BAMAAADbKmU9AAAAD1BMVEUAAAAqKioAqN8AhrMSEhIA6c0IAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfcBh0VGhukvl66AAAAIUlEQVQoz2NggAJmYxAwYGBSAgGFUXqUHqUHIQ3Lp1AAALHJXtU+VmRBAAAAAElFTkSuQmCC) no-repeat left center;
 }
-
 .menuImage {
 	width: 81px;
 	height: 81px;
+}
+
+.ui-overflow-overlay {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10000;
+	background-color: black;
+	opacity: 0;
+	display: none;
+}
+
+.showTabOverflow .ui-overflow-overlay {
+	opacity: .3;
+	display: block;
 }
 
 /* =================================================
