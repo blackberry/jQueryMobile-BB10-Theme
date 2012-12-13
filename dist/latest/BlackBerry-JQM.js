@@ -110,7 +110,7 @@
 				this._createOverflowButton(this.overflowActionMenu)
 					.addClass("actions")
 					.appendTo(actions)
-					.bind('vclick', function(){
+					.bind('touchend', function(){
 						self.overflowActionMenu.addClass("showMenu");
 
 						setTimeout(function() {
@@ -120,9 +120,7 @@
 			}
 
 			if( this.showTabOverflow ) {
-				this.overflowTabMenu.bind('vclick', function() {
-					return false;
-				});
+
 				var tabBtn = this._createOverflowButton(this.overflowTabMenu)
 					.addClass("tabs")
 					.addClass("action-bar-tab-item")
@@ -131,15 +129,13 @@
 						$('.ui-page-active, .ui-footer-fixed, .ui-header-fixed')
 							.addClass('showTabHelper')
 							.addClass('showTabOverflow');
-						event.stopPropagation();
 						setTimeout(function() {
-							$(document).one('vclick', function () {
+							$(".ui-page-active").one('touchend touchmove', function (event) {
 								$('.ui-page-active, .ui-footer-fixed, .ui-header-fixed')
 									.removeClass('showTabOverflow')
 									.one("webkitTransitionEnd",function() {
 										$(this).removeClass('showTabHelper');
 									});
-
 							});
 						}, 0);
 					});
@@ -303,10 +299,18 @@
 				overflowMenuContent = $(document.createElement('div'))
 					.addClass("overflowMenuContent")
 					.appendTo(overflowMenu);
+
+			var closestPage = element.closest( '.ui-page' ).first();
+
 			if(isLeft) {
-				element.closest( '.ui-page' ).first().before(overflowMenu);
+				var overlay = document.createElement('div');
+				overlay.className = "ui-overflow-overlay";
+
+				closestPage.before(overflowMenu);
+				closestPage[0].appendChild(overlay);
+
 			} else {
-				element.closest( '.ui-page' ).first().append(overflowMenu);
+				closestPage.append(overflowMenu);
 			}
 			return overflowMenu;
 		},

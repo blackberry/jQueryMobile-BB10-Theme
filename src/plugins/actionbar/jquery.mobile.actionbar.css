@@ -21,7 +21,7 @@
 	width: 100%;
 	height: 100%;
 	-webkit-transition: opacity 0.25s ease-in;
-	-webkit-box-shadow: 0 -5px 20px #AAA;
+	-webkit-box-shadow: 0px -15px 13px -8px #AAA;
 }
 
 .action-bar-back {
@@ -97,6 +97,7 @@
 }
 
 .action-bar-overflow.tabs {
+	padding-top: 0;
 	background: url("images_bb/core_actionbar_tab_icon_taboverflow.png") no-repeat top;
 	-webkit-transition: background-position .5s ease-in;
 }
@@ -137,12 +138,12 @@
 	opacity: 0.5;
 }
 
-.action-bar-action-item-image {
+.action-bar-action-item-image, .action-bar img {
 	margin-top: 14px;
 	width: 81px;
 	height: 81px;
 }
-.action-bar-tab-item .action-bar-action-item-image {
+.action-bar-tab-item .action-bar-action-item-image, .action-bar-tab-item img {
 	margin-top: 6px;
 }
 
