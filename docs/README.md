@@ -226,3 +226,13 @@ Speed: To change the speed of an activity indicator call ```$('selector').activi
 An Example:
 ```$('selector').activityindicator('speed', '5s');```
 
+Dropdown / Select Menus
+-------
+Although jQuery Mobile has support for select menus it does so by using a popup. To make the JQM/BlackBerry10 experience more inline with native inline select menus have been added.
+By default the inline version will be used.
+Below is an example of how to change the value of a select menu programmatically 
+
+```
+$('select#select-choice-0').val('express');
+$('#select-choice-0').dropdown();
+```
