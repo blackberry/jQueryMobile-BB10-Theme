@@ -228,7 +228,7 @@ An Example:
 
 Dropdown / Select Menus
 -------
-Although jQuery Mobile has support for select menus it does so by using a popup. To make the JQM/BlackBerry10 experience more inline with native inline select menus have been added.
+Although jQuery Mobile has support for select menus it does so by using a popup. To make the JQM/BlackBerry10 experience more inline with native, inline select menus have been added.
 By default the inline version will be used.
 Below is an example of how to change the value of a select menu programmatically 
 
