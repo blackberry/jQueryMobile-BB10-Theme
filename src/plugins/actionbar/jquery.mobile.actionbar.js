@@ -42,7 +42,6 @@
 				actionList = itemList.filter( ":jqmData(role='action')" ),
 				tabList = itemList.filter( ":jqmData(role='tab')" ),
 				back = this.actionBarArea.children( ":jqmData(role='back')").first(),
-
 				maxTabs = (actionList.length > 0 || tabList.length > 4) ? 3 : 4,
 				maxActions = ( tabList.not('[data-overflow]').length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
 
@@ -51,6 +50,13 @@
 			this.actionBarArea.addClass('action-bar-area');
 			bar.addClass('action-bar');
 			actions.addClass('action-bar-actions');
+
+			//If text field is selected, hide the actionbar
+			$(".ui-input-text").focus(function(){
+				$("#action-bar-area").addClass('hide');
+			}).blur(function(){
+				$("#action-bar-area").removeClass('hide');
+			});
 
 			//If we have tabs we can not have a back button
 			if (back.length && !tabList.length) {
