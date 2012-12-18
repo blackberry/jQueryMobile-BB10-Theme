@@ -45,12 +45,9 @@ You will notice that this example does not include jQuery or jQuery mobile, this
 Building the kitchenSink sample
 --------
 1. Clone or download this repo
-2. Using BlackBerry 10 WebWorks SDK, package the following assets:
- * ./dist
- * ./kitchenSink
- * config.xml
- * index.html
-3. Deploy to BlackBerry 10 device (signing required) or simulator
+2. Zip the entire contents of the ```kitchenSink``` folder
+3. Using BlackBerry 10 WebWorks SDK, package the zip file created in step 2
+4. Deploy to BlackBerry 10 device (signing required) or simulator
 
 Advanced
 --------
