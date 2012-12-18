@@ -53,9 +53,9 @@
 
 			//If text field is selected, hide the actionbar
 			$(".ui-input-text").focus(function(){
-				$("#action-bar-area").addClass('hide');
+				$(".ui-footer, .ui-header").addClass('hide');
 			}).blur(function(){
-				$("#action-bar-area").removeClass('hide');
+				$(".ui-footer, .ui-header").removeClass('hide');
 			});
 
 			//If we have tabs we can not have a back button
