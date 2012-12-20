@@ -18506,9 +18506,9 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 			//If text field is selected, hide the actionbar
 			$(".ui-input-text").focus(function(){
-				$(".ui-footer, .ui-header").addClass('hide');
+				$(".ui-footer, .ui-header").addClass('hidden');
 			}).blur(function(){
-				$(".ui-footer, .ui-header").removeClass('hide');
+				$(".ui-footer, .ui-header").removeClass('hidden');
 			});
 
 			//If we have tabs we can not have a back button
