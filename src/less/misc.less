@@ -10,7 +10,7 @@
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and 
+* See the License for the specific language governing permissions and
 * limitations under the License.
 */
 
@@ -22,30 +22,23 @@ Defaults:
 @BBLightBlue - colour
 */
 
+html {
+	font-size: @Small;
+	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro";
+	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro";
+}
 
-/*Text*/
+h1 {
+	font-size: @Large;
+}
+
+h2, h3, h4, h5 {
+	font-size: @Medium;
+}
+
 p {
-	font-size: @p1;
+	font-size: @XXSmall;
 }
-
-p.p2 {
-	font-size: @p2;
-}
-
-p.p3 {
-	font-size: @p3;
-}
-
-p.p4 {
-	font-size: @p4;
-	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro", "BBAlpha Sans";
-}
-
-p.p5 {
-	font-size: @p5;
-	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro", "BBAlpha Sans";
-}
-
 /*Accessibility Outline*/
 /*This removes the outline around all clickable elements*/
 * {
