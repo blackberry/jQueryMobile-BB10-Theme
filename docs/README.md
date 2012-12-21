@@ -58,7 +58,7 @@ Each tab should have an ```img``` and a ```p```.
 
 Add actions to the action bar using ```<div data-role="action">```. Each action should have an image. If there are more than 3 actions in the actionbar an action overflow button will be automatically added to the action bar and the remaining action items will be added to the action overflow menu.
 To manually place an action item into the overflow menu use ```<div data-role="action" data-overflow="true">```.
-Each action should have an ```img``` and a ```p```.
+Each action should have an ```img``` and a ```p```. To place an action at the bottom of the overflow menu, use ```<div data-role="action" data-overflow="true" data-position="bottom">```, this is reserved for only one action.
 
 To give actions or tabs an active state add the class ```pressed```.
 The following code will remove the pressed state from all actionbar items add the active state to the tab clicked.
