@@ -51,6 +51,23 @@ Action Bar
 To create a actionbar use ```<div data-role="actionbar">```.
 
 To create an optional back button add ```<div data-role="back"></div>```. The back button is not present when tabs are in the action bar.
+To change the text of the back button set ```$.mobile.page.prototype.options.backBtnText``` to the new value, you will need to do this in the ```mobileinit``` event or before your actionbar is created. 
+To set it durning the ```mobileinit``` event, consider the following.
+```
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.
+<link rel="stylesheet" href="../dist/latest/BlackBerry-JQM.css" />
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script> 
+    $(document).bind("mobileinit", function() {
+        $.mobile.page.prototype.options.backBtnText = "Zur&uuml;ck";
+    });
+</script>
+<script src="../dist/latest/BlackBerry-JQM-Init.js"></script>
+<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+<script src="../dist/latest/BlackBerry-JQM.js" type="text/javascript"></script>
+```
+
 
 Add tabs to the action bar using ```<div data-role="tab">```. Each tab should have an image. If there are more than 5 tabs in the actionbar a tab overflow button will be automatically added to the action bar and the remaining tab items will be added to the tab overflow menu.
 To manually place a tab item into the overflow menu use ```<div data-role="tab" data-overflow="true">```.
