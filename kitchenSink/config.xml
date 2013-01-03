@@ -36,6 +36,6 @@
 	</license>
 
 	<content src="index.html"/>
-	<icon src="kitchenSink/img/generic_81_81_placeholder.png"/>
+	<icon src="img/generic_81_81_placeholder.png"/>
 
 </widget>
