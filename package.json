@@ -19,7 +19,7 @@
   }], 
   "dependencies": {
     "grunt": "*",
-    "grunt-css": "*",
+    "grunt-css": "0.2.1",
     "grunt-less": "*",
     "grunt-clean": "*",
     "grunt-exec": "*",
