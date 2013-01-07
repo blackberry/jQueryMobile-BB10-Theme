@@ -9292,6 +9292,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 	$.mobile.transitionHandlers.cover = $.mobile.transitionHandlers.simultaneous;
 	// Set the slide transitions's fallback to "fade"
 	$.mobile.transitionFallbacks.cover = "fade";
+	$.mobile.defaultPageTransition = "cover";
 	$.mobile.listview.prototype.options.icon = false;
 	$.mobile.selectmenu.prototype.options.nativeMenu = false;
 	$.mobile.fixedtoolbar.prototype.options.tapToggle = false;
@@ -18450,7 +18451,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 }));
 
 /* 
-*  Copyright 2012 Research In Motion Limited.;
+*  Copyright 2013 Research In Motion Limited.;
 *
 * Copyright 2012 Research In Motion Limited.
 *
@@ -18495,7 +18496,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 				actionList = itemList.filter( ":jqmData(role='action')" ),
 				tabList = itemList.filter( ":jqmData(role='tab')" ),
 				back = this.actionBarArea.children( ":jqmData(role='back')").first(),
-
 				maxTabs = (actionList.length > 0 || tabList.length > 4) ? 3 : 4,
 				maxActions = ( tabList.not('[data-overflow]').length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
 
@@ -18504,6 +18504,13 @@ $( document ).bind( "pagecreate create", function( e ) {
 			this.actionBarArea.addClass('action-bar-area');
 			bar.addClass('action-bar');
 			actions.addClass('action-bar-actions');
+
+			//If text field is selected, hide the actionbar
+			$(".ui-input-text").focus(function(){
+				$(".ui-footer, .ui-header").addClass('hidden');
+			}).blur(function(){
+				$(".ui-footer, .ui-header").removeClass('hidden');
+			});
 
 			//If we have tabs we can not have a back button
 			if (back.length && !tabList.length) {
