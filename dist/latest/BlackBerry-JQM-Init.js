@@ -25,6 +25,7 @@
 	$.mobile.transitionHandlers.cover = $.mobile.transitionHandlers.simultaneous;
 	// Set the slide transitions's fallback to "fade"
 	$.mobile.transitionFallbacks.cover = "fade";
+	$.mobile.defaultPageTransition = "cover";
 	$.mobile.listview.prototype.options.icon = false;
 	$.mobile.selectmenu.prototype.options.nativeMenu = false;
 	$.mobile.fixedtoolbar.prototype.options.tapToggle = false;
