@@ -108,9 +108,8 @@
 			if( this.showActionOverflow ) {
 				this.overflowActionMenu.find('.menuItem').bind('vclick', {context: self}, this._hideActionOverflow);
 
-				this.overflowActionMenu.bind('vclick', function(event){
-					return false;
-				});
+				this.overflowActionMenu.bind('vclick',{context: self}, this._hideActionOverflow);
+
 				this._createOverflowButton(this.overflowActionMenu)
 					.addClass("actions")
 					.appendTo(actions)
@@ -157,6 +156,7 @@
 							tabBtn.find('.action-bar-action-item-text').remove();
 						});
 					});
+
 			}
 
 			bar.append(actions);
