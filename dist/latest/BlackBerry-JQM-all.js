@@ -18562,9 +18562,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 			if( this.showActionOverflow ) {
 				this.overflowActionMenu.find('.menuItem').bind('vclick', {context: self}, this._hideActionOverflow);
 
-				this.overflowActionMenu.bind('vclick', function(event){
-					return false;
-				});
 				this._createOverflowButton(this.overflowActionMenu)
 					.addClass("actions")
 					.appendTo(actions)
@@ -18760,16 +18757,18 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 			var closestPage = element.closest( '.ui-page' ).first();
 
+			var overlay = document.createElement('div');
+			overlay.className = "ui-overflow-overlay";
+
 			if(isLeft) {
-				var overlay = document.createElement('div');
-				overlay.className = "ui-overflow-overlay";
 
 				closestPage.before(overflowMenu);
-				closestPage[0].appendChild(overlay);
 
 			} else {
 				closestPage.append(overflowMenu);
 			}
+			closestPage[0].appendChild(overlay);
+
 			return overflowMenu;
 		},
 

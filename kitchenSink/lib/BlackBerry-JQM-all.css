@@ -5181,6 +5181,10 @@ div.ui-input-search.bb-text-invalid + .bb-validation-icon{
 	display: block;
 }
 
+.showMenu ~ .ui-overflow-overlay {
+	display: block;
+}
+
 .overflowMenuContent [data-position="bottom"] {
   bottom: 0;
   position:absolute;
