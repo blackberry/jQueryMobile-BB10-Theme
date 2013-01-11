@@ -799,7 +799,7 @@ div[data-role="page"][data-theme="a"] fieldset.ui-controlgroup .ui-controlgroup-
 }
 /* Toggle Switch / Slider - C */
 .ui-slider.ui-slider-switch.ui-btn-down-c,
-.ui-slider.ui-btn-down-c {
+.ui-slider .ui-slider-track {
   /*Bounding*/
 
   border: 2px solid #b1b1b1;
@@ -814,7 +814,7 @@ div[data-role="page"][data-theme="a"] fieldset.ui-controlgroup .ui-controlgroup-
 
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn {
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn {
   /*Toggle Off: handle grey*/
 
   /*Toggle On: handle blue - active*/
@@ -824,7 +824,7 @@ div[data-role="page"][data-theme="a"] fieldset.ui-controlgroup .ui-controlgroup-
 
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-up-c .ui-btn-inner,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-up-c .ui-btn-inner {
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn.ui-btn-up-c .ui-btn-inner {
   background: #eaeaea;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#dddddd));
   background-image: -webkit-linear-gradient(#fafafa, #dddddd);
@@ -837,7 +837,7 @@ div[data-role="page"][data-theme="a"] fieldset.ui-controlgroup .ui-controlgroup-
   -webkit-box-shadow: inset 0 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn[aria-valuenow="on"] .ui-btn-inner,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn[aria-valuenow="on"] .ui-btn-inner {
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn[aria-valuenow="on"] .ui-btn-inner {
   /*gradient colours sampled from spec image*/
 
   background: #006bb8;
@@ -850,18 +850,18 @@ div[data-role="page"][data-theme="a"] fieldset.ui-controlgroup .ui-controlgroup-
   -webkit-box-shadow: inset 0 1px 1px 0px rgba(255, 255, 255, 0.3);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-a,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-a,
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn.ui-btn-hover-a,
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-c,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-c {
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn.ui-btn-hover-c {
   /*Aura*/
 
   background: rgba(0, 168, 223, 0.2);
   -webkit-box-shadow: inset 0 0 15px 5px rgba(0, 168, 223, 0.6);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-a .ui-btn-inner,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-a .ui-btn-inner,
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn.ui-btn-hover-a .ui-btn-inner,
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-c .ui-btn-inner,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn.ui-btn-hover-c .ui-btn-inner {
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn.ui-btn-hover-c .ui-btn-inner {
   /*Gradient colours sampled from spec image: light = #3cbce7, dark = #01a8df */
 
   background: #00a8df;
@@ -876,7 +876,7 @@ div[data-role="page"][data-theme="a"] fieldset.ui-controlgroup .ui-controlgroup-
   -webkit-box-shadow: inset 0 0 1px 2px rgba(255, 255, 255, 0.2);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c a.ui-slider-handle.ui-btn .ui-btn-inner,
-.ui-slider.ui-btn-down-c a.ui-slider-handle.ui-btn .ui-btn-inner {
+.ui-slider .ui-slider-track a.ui-slider-handle.ui-btn .ui-btn-inner {
   border: 0.05em solid rgba(0, 0, 0, 0.2);
   /*outer border*/
 
@@ -886,19 +886,28 @@ div[data-role="page"][data-theme="a"] fieldset.ui-controlgroup .ui-controlgroup-
   background-clip: padding-box;
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c.ui-disabled span.ui-slider-label,
-.ui-slider.ui-btn-down-c.ui-disabled span.ui-slider-label {
+.ui-slider .ui-slider-track.ui-disabled span.ui-slider-label {
   opacity: 0.2;
   color: #262626;
   text-shadow: none;
 }
 .ui-slider.ui-slider-switch.ui-btn-down-c.ui-disabled a.ui-slider-handle.ui-btn.ui-btn-up-c .ui-btn-inner,
-.ui-slider.ui-btn-down-c.ui-disabled a.ui-slider-handle.ui-btn.ui-btn-up-c .ui-btn-inner {
+.ui-slider .ui-slider-track.ui-disabled a.ui-slider-handle.ui-btn.ui-btn-up-c .ui-btn-inner {
   background: #c1c1c1;
   border: solid 2px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 0 1px 1px #ffffff;
 }
 /*Slider Fill - C*/
-div.ui-slider.ui-btn-down-c .ui-slider-bg {
+.ui-slider-track.ui-btn-down-c {
+  background: #272727;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#d0d0d0), to(#dfdfdf));
+  background-image: -webkit-linear-gradient(#d0d0d0, #dfdfdf);
+  background-image: -moz-linear-gradient(#d0d0d0, #dfdfdf);
+  background-image: -ms-linear-gradient(#d0d0d0, #dfdfdf);
+  background-image: -o-linear-gradient(#d0d0d0, #dfdfdf);
+  background-image: linear-gradient(#d0d0d0, #dfdfdf);
+}
+div.ui-slider .ui-slider-track .ui-slider-bg {
   background: #00a8df;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#3a93cb), to(#0676be));
   background-image: -webkit-linear-gradient(#3a93cb, #0676be);
@@ -910,7 +919,7 @@ div.ui-slider.ui-btn-down-c .ui-slider-bg {
   /*#025e97*/
 
 }
-div.ui-slider.ui-btn-down-c.ui-disabled .ui-slider-bg {
+div.ui-slider .ui-slider-track.ui-disabled .ui-slider-bg {
   background: #272727;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#c7c7c7), to(#c1c1c1));
   background-image: -webkit-linear-gradient(#c7c7c7, #c1c1c1);
@@ -1286,11 +1295,11 @@ a.ui-link-inherit {
   border-bottom-width: 0;
   margin: 0;
 }
-.ui-listview-filter.ui-listview-filter-inset  + .ui-listview {
+.ui-listview-filter.ui-listview-filter-inset + .ui-listview {
   top: 0px;
   margin-top: 0;
 }
-.ui-listview-filter.ui-listview-filter-inset  + .ui-listview li:first-child .ui-btn-inner {
+.ui-listview-filter.ui-listview-filter-inset + .ui-listview li:first-child .ui-btn-inner {
   border-top-width: 2px;
 }
 /*GLOBAL BUTTON
@@ -1322,6 +1331,7 @@ around buttons. "ui-btn-inner" represents the actual button face.*/
   display: block;
   text-shadow: 0 1px 2px rbga(0, 0, 0, 1);
   top: 0.4em;
+  font-size: 40px;
 }
 .ui-btn-inner {
   height: 100%;
@@ -2639,7 +2649,8 @@ div.ui-slider .ui-btn-inner {
   -webkit-transition: 0.15s ease-in 0;
   -webkit-transition-property: top, left;
 }
-div.ui-slider .ui-slider-handle {
+div.ui-slider .ui-slider-track .ui-slider-handle,
+div.ui-slider .ui-slider-inneroffset .ui-slider-handle {
   /*Dimensions*/
 
   width: 1.6em;
@@ -2670,8 +2681,10 @@ div.ui-slider .ui-slider-handle {
   /* Pressed State*/
 
 }
-div.ui-slider .ui-slider-handle.ui-btn-hover-a,
-div.ui-slider .ui-slider-handle.ui-btn-hover-c {
+div.ui-slider .ui-slider-track .ui-slider-handle.ui-btn-hover-a,
+div.ui-slider .ui-slider-inneroffset .ui-slider-handle.ui-btn-hover-a,
+div.ui-slider .ui-slider-track .ui-slider-handle.ui-btn-hover-c,
+div.ui-slider .ui-slider-inneroffset .ui-slider-handle.ui-btn-hover-c {
   /*Dimensions*/
 
   width: 2.6em;
@@ -2687,8 +2700,10 @@ div.ui-slider .ui-slider-handle.ui-btn-hover-c {
   background: rgba(0, 168, 223, 0.2);
   -webkit-box-shadow: inset 0 0 15px 5px rgba(0, 168, 223, 0.6);
 }
-div.ui-slider .ui-slider-handle.ui-btn-hover-a .ui-btn-inner,
-div.ui-slider .ui-slider-handle.ui-btn-hover-c .ui-btn-inner {
+div.ui-slider .ui-slider-track .ui-slider-handle.ui-btn-hover-a .ui-btn-inner,
+div.ui-slider .ui-slider-inneroffset .ui-slider-handle.ui-btn-hover-a .ui-btn-inner,
+div.ui-slider .ui-slider-track .ui-slider-handle.ui-btn-hover-c .ui-btn-inner,
+div.ui-slider .ui-slider-inneroffset .ui-slider-handle.ui-btn-hover-c .ui-btn-inner {
   /*Gradient colours sampled from spec image: light = #3cbce7, dark = #01a8df */
 
   background: #00a8df;
@@ -2733,7 +2748,7 @@ div.ui-slider-switch .ui-slider-label {
 div.ui-slider-switch .ui-slider-inneroffset {
   margin: 0 0.825em 0 0.775em;
 }
-div.ui-slider-switch .ui-slider-handle {
+div.ui-slider-switch .ui-slider-inneroffset .ui-slider-handle {
   /*overrides*/
 
   top: 0;
@@ -2746,8 +2761,8 @@ div.ui-slider-switch .ui-slider-handle {
   /* Pressed State*/
 
 }
-div.ui-slider-switch .ui-slider-handle.ui-btn-hover-a,
-div.ui-slider-switch .ui-slider-handle.ui-btn-hover-c {
+div.ui-slider-switch .ui-slider-inneroffset .ui-slider-handle.ui-btn-hover-a,
+div.ui-slider-switch .ui-slider-inneroffset .ui-slider-handle.ui-btn-hover-c {
   /*Positioning*/
 
   top: -0.5em;
@@ -2918,7 +2933,7 @@ a.ui-btn.ui-slider-handle .ui-btn-inner {
 }
 /* Dividers */
 hr {
-  border: 2px solid rgba(0, 0, 0, 0.25);
+  border: 2px solid RGBA(0, 0, 0, 0.25);
   margin: 20px -15px;
 }
 hr.BB10Group {
@@ -3283,7 +3298,6 @@ Defaults:
 */
 html {
   font-size: 35px;
-  font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro";
   font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro";
 }
 h1 {
