@@ -15,6 +15,13 @@
 */
 
 
+.ui-panel {
+	-webkit-overflow-scrolling: -blackberry-touch;
+}
+.ui-panel .ui-li:active {
+       background: none;
+}
+
 .overflowMenu {
 	height: 100%;
 	width: 563px;
