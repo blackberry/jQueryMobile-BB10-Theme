@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Action Bar</title>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
+		<script src="lib/BlackBerry-JQM-all.js"></script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="panel" id="left" data-position="left" data-display="reveal" data-theme="a">
+				<ul data-role="listview" data-theme="a">
+					<li><a href="#">Acura</a></li>
+					<li><a href="#">Audi</a></li>
+					<li><a href="#">BMW</a></li>
+				</ul>
+			</div>
+			<div data-role="panel" id="right" data-position="right" data-display="overlay" data-theme="a">
+				<div>
+					<ul data-role="listview" data-theme="a">
+						<li><a href="#">Acura</a></li>
+						<li><a href="#">Audi</a></li>
+						<li><a href="#">BMW</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div data-role="header" data-theme="c">
+				<h1>Action Bar</h1>
+			</div><!-- /header -->
+			<div data-role="content">
+			</div><!-- /content -->
+			<div data-role="footer">
+				<div id="action-bar-area10" data-role="actionbar">
+					<div id="tover" data-role="tab-overflow">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>1 Settings</p>
+					</div>
+					<div data-role="tab" data-href="actionbar.html">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>2 Options</p>
+					</div>
+					<div data-role="tab" data-href="buttons.html">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>3 Options</p>
+					</div>
+					<div data-role="tab" onclick="javascript&colon;location.href='index.html'" >
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>4 Options</p>
+					</div>
+					<div id="aover" data-role="action-overflow">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>4 Options</p>
+					</div>
+				</div>
+
+			</div>
+		</div><!-- /page -->
+		<script>
+			$(document).one("pageinit", function() {
+				$("#aover").bind("vclick", function() {
+					console.log("action overflow pressed");
+					$("#right").panel("open");
+				});
+
+				$("#tover").bind("vclick", function() {
+					console.log("tab overflow pressed");
+					$("#left").panel("open");
+				});
+				$("li").bind("vclick", function() {
+					$("#tover").empty().removeClass("hasContent");
+				});
+				$("[data-role='tab']").bind("vclick", function() {
+					if($(this).data("href")) {
+						$.mobile.changePage( $(this).data("href"), { transition: "slideup"} );
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
