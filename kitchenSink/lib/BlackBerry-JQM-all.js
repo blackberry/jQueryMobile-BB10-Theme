@@ -20962,6 +20962,7 @@ $.mobile.document.bind( "pagecreate create", function( e ) {
 
 			collapse.parent().trigger("create");
 			parent.remove();
+			select.remove();
 
 			setTimeout(function(){
 				select.appendTo(collapse);
