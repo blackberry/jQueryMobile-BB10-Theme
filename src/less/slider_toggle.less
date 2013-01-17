@@ -38,8 +38,17 @@ div.ui-slider {
 
 	.ui-slider-bg {
 		.rounded(1em);
+		border: none;
 	}
 
+	.ui-slider-track{
+		position: relative;
+		overflow: visible;
+		height: 0.3em;
+		margin: 0px;
+		top: 0px;
+	}
+	
 	/*Handle Common Properties*/
 	.ui-btn-inner {
 		/*Dimensions*/
@@ -113,10 +122,40 @@ div.ui-slider {
 	
 	
 	/*Disabled Toggle State*/
-	&.ui-disabled {
+	&.ui-disabled, .ui-slider-track.ui-disabled {
 		opacity: 1;
 	}
 }
+
+//at rule to override the rule inside jquery.mobile.structure.css
+@media all and (min-width: 28em){
+	.ui-field-contain label.ui-slider {
+		vertical-align: top;
+		display: inline-block;
+		width: 20%;
+		margin: 0 2% 0 0;
+	}
+
+	.ui-field-contain div.ui-slider{
+		display: inline-block;
+		margin: 1em 0.5em;
+	}
+	
+	.ui-field-contain.ui-hide-label div.ui-slider {
+		display: block;
+		width: auto;
+	}
+	.ui-field-contain div.ui-slider-switch,
+	.ui-field-contain.ui-hide-label div.ui-slider-switch {
+		display: inline-block;
+		width: 5.5em;
+		margin: 0.5em;
+	}
+	.ui-field-contain div.ui-slider-switch.ui-mini {
+		width: 5em;
+	}
+}
+
 
 /*Toggle Switches*/
 div.ui-slider-switch {

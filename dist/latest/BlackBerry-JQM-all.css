@@ -2471,7 +2471,7 @@ div.ui-slider-switch.ui-mini {
 }
 /* Toggle Switch / Slider - A */
 .ui-slider.ui-slider-switch.ui-btn-down-a,
-.ui-slider.ui-btn-down-a {
+.ui-slider .ui-slider-track.ui-btn-down-a {
   /*Bounding*/
 
   border: 2px solid rgba(0, 0, 0, 0.5);
@@ -2483,7 +2483,7 @@ div.ui-slider-switch.ui-mini {
 
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn {
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn {
   /*Toggle Off: handle grey*/
 
   /*Toggle On: handle blue*/
@@ -2493,7 +2493,7 @@ div.ui-slider-switch.ui-mini {
 
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-up-a .ui-btn-inner,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-up-a .ui-btn-inner {
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-up-a .ui-btn-inner {
   background: #121212;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#404040), to(#272727));
   background-image: -webkit-linear-gradient(#404040, #272727);
@@ -2503,7 +2503,7 @@ div.ui-slider-switch.ui-mini {
   background-image: linear-gradient(#404040, #272727);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn[aria-valuenow="on"] .ui-btn-inner,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn[aria-valuenow="on"] .ui-btn-inner {
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn[aria-valuenow="on"] .ui-btn-inner {
   /*gradient colours sampled from spec image*/
 
   background: #006bb8;
@@ -2516,18 +2516,18 @@ div.ui-slider-switch.ui-mini {
   -webkit-box-shadow: inset 0 1px 1px 0px rgba(255, 255, 255, 0.3);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a,
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a,
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c {
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c {
   /*Aura*/
 
   background: rgba(0, 168, 223, 0.2);
   -webkit-box-shadow: inset 0 0 15px 5px rgba(0, 168, 223, 0.6);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a .ui-btn-inner,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a .ui-btn-inner,
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a .ui-btn-inner,
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c .ui-btn-inner,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c .ui-btn-inner {
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c .ui-btn-inner {
   /*Gradient colours sampled from spec image: light = #3cbce7, dark = #01a8df */
 
   background: #00a8df;
@@ -2539,29 +2539,29 @@ div.ui-slider-switch.ui-mini {
   background-image: linear-gradient(#3cbce7, #01a8e9);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a:before,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a:before,
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-a:before,
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c:before,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c:before {
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn.ui-btn-hover-c:before {
   background: black;
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a a.ui-slider-handle.ui-btn .ui-btn-inner,
-.ui-slider.ui-btn-down-a a.ui-slider-handle.ui-btn .ui-btn-inner {
+.ui-slider .ui-slider-track.ui-btn-down-a a.ui-slider-handle.ui-btn .ui-btn-inner {
   border: 0.05em solid #000;
   -webkit-box-shadow: inset 0 0 1px 2px rgba(255, 255, 255, 0.2);
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a.ui-disabled span.ui-slider-label,
-.ui-slider.ui-btn-down-a.ui-disabled span.ui-slider-label {
+.ui-slider .ui-slider-track.ui-btn-down-a.ui-disabled span.ui-slider-label {
   opacity: 0.2;
   color: #fafafa;
   text-shadow: none;
 }
 .ui-slider.ui-slider-switch.ui-btn-down-a.ui-disabled a.ui-slider-handle.ui-btn.ui-btn-up-a .ui-btn-inner,
-.ui-slider.ui-btn-down-a.ui-disabled a.ui-slider-handle.ui-btn.ui-btn-up-a .ui-btn-inner {
+.ui-slider .ui-slider-track.ui-btn-down-a.ui-disabled a.ui-slider-handle.ui-btn.ui-btn-up-a .ui-btn-inner {
   background: #262626;
   -webkit-box-shadow: none;
 }
 /*Slider Fill - Swatch A*/
-div.ui-slider.ui-btn-down-a .ui-slider-bg {
+div.ui-slider .ui-slider-track.ui-btn-down-a .ui-slider-bg {
   background: #00a8df;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#3a93cb), to(#0676be));
   background-image: -webkit-linear-gradient(#3a93cb, #0676be);
@@ -2573,7 +2573,7 @@ div.ui-slider.ui-btn-down-a .ui-slider-bg {
   /*#025e97*/
 
 }
-div.ui-slider.ui-btn-down-a.ui-disabled .ui-slider-bg {
+div.ui-slider .ui-slider-track.ui-btn-down-a.ui-disabled .ui-slider-bg {
   background: #272727;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#353535), to(#282828));
   background-image: -webkit-linear-gradient(#353535, #282828);
@@ -4816,6 +4816,14 @@ div.ui-slider {
 div.ui-slider .ui-slider-bg {
   -webkit-border-radius: 1em;
   border-radius: 1em;
+  border: none;
+}
+div.ui-slider .ui-slider-track {
+  position: relative;
+  overflow: visible;
+  height: 0.3em;
+  margin: 0px;
+  top: 0px;
 }
 div.ui-slider .ui-btn-inner {
   /*Dimensions*/
@@ -4904,8 +4912,34 @@ div.ui-slider .ui-slider-inneroffset .ui-slider-handle.ui-btn-hover-c .ui-btn-in
   top: 0.5em;
   left: 0.5em;
 }
-div.ui-slider.ui-disabled {
+div.ui-slider.ui-disabled,
+div.ui-slider .ui-slider-track.ui-disabled {
   opacity: 1;
+}
+@media all and (min-width: 28em) {
+  .ui-field-contain label.ui-slider {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+    margin: 0 2% 0 0;
+  }
+  .ui-field-contain div.ui-slider {
+    display: inline-block;
+    margin: 1em 0.5em;
+  }
+  .ui-field-contain.ui-hide-label div.ui-slider {
+    display: block;
+    width: auto;
+  }
+  .ui-field-contain div.ui-slider-switch,
+  .ui-field-contain.ui-hide-label div.ui-slider-switch {
+    display: inline-block;
+    width: 5.5em;
+    margin: 0.5em;
+  }
+  .ui-field-contain div.ui-slider-switch.ui-mini {
+    width: 5em;
+  }
 }
 /*Toggle Switches*/
 div.ui-slider-switch {
