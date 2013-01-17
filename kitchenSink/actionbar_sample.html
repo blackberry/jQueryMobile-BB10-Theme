@@ -21,18 +21,27 @@
 		<title>Action Bar</title>
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
 		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
+
+
+		<script>
+			var meta = document.createElement("meta");
+			meta.setAttribute('name','viewport');
+			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+			document.getElementsByTagName('head')[0].appendChild(meta);
+		</script>
+
 		<script src="lib/BlackBerry-JQM-all.js"></script>
 	</head>
 	<body>
 		<div data-role="page">
-			<div data-role="panel" id="left" data-position="left" data-display="reveal" data-theme="a">
+			<div data-role="panel" id="left" data-position="left" data-display="reveal" data-theme="a" class="bb10-panel">
 				<ul data-role="listview" data-theme="a">
-					<li><a href="#">Acura</a></li>
+					<li class="ui-btn-active"><a href="#">Acura</a></li>
 					<li><a href="#">Audi</a></li>
 					<li><a href="#">BMW</a></li>
 				</ul>
 			</div>
-			<div data-role="panel" id="right" data-position="right" data-display="overlay" data-theme="a">
+			<div data-role="panel" id="right" data-position="right" data-display="overlay" data-theme="a" class="bb10-panel">
 				<div>
 					<ul data-role="listview" data-theme="a">
 						<li><a href="#">Acura</a></li>
@@ -57,7 +66,7 @@
 						<img src="img/generic_81_81_placeholder.png" alt="" />
 						<p>2 Options</p>
 					</div>
-					<div data-role="tab" data-href="buttons.html">
+					<div data-role="tab" data-href="#page2">
 						<img src="img/generic_81_81_placeholder.png" alt="" />
 						<p>3 Options</p>
 					</div>
@@ -73,6 +82,13 @@
 
 			</div>
 		</div><!-- /page -->
+		<div data-role="page" id="page2">
+			<div data-role="header" data-theme="c">
+				<h1>Page 2</h1>
+			</div><!-- /header -->
+			<div data-role="content">
+			</div><!-- /content -->
+		</div><!-- /page -->
 		<script>
 			$(document).one("pageinit", function() {
 				$("#aover").bind("vclick", function() {
@@ -84,8 +100,12 @@
 					console.log("tab overflow pressed");
 					$("#left").panel("open");
 				});
-				$("li").bind("vclick", function() {
+				$(".bb10-panel li").bind("vclick", function() {
 					$("#tover").empty().removeClass("hasContent");
+					$(".ui-panel").panel("close");
+					$(".bb10-panel li").removeClass("ui-btn-active");
+					$(this).addClass("ui-btn-active");
+					$("#tover").html('<img src="img/generic_81_81_placeholder.png" alt=""><p>Audo Settings</p>').addClass("hasContent");
 				});
 				$("[data-role='tab']").bind("vclick", function() {
 					if($(this).data("href")) {

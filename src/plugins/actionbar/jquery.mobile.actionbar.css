@@ -178,7 +178,7 @@
 	font-size: 0.625em;
 	color: #FAFAFA;
 }
-.action-bar-action-item-text p {
+.action-bar-action-item-text p, .action-bar-overflow > p {
 	text-overflow: ellipsis;
 	width: 100%;
 	white-space: nowrap;

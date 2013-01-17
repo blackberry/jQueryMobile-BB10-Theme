@@ -130,11 +130,6 @@
 				.bind( 'actionbarOut', function() {
 					self._animateOut( back, actions );
 				});
-
-			$(".ui-panel").bind("vclick", function() {
-				$(this).panel("close");
-			});
-
 		},
 
 		refresh: function() {
