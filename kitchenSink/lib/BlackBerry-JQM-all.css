@@ -622,7 +622,9 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 	padding-top: 2.6875em;
 }
 .ui-page-footer-fixed {
+	/*
 	padding-bottom: 2.6875em;
+	*/
 }
 .ui-page-header-fullscreen .ui-content,
 .ui-page-footer-fullscreen .ui-content {
@@ -1187,145 +1189,180 @@ span.ui-slider-label-a { z-index: 1; left: 0; text-indent: -1.5em; }
 span.ui-slider-label-b { z-index: 0; right: 0; text-indent: 1.5em;}
 .ui-slider-inline { width: 120px; display: inline-block; }
 
+/* panel */
 
 .ui-panel {
+	width: 17em;
 	min-height: 100%;
-	border-width:0;
+	border-width: 0;
+	position: absolute;
 	top: 0;
 	display: block;
-	width: 17em;
 }
 .ui-panel-closed {
 	width: 0;
 	overflow: hidden;
 }
-
-/* animate class is added to panel and wrapper, toggling on transitions */
-.ui-panel-animate {
-	-webkit-transition: -webkit-transform 350ms ease;
-	-moz-transition: -moz-transform 350ms ease;
-	-o-transition: -o-transform 350ms ease;
-	-ms-transition: -ms-transform 350ms ease;
-	transition: transform 350ms ease;
+.ui-panel-fixed {
+	position: fixed;
+	bottom: -1px; /* fixes gap on Chrome for Android */
+	padding-bottom: 1px;
 }
-
-/* a bit of hardware acceleration for iOS 6 blinking */
-.ui-panel-3dtransforms.ui-panel-content-wrap,
-.ui-panel-3dtransforms ~.ui-panel-content-wrap .ui-header {
-	-webkit-backface-visibility: hidden;
-}
-
-/* don't animate reveal - it stays in place */
-.ui-panel-display-reveal {
-	-webkit-transition: none;
-	-moz-transition: none;
-	-o-transition: none;
-	-ms-transition: none;
-	transition: none;
-}
-
-
-/* z stacking */
-.ui-panel-display-overlay,
-.ui-panel-display-push,
-.ui-panel-content-wrap,
-.ui-panel-dismiss {
-	z-index: 99999;
+.ui-panel-display-overlay {
+	z-index: 1001; /* fixed toolbars have z-index 1000 */
 }
 .ui-panel-display-reveal {
 	z-index: 0;
 }
-.ui-panel,
-.ui-panel.ui-panel-unfixed {
-	position: absolute;
+.ui-panel-display-push {
+	z-index: 999;
 }
-/* display and reveal */
-.ui-panel-3dtransforms {
-	position: fixed;
-}
-
-/* panel default positions */
-.ui-panel-position-left,
-.ui-panel-3dtransforms.ui-panel-position-left.ui-panel-open,
-.ui-panel-3dtransforms.ui-panel-position-left.ui-panel-display-reveal {
-	left: -17em;
-}
-.ui-panel-position-right,
-.ui-panel-3dtransforms.ui-panel-position-right.ui-panel-open,
-.ui-panel-3dtransforms.ui-panel-position-right.ui-panel-display-reveal {
-	right: -17em;
-}
-/* non-3d positioning */
-.ui-panel-position-left.ui-panel-open {
-	left: 0;
-}
-.ui-panel-position-right.ui-panel-open {
-	right: 0;
-}
-
-/* panel open positions */
-.ui-panel-3dtransforms.ui-panel-open,
-.ui-panel-3dtransforms.ui-panel-position-left.ui-panel-display-reveal {
-	-webkit-transform: translateX(17em);
-	-moz-transform: translateX(17em);
-	-ms-transform: translateX(17em);
-	-o-transform: translateX(17em);
-	transform: translateX(17em);
-}
-/* this exception is here to keep reveal in place until the closed class is added, which is after hide */
-.ui-panel-3dtransforms.ui-panel-display-reveal.ui-panel-closed {
-	-webkit-transform: translateX(0);
-	-moz-transform: translateX(0);
-	-ms-transform: translateX(0);
-	-o-transform: translateX(0);
-	transform: translateX(0);
-}
-.ui-panel-3dtransforms.ui-panel-open.ui-panel-position-right,
-.ui-panel-3dtransforms.ui-panel-position-right.ui-panel-display-reveal {
-	-webkit-transform: translateX(-17em);
-	-moz-transform: translateX(-17em);
-	-ms-transform: translateX(-17em);
-	-o-transform: translateX(-17em);
-	transform: translateX(-17em);
-}
-
-/* dismiss */
-.ui-panel-dismiss{
-	position: absolute;
-	top: 0;
-	left:0;
-	height: 100%;
-	width: 100%;
-	display: none;
-}
-.ui-panel-dismiss-open{
-	display: block;
+.ui-panel-inner {
+	padding: 15px;
 }
 
 /* content-wrap */
 .ui-panel-content-wrap {
 	position: relative;
-	background: inherit;
-	z-index: 1;
 	left: 0;
 	min-height: inherit;
+	border: none;
+	z-index: 999;
 }
-.ui-panel-content-wrap-display-overlay {
-	position: static;
-}
-/* a bit of hardware acceleration for iOS 6 blinking */
-.ui-panel-3dtransforms ~.ui-panel-content-wrap ,
-.ui-panel-3dtransforms ~.ui-panel-content-wrap .ui-header-fixed {
-	-webkit-backface-visibility: hidden;
-}
-.ui-panel-3dtransforms ~.ui-panel-content-wrap .ui-header:not(.ui-header-fixed), /* ios4 fix */
+.ui-panel-content-wrap-display-overlay,
+.ui-panel-animate.ui-panel-content-wrap > .ui-header, /* ios4 fix */
 .ui-panel-content-wrap-closed {
 	position: static;
+}
+
+/* dismiss */
+.ui-panel-dismiss {
+	position: absolute;
+	top: 0;
+	left:0;
+	height: 100%;
+	width: 100%;
+	z-index: 1002;
+	display: none;
+}
+.ui-panel-dismiss-open {
+	display: block;
+}
+
+/* animate class is added to panel, wrapper and fixed toolbars */
+.ui-panel-animate {
+	-webkit-transition: -webkit-transform 350ms ease;
+	-moz-transition: -moz-transform 350ms ease;
+	transition: transform 350ms ease;
+}
+
+/* hardware acceleration for smoother transitions */
+.ui-panel-animate.ui-panel:not(.ui-panel-display-reveal),
+.ui-panel-animate.ui-panel:not(.ui-panel-display-reveal) > div,
+.ui-panel-animate.ui-panel-content-wrap,
+.ui-panel-animate.ui-panel-content-fixed-toolbar {
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: translate3d(0,0,0);
+}
+
+/* positioning: panel */
+/* panel left  */
+.ui-panel-position-left {
+	left: -17em;
+}
+/* animated: panel left (for overlay and push) */
+.ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-position-left.ui-panel-display-push {
+	left: 0;
+	-webkit-transform: translate3d(-17em,0,0);
+	-moz-transform: translate3d(-17em,0,0);
+	transform: translate3d(-17em,0,0);
+}
+/* panel left open */
+.ui-panel-position-left.ui-panel-display-reveal, /* negate "panel left" for reveal */
+.ui-panel-position-left.ui-panel-open {
+	left: 0;
+}
+/* animated: panel left open (for overlay and push) */
+.ui-panel-animate.ui-panel-position-left.ui-panel-open.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-position-left.ui-panel-open.ui-panel-display-push {
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+/* panel right */
+.ui-panel-position-right {
+	right: -17em;
+}
+/* animated: panel right (for overlay and push) */
+.ui-panel-animate.ui-panel-position-right.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-position-right.ui-panel-display-push {
+	right: 0;
+	-webkit-transform: translate3d(17em,0,0);
+	-moz-transform: translate3d(17em,0,0);
+	transform: translate3d(17em,0,0);
+}
+/* panel right open */
+.ui-panel-position-right.ui-panel-display-reveal,  /* negate "panel right" for reveal */
+.ui-panel-position-right.ui-panel-open {
+	right: 0;
+}
+/* animated: panel right open (for overlay and push) */
+.ui-panel-animate.ui-panel-position-right.ui-panel-open.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-position-right.ui-panel-open.ui-panel-display-push {
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+/* positioning: content wrap, fixed toolbars and dismiss */
+/* panel left open */
+.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open,
+.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open,
+.ui-panel-dismiss-position-left.ui-panel-dismiss-open {
+	left: 17em;
+}
+/* animated: panel left open (for reveal and push) */
+.ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-reveal,
+.ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push,
+.ui-panel-animate.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal,
+.ui-panel-animate.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push {
+	left: 0;
+	-webkit-transform: translate3d(17em,0,0);
+	-moz-transform: translate3d(17em,0,0);
+	transform: translate3d(17em,0,0);
+}
+/* panel right open */
+.ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open,
+.ui-panel-content-wrap-position-right.ui-panel-content-wrap-open,
+.ui-panel-dismiss-position-right.ui-panel-dismiss-open {
+	left: -17em;
+}
+/* animated: panel right open (for reveal and push) */
+.ui-panel-animate.ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-reveal, 
+.ui-panel-animate.ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push,
+.ui-panel-animate.ui-panel-content-wrap-position-right.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal, 
+.ui-panel-animate.ui-panel-content-wrap-position-right.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push {
+	left: 0;
+	-webkit-transform: translate3d(-17em,0,0);
+	-moz-transform: translate3d(-17em,0,0);
+	transform: translate3d(-17em,0,0);
+}
+/* negate "panel left/right open" for overlay */
+.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-overlay,
+.ui-panel-content-wrap-open.ui-panel-content-wrap-display-overlay {
+	left: 0;
+}
+
+/* always disable overflow-x to prevent zoom issue on Android */
+.ui-page-active.ui-page-panel {
+	overflow-x: hidden;
 }
 
 /* shadows and borders */
 .ui-panel-display-reveal {
 	-webkit-box-shadow: inset -5px 0 5px rgba(0,0,0,.15);
+	-moz-box-shadow: inset -5px 0 5px rgba(0,0,0,.15);
 	box-shadow: inset -5px 0 5px rgba(0,0,0,.15);
 }
 .ui-panel-position-right.ui-panel-display-reveal {
@@ -1347,57 +1384,29 @@ span.ui-slider-label-b { z-index: 0; right: 0; text-indent: 1.5em;}
 	border-right-width: 1px;
 	margin-right: -1px;
 }
+.ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push {
+	margin-left: 1px;
+}
 .ui-panel-display-push.ui-panel-open.ui-panel-position-right {
 	border-left-width: 1px;
 	margin-left: -1px;
 }
-
-/* dismiss and content wrap open positions */
-.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal,
-.ui-panel-dismiss-open.ui-panel-dismiss-display-reveal,
-.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push,
-.ui-panel-dismiss-open.ui-panel-dismiss-display-push,
-.ui-panel-dismiss-open.ui-panel-dismiss-display-overlay {
-	left: 17em;
-}
-.ui-panel-3dtransforms.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal,
-.ui-panel-3dtransforms.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push {
-	-webkit-transform: translateX(17em);
-	-moz-transform: translateX(17em);
-	-ms-transform: translateX(17em);
-	-o-transform: translateX(17em);
-	transform: translateX(17em);
-	left: 0;
-}
-.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right, 
-.ui-panel-dismiss-open.ui-panel-dismiss-display-reveal.ui-panel-dismiss-position-right,
-.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right, 
-.ui-panel-dismiss-open.ui-panel-dismiss-display-push.ui-panel-dismiss-position-right,
-.ui-panel-dismiss-open.ui-panel-dismiss-display-overlay.ui-panel-dismiss-position-right {
-	left: -17em;
-}
-.ui-panel-3dtransforms ~.ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right, 
-.ui-panel-3dtransforms ~.ui-panel-content-wrap-open.ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right {
-	-webkit-transform: translateX(-17em);
-	-moz-transform: translateX(-17em);
-	-ms-transform: translateX(-17em);
-	-o-transform: translateX(-17em);
-	transform: translateX(-17em);
-	left: 0;
-}
-/* while open, page x overflow is disabled */
-.ui-page-active.ui-panel-page-block {
-	overflow-x:hidden;
+.ui-panel-animate.ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push {
+	margin-right: 1px;
 }
 
 /* wrap push on wide viewports once open */
 @media (min-width:55em){
-	.ui-responsive-panel .ui-panel-content-wrap.ui-panel-content-wrap-open-complete.ui-panel-content-wrap-display-push,
-	.ui-responsive-panel .ui-panel-content-wrap.ui-panel-content-wrap-open-complete.ui-panel-content-wrap-display-reveal {
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-push,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-reveal,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-open.ui-panel-content-wrap-display-push,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal {
 		margin-right: 17em;
 	}
-	.ui-responsive-panel .ui-panel-content-wrap.ui-panel-content-wrap-open-complete.ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right,
-	.ui-responsive-panel .ui-panel-content-wrap.ui-panel-content-wrap-open-complete.ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right {
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-open.ui-panel-content-wrap-display-push.ui-panel-content-fixed-toolbar-position-right,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-open.ui-panel-content-wrap-display-reveal.ui-panel-content-fixed-toolbar-position-right,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-open.ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right {
 		margin: 0 0 0 17em;
 	}
 	.ui-responsive-panel .ui-panel-dismiss-display-push {
@@ -4832,11 +4841,17 @@ label.ui-select,
 .action-bar-overflow.tabs {
 	padding-top: 0;
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFEAAABRCAYAAACqj0o2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGNDMxNDAyNTAxMjI2ODExOTEwOUQ3MEEyNjk0NUM2MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxNjE4NThBQzhDQjExMUUxQTU0RjkzMUFGNjYxM0I1NiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxNjE4NThBQjhDQjExMUUxQTU0RjkzMUFGNjYxM0I1NiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk1RjAwQzM5NTMyMDY4MTFCODQwQkE3QkZFQzg0RDU1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkY0MzE0MDI1MDEyMjY4MTE5MTA5RDcwQTI2OTQ1QzYwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3WNeTwAAAZhJREFUeNrsmjGKwkAUhh3xBNsa0iQkTcgJlK08ka2lrTfZGyxYyR4ghIUE0gQEq71CfMIUtjozq/P4fnhMJ7yP//lm/DXTNM2Qm+YgACIQgYiACEQgAhEBEYhABCICIhCBCEQERCACEYgIiEAEIhAREIEIRAREIAJRkRauH9A0TdQA6rrGie8g88yfPMV9SzkOUiuppQIOZ6mT1FaceQ4OUQCWcvxIfSg01Z/UWkD+hh7nvVKAM9vXPvhiMcZslH/FPdwfi+VF98Sjcibf/zHOOzk+FS+WXXAnVlV121y3G+qX1EUJvIvtp7b9hb8n3qtt26jpCbTXP/tkvFks7FYgvoUYZ5wIRMaZccaJOBEn4kSc6O3t3HWd2oylLMvwGUvf9+ozlqIoyFgcRMbiSWQssVxxyFg8jDMZi6sT8zxXnbHY/sLfE+81DEPU9LIs49nHs48fIBBOxIk4ESciIDLOOBGIyPvbeRxHtRlLmqbhMxYBqD5jEZBkLA4iY/EkMpZYtjMZi4dxJmNxdWKSJKozFtvfQ7oKMADEK24WpiEZCgAAAABJRU5ErkJggg==) no-repeat top;
-	-webkit-transition: background-position .5s ease-in;
+	background-position-x: -53px;
+	-webkit-transition: background-position-x .5s ease-in;
 }
-.tabs.hasContent {
-	background-position-x: -70%;
+.action-bar-overflow.tabs.noContent {
+	background-position-x: 50%;
 }
+
+.action-bar-overflow.tabs.noContent > * {
+	opacity: 0;
+}
+
 .hidden {
 	display: none;
 	opacity: 0;
@@ -4904,7 +4919,7 @@ label.ui-select,
 	font-size: 0.625em;
 	color: #FAFAFA;
 }
-.action-bar-action-item-text p {
+.action-bar-action-item-text p, .action-bar-overflow > p {
 	text-overflow: ellipsis;
 	width: 100%;
 	white-space: nowrap;
@@ -5058,6 +5073,14 @@ label.ui-select,
 }
 
 
+@media screen and (orientation: landscape), screen and (device-aspect-ratio: 1/1) {
+	.action-bar {
+		height: 113px;
+	}
+	.action-bar-action-item-text, .action-bar-action-item-text p, .action-bar-overflow > p {
+		display: none;
+	}
+}
 
 /* Dimensions */
 .bb-activity.bb-activity-small {
@@ -5330,108 +5353,17 @@ div.ui-input-search.bb-text-invalid + .bb-validation-icon{
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAB5CAYAAADvRtvsAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3AYLFSAv1dF8NQAAAxxJREFUWMPtlsFuE1cUhv8zc65nxk5INIYg2WpaoiE4VSNEFkGKChKLduFuyIIHYNsXaMUiURaNxBPwAiAhsajEqlI3qcQiYoEEppQGE6Kgxo6TGMeOCWRm7ummmToknpgNbOaXjjSLb/459557zxkgUaJEiRIl+gyi/Yf5s2eHAfwM4AcAwwBWAfwG4JcbL16sRvC8532XYf7163Q6k7MsZEwT7TBE5f17/Pn2bbsdBNM3yuXfad7zhnOO8/TbEyf6mejQpwMRPGg2W2u7u9+YV/P5m1f6+6eOAgHAAJBPpazXWqe5YNvXFACIdF2YAlCw7WucN83BOHBfedMcNNKO04QIjgvHcXb4HfMbS+vB45z3mLfYN4ym1UMae4bRZJ/5jfQGb3OgVL2XBWrL2mSfqA6tj3cmqnPIvNGLc8i8waFSNenBOVSq9nHOYlmVXnIWy6owu+5aL87sumvGqYmJqmiN4+LUxESVRMRYHh/fEd93ul4npXZHSqU+g4h0oFQLWqNbBEq1iEgbAOCbZizsm2YLABgA9pRqxB2mPaUaERwwx5Y8YK53wo247QuYO5yV2ox1VmozgkPm2PMRMtf+h5XajEsj7HTWqVQ1Lg2dSlUjGJlM/GHKZCoRzK67HncP2XXX97sTzhSLFYjoIysoos8Ui5Woi4oIlUdHX+utrfyhXpfN/uMtLX1BRGIAABFJanr69lHOXCzeJaKDOYrIl7WZmVvlQuHl84EBKRcKL2szM7dEZORQ5//vha8AnAdwGsA6gMdEtPIJB9C+5pQaBzAJ4BmAh7O+Hx6C55TyANwZACazRNgGUBd5JcD1Wd//I4LnmN0+wyhdBHLZjtnSBvBQ5N2G1pOzQVAyACBtWT9eEcllRQ7scUZrXBaxs7Y9F5XbS6e/d7qMB1ME50QuRfBQX58pIugWJ5kpgm3PexI3fFIjI6VoITsrKxf+HhpafUYkH8Zftr1TvX//ameZjdbi4vXy2NijTnApl3vVuHfvJxFJH9hnEbEBXPaXl8faCwtDVqGw7UxNLQFYIKJG8gOVKFGiRIk+m/4FAgvduzvQB4EAAAAASUVORK5CYII=);
 }
 
-.ui-panel {
-	-webkit-overflow-scrolling: -blackberry-touch;
-}
-.ui-panel .ui-li:active {
-       background: none;
-}
-
-.overflowMenu {
-	height: 100%;
-	width: 563px;
-	background-color: #121212;
-	-webkit-box-shadow: -10px 0px 25px #121212;
-	-webkit-transition-duration: 0.25s;
-	-webkit-animation-timing-function: ease-out;
-	position: fixed;
-	right: -583px;
-	top: 0px;
-	bottom: 0px;
+.bb10-panel.ui-panel {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-box-pack: center;
-	z-index: 10001;
-	-webkit-transform: translate3d(0,0,0);
 	-webkit-overflow-scrolling: -blackberry-touch;
 }
-.left {
-	right: auto;
-	-webkit-transition-duration: 0.25s;
-	-webkit-animation-timing-function: ease-out;
-	width: 630px;
-	z-index: 0;
-}
 
-.showTabHelper {
-	-webkit-transition-duration: 0.25s;
-	-webkit-animation-timing-function: ease-out;
-}
-
-.showTabOverflow,
-.ui-mobile [data-role="page"].showTabOverflow, .ui-page.showTabOverflow{
-	left: 613px !important;
-}
-
-.showMenu {
-	-webkit-transform:translate(-583px,0);
-}
-
-.hideMenu {
-	-webkit-transform:translate(0px,0);
-}
-
-.overflowMenuContent {
-	font-size: 1.35em;
-}
-
-.menuItem {
-	border-bottom: 2px solid #414141;
-	height: 119px;
-	white-space: nowrap;
-	color: #FAFAFA;
-	font-size: 30pt;
-	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro", "BBAlpha Sans";
-}
-.left .menuItem {
-	font-size: 39pt;
-}
-
-.menuItem:first-child {
-	border-top: 2px solid #414141;
-}
-
-.menuItem img {
-	margin: 20px 19px;
-	vertical-align: middle;
-	max-height: 81px;
-	max-width: 81px;
-}
-.menuItem:active {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAB4BAMAAADbKmU9AAAAD1BMVEUAAAAqKioAqN8AhrMSEhIA6c0IAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfcBh0VGhukvl66AAAAIUlEQVQoz2NggAJmYxAwYGBSAgGFUXqUHqUHIQ3Lp1AAALHJXtU+VmRBAAAAAElFTkSuQmCC) no-repeat left center;
-}
-.menuImage {
-	width: 81px;
-	height: 81px;
-}
-
-.ui-overflow-overlay {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 10000;
-	background-color: black;
-	opacity: 0;
-	display: none;
-}
-
-.showTabOverflow .ui-overflow-overlay {
-	opacity: .3;
-	display: block;
+.bb10-panel .ui-panel-inner {
+	padding: 15px 0;
 }
 
 .overflowMenuContent [data-position="bottom"] {
