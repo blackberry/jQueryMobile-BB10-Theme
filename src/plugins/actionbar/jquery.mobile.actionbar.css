@@ -106,11 +106,17 @@
 .action-bar-overflow.tabs {
 	padding-top: 0;
 	background: url("images_bb/core_actionbar_tab_icon_taboverflow.png") no-repeat top;
-	-webkit-transition: background-position .5s ease-in;
+	background-position-x: -53px;
+	-webkit-transition: background-position-x .5s ease-in;
 }
-.tabs.hasContent {
-	background-position-x: -70%;
+.action-bar-overflow.tabs.noContent {
+	background-position-x: 50%;
 }
+
+.action-bar-overflow.tabs.noContent > * {
+	opacity: 0;
+}
+
 .hidden {
 	display: none;
 	opacity: 0;

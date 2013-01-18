@@ -96,16 +96,24 @@
 					$("#right").panel("open");
 				});
 
+				$("#left").on("panelbeforeopen", function() {
+					$("#tover").addClass("noContent");
+				}).on("panelbeforeclose", function() {
+					$("#tover").removeClass("noContent");
+				});
+
+
 				$("#tover").bind("vclick", function() {
 					console.log("tab overflow pressed");
 					$("#left").panel("open");
+					$("#tover").addClass("noContent");
 				});
 				$(".bb10-panel li").bind("vclick", function() {
-					$("#tover").empty().removeClass("hasContent");
+					$("#tover").empty().addClass("noContent");
 					$(".ui-panel").panel("close");
 					$(".bb10-panel li").removeClass("ui-btn-active");
 					$(this).addClass("ui-btn-active");
-					$("#tover").html('<img src="img/generic_81_81_placeholder.png" alt=""><p>Audo Settings</p>').addClass("hasContent");
+					$("#tover").html('<img src="img/generic_81_81_placeholder.png" alt=""><p>Audo Settings</p>').removeClass("noContent");
 				});
 				$("[data-role='tab']").bind("vclick", function() {
 					if($(this).data("href")) {
