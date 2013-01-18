@@ -89,7 +89,7 @@
                        }
 
 			if( this.tabOverflow.length > 0 ) {
-				var hasContent = (this.tabOverflow.children("p, img").length > 0) ? "hasContent" : "";
+				var hasContent = (this.tabOverflow.children("p, img").length > 0) ? "" : "noContent";
 				this.tabOverflow.addClass('action-bar-overflow tabs action-bar-tab-item ' + hasContent)
 					.prependTo(actions)
 					.bind('vclick', function(event) {
