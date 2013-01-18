@@ -3860,7 +3860,57 @@ around buttons. "ui-btn-inner" represents the actual button face.*/
 }
 /* Global Search & Text Input
 -----------------------------------------------------------------------------------------------------------*/
-input.ui-input-text,
+div.ui-input-text {
+  background-image: none;
+  position: relative;
+  height: inherit;
+  padding: 0;
+  box-shadow: 0 0 1px 2px #bebebe, 0 3px 5px -1px #aaaaaa;
+}
+div.ui-input-text.ui-focus {
+  /*Set Highlight*/
+
+  -webkit-box-shadow: inset 0 0 0px 4px #00a8df;
+  box-shadow: 0 0 0px 4px #00a8df;
+}
+div.ui-input-text input.ui-input-text {
+  /*font*/
+
+  font-size: 40px;
+  font-style: normal;
+  font-weight: normal;
+  font-family: Slate, 'Slate Pro', 'Myriad Pro', 'BBAlpha Sans';
+  /*Dimensions*/
+
+  height: 2.125em;
+  max-height: 2.125em;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  /*Spacing*/
+
+  margin: 0;
+  padding: 0.25em 0.5em;
+  /*Misc*/
+
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  /*overrides*/
+
+  border: none;
+  /*Global Input Swatches*/
+
+  background: #f8f8f8;
+  text-shadow: none;
+  color: #262626;
+}
+div.ui-input-text input.ui-input-text.ui-disabled {
+  font-family: "Slate Pro";
+  font-style: normal;
+  opacity: 0.7;
+  background: #b8b8b8 !important;
+  -webkit-box-shadow: inset 0 0 0 2px #8c8c8c, inset 0 3px 3px 1px #8e8e8e;
+}
 textarea.ui-input-text {
   /*font*/
 
@@ -3892,13 +3942,11 @@ textarea.ui-input-text {
   text-shadow: none;
   color: #262626;
 }
-input.ui-input-text.ui-focus,
 textarea.ui-input-text.ui-focus {
   /*Set Highlight*/
 
   -webkit-box-shadow: inset 0 0 0px 4px #00a8df;
 }
-input.ui-input-text.ui-disabled,
 textarea.ui-input-text.ui-disabled {
   font-family: "Slate Pro";
   font-style: normal;
