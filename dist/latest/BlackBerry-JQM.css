@@ -1660,6 +1660,14 @@ around buttons. "ui-btn-inner" represents the actual button face.*/
 .ui-content .ui-header {
   z-index: 0;
 }
+@media screen and (orientation: landscape), screen and (device-aspect-ratio: 1/1) {
+  .ui-header {
+    height: 101px;
+  }
+  .ui-header .ui-title {
+    top: 0.25em;
+  }
+}
 /* Global Search & Text Input
 -----------------------------------------------------------------------------------------------------------*/
 input.ui-input-text,
@@ -3444,10 +3452,6 @@ label.ui-select,
 	opacity: 0;
 }
 
-.hidden {
-	display: none;
-	opacity: 0;
-}
 .action-bar-tab-item {
 	border-width: 9px 2px 0;
 	border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAACOCAYAAADjJCJwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyNTJBQjAyRUU0MkFFMTExQTRFOUI5QzI3MkVDOUFDMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5NEI5MzJDRjVDNjAxMUUxOEVDOUMyRUYxQjM1QkQ3QSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5NEI5MzJDRTVDNjAxMUUxOEVDOUMyRUYxQjM1QkQ3QSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjREQTYwMjBDQzcyQkUxMTFCQjQ1RUFDNkE4RkUzNERCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjI1MkFCMDJFRTQyQUUxMTFBNEU5QjlDMjcyRUM5QUMzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+j1xvbAAAAHFJREFUeNrslDEKwCAMRaN4kKze/zCuGQMeIu3iImK7Vcr7IIi86SXfHBHydIrcUdWotcqc1pqYWcryIv+Gyrj03vfQMDtnvCHz3AEzuy8qtTKOJzYTiN7ROzxRKVaFVQEConcYB+KLPsiTu6cddAkwACbuf0X+NFcbAAAAAElFTkSuQmCC) 9 2 0 repeat;
@@ -3678,6 +3682,10 @@ label.ui-select,
 	}
 	.action-bar-action-item-text, .action-bar-action-item-text p, .action-bar-overflow > p {
 		display: none;
+	}
+	.bb10-landscape-hidden {
+		display: none;
+		opacity: 0;
 	}
 }
 
