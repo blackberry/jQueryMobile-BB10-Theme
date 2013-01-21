@@ -125,10 +125,6 @@
 	opacity: 0;
 }
 
-.hidden {
-	display: none;
-	opacity: 0;
-}
 .action-bar-tab-item {
 	border-width: 9px 2px 0;
 	border-image: url(images_bb/core_actionbar_tab_inactive.png) 9 2 0 repeat;
@@ -359,5 +355,9 @@
 	}
 	.action-bar-action-item-text, .action-bar-action-item-text p, .action-bar-overflow > p {
 		display: none;
+	}
+	.bb10-landscape-hidden {
+		display: none;
+		opacity: 0;
 	}
 }
