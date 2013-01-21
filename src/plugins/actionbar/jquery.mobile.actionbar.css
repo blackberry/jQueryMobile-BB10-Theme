@@ -109,8 +109,16 @@
 	background-position-x: -53px;
 	-webkit-transition: background-position-x .5s ease-in;
 }
+
+.action-bar-overflow.tabs.active {
+
+	background: url("images_bb/core_actionbar_tab_icon_taboverflow.png") no-repeat top;
+}
 .action-bar-overflow.tabs.noContent {
 	background-position-x: 50%;
+}
+.action-bar-overflow.tabs > * {
+	-webkit-transition: opacity .4s ease-in;
 }
 
 .action-bar-overflow.tabs.noContent > * {
@@ -137,7 +145,7 @@
 
 .action-bar-tab-item.active {
 	border-style: solid;
-	border-width: 9px 0 0 4px;
+	border-width: 9px 0 0 0;
 	border-image: url(images_bb/core_actionbar_tab_active.png) 9 4 0 fill repeat;
 }
 
@@ -337,6 +345,13 @@
 	display: none;
 }
 
+.tabs ~ .action-bar-tab-item:nth-child(-n+4) {
+	display: block;
+}
+
+.tabs ~ .action-bar-tab-item {
+	display: none;
+}
 
 @media screen and (orientation: landscape), screen and (device-aspect-ratio: 1/1) {
 	.action-bar {
