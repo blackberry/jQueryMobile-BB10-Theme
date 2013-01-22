@@ -5192,6 +5192,10 @@ a.ui-btn.ui-slider-handle .ui-btn-inner {
   max-height: 71px;
   max-width: 71px;
 }
+.ui-fullsize .ui-btn-inner {
+  font-size: 16px;
+  padding: 0 0.85em 0 0.85em;
+}
 /* Container */
 .BB10Container {
   border-width: 20px 79px;
