@@ -130,9 +130,9 @@
 				});
 
 				//Handle overflow menu clicks
-				$(".bb10-panel li").bind("vclick", function() {
+				$(".bb10-panel").bind("vclick", function() {
 					//Close the panel
-					$(this).parents(".ui-panel").panel("close");
+					$(this).panel("close");
 				});
 
 				$("#left li").bind("vclick", function() {
