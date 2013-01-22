@@ -18011,7 +18011,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 			transition: "slide", //can be none, fade, slide (slide maps to slideup or slidedown)
 			fullscreen: false,
 			tapToggle: true,
-			tapToggleBlacklist: "a, button, input, select, textarea, .ui-header-fixed, .ui-footer-fixed, .ui-popup",
+			tapToggleBlacklist: "a, button, input, select, textarea, .ui-header-fixed, .ui-footer-fixed, .ui-popup, .ui-panel, .ui-panel-dismiss-open",
 			hideDuringFocus: "input, textarea, select",
 			updatePagePadding: true,
 			trackPersistentToolbars: true,
@@ -18169,7 +18169,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 			if ( this.options.fullscreen ) { return; }
 
 			tbPage = tbPage || $el.closest( ".ui-page" );
-			$( tbPage ).css( "padding-" + ( header ? "top" : "bottom" ), $el.outerHeight() );
+			//$( tbPage ).css( "padding-" + ( header ? "top" : "bottom" ), $el.outerHeight() );
 		},
 
 		_useTransition: function( notransition ) {
@@ -18450,6 +18450,395 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 }));
 
+//>>excludeStart("jqmBuildExclude", pragmas.jqmBuildExclude);
+//>>description: Responsive presentation and behavior for HTML data panels
+//>>label: Panel
+//>>group: Widgets
+//>>css.structure: ../css/structure/jquery.mobile.panel.css
+//>>css.theme: ../css/themes/default/jquery.mobile.theme.css
+
+//define( [ "jquery", "../jquery.mobile.widget", "./page", "./page.sections" ], function( $ ) {
+//>>excludeEnd("jqmBuildExclude");
+(function( $, undefined ) {
+
+$.widget( "mobile.panel", $.mobile.widget, {
+	options: {
+		classes: {
+			panel: "ui-panel",
+			panelOpen: "ui-panel-open",
+			panelClosed: "ui-panel-closed",
+			panelFixed: "ui-panel-fixed",
+			panelInner: "ui-panel-inner",
+			modal: "ui-panel-dismiss",
+			modalOpen: "ui-panel-dismiss-open",
+			pagePanel: "ui-page-panel",
+			pagePanelOpen: "ui-page-panel-open",
+			contentWrap: "ui-panel-content-wrap",
+			contentWrapOpen: "ui-panel-content-wrap-open",
+			contentWrapClosed: "ui-panel-content-wrap-closed",
+			contentFixedToolbar: "ui-panel-content-fixed-toolbar",
+			contentFixedToolbarOpen: "ui-panel-content-fixed-toolbar-open",
+			contentFixedToolbarClosed: "ui-panel-content-fixed-toolbar-closed",
+			animate: "ui-panel-animate"
+		},
+		animate: true,
+		theme: null,
+		position: "left",
+		dismissible: true,
+		display: "reveal", //accepts reveal, push, overlay
+		initSelector: ":jqmData(role='panel')",
+		swipeClose: true,
+		positionFixed: false
+	},
+
+	_panelID: null,
+	_closeLink: null,
+	_page: null,
+	_modal: null,
+	_wrapper: null,
+	_fixedToolbar: null,
+
+	_create: function() {
+		var self = this,
+			$el = self.element,
+			_getPageTheme = function() {
+				var $theme = $.data( self._page[0], "mobilePage" ).options.theme,
+				$pageThemeClass = "ui-body-" + $theme;
+				return $pageThemeClass;
+			}
+			_getPanelInner = function() {
+				var $pannelInner = $el.find( "." + self.options.classes.panelInner );
+				if ( $pannelInner.length === 0 ) {
+					$pannelInner = $el.children().wrapAll( '<div class="' + self.options.classes.panelInner + '" />' ).parent();
+				}
+				return $pannelInner;
+			},
+			_getWrapper = function() {
+				var $wrapper = self._page.find( "." + self.options.classes.contentWrap );
+				if ( $wrapper.length === 0 ) {
+					$wrapper = self._page.children( ".ui-header:not(.ui-header-fixed), .ui-content:not(.ui-popup), .ui-footer:not(.ui-footer-fixed)" ).wrapAll( '<div class="' + self.options.classes.contentWrap + ' ' + _getPageTheme() + '" />' ).parent();
+					if ( $.support.cssTransform3d && !!self.options.animate ) {
+						$wrapper.addClass( self.options.classes.animate );
+					}
+				}
+				return $wrapper;
+			},
+			_getFixedToolbar = function() {
+				var $fixedToolbar = self._page.find( "." + self.options.classes.contentFixedToolbar );
+				if ( $fixedToolbar.length === 0 ) {
+					$fixedToolbar = self._page.find( ".ui-header-fixed, .ui-footer-fixed" ).addClass( self.options.classes.contentFixedToolbar );
+					if ( $.support.cssTransform3d && !!self.options.animate ) {
+						$fixedToolbar.addClass( self.options.classes.animate );
+					}
+				}
+				return $fixedToolbar;
+			};
+
+		// expose some private props to other methods
+		self._panelID = $el.attr( "id" );
+		self._closeLink = $el.find( ":jqmData(rel='close')" );
+		self._page = $el.closest( ":jqmData(role='page')" );
+		self._pageTheme = _getPageTheme();
+		self._pannelInner = _getPanelInner();
+		self._wrapper = _getWrapper();
+		self._fixedToolbar = _getFixedToolbar();
+		self._addPanelClasses();
+		self._wrapper.addClass( this.options.classes.contentWrapClosed );
+		self._fixedToolbar.addClass( this.options.classes.contentFixedToolbarClosed );
+		
+		// add class to page so we can set "overflow-x: hidden;" for it to fix Android zoom issue
+		self._page.addClass( self.options.classes.pagePanel );
+		
+		// if animating, add the class to do so
+		if ( $.support.cssTransform3d && !!self.options.animate ) {
+			this.element.addClass( self.options.classes.animate );
+		}
+
+		self._bindCloseEvents();
+		self._bindLinkListeners();
+		self._bindPageEvents();
+
+		if ( self.options.dismissible ) {
+			self._createModal();
+		}
+
+	},
+
+	_createModal: function( options ) {
+		var self = this;
+		self._modal = $( "<div class='" + self.options.classes.modal + "' data-panelid='" + self._panelID + "'></div>" )
+			.on( "mousedown" , function() {
+				self.close();
+			})
+			.appendTo( this._page );
+	},
+
+	_getPosDisplayClasses: function( prefix ) {
+		return prefix + "-position-" + this.options.position + " " + prefix + "-display-" + this.options.display;
+	},
+
+	_getPanelClasses: function() {
+		var panelClasses = this.options.classes.panel +
+			" " + this._getPosDisplayClasses( this.options.classes.panel ) +
+			" " + this.options.classes.panelClosed;
+
+		if ( this.options.theme ) {
+			panelClasses += " ui-body-" + this.options.theme;
+		}
+		if ( !!this.options.positionFixed ) {
+			panelClasses += " " + this.options.classes.panelFixed;
+		}
+		return panelClasses;
+	},
+
+	_addPanelClasses: function() {
+		this.element.addClass( this._getPanelClasses() );
+	},
+
+	_bindCloseEvents: function() {
+		var self = this;
+		self._closeLink.on( "click.panel" , function( e ) {
+			e.preventDefault();
+			self.close();
+			return false;
+		});
+	},
+
+	_positionPanel: function() {
+		var self = this,
+			pannelInnerHeight = self._pannelInner.height();
+		
+		if ( ( pannelInnerHeight > $.mobile.getScreenHeight() ) || !this.options.positionFixed ) {
+			this._unfixPanel();
+			this._scrollIntoView( pannelInnerHeight );
+		} else {
+			this._fixPanel();
+		}
+	},
+
+	_scrollIntoView: function( pannelInnerHeight ) {
+		if ( pannelInnerHeight < $( window ).scrollTop() ) {
+			window.scrollTo( 0, 0 );
+		}	
+	},
+
+	_bindFixListener: function() {
+		this._on( $( window ), { "throttledresize": "_positionPanel" });
+	},
+
+	_unbindFixListener: function() {
+		this._off( $( window ), "throttledresize" );
+	},
+
+	_unfixPanel: function() {
+		if ( !!this.options.positionFixed ) {
+			this.element.removeClass( this.options.classes.panelFixed );
+		}
+	},
+
+	_fixPanel: function() {
+		if ( !!this.options.positionFixed ) {
+			this.element.addClass( this.options.classes.panelFixed );
+		}
+	},
+
+	_bindLinkListeners: function() {
+		var self = this;
+
+		this._page.on( "click.panel" , "a", function( e ) {
+			if ( this.href.split( "#" )[ 1 ] === self._panelID ) {
+				e.preventDefault();
+				var $link = $( this );
+				$link.addClass( $.mobile.activeBtnClass );
+				self.element.one( "panelopen panelclose", function() {
+					$link.removeClass( $.mobile.activeBtnClass );
+				});
+				self.toggle();
+				return false;
+			}
+		});
+	},
+
+	_bindPageEvents: function() {
+		var self = this;
+		
+		if ( this.option.swipeClose ) {
+			self.element
+				// on swipe, close the panel (should swipe open too?)
+				.on( "swipe.panel" , function( e ) {
+					self.close( true );
+				});
+		}
+		self._page
+			// Close immediately if another panel on the page opens
+			.on( "panelbeforeopen", function( e ) {
+				if ( self._open && e.target !== self.element[ 0 ] ) {
+					self.close( true );
+				}
+			})
+			// clean up open panels after page hide
+			.on(  "pagebeforehide", function( e ) {
+				if ( self._open ) {
+					self.close( true );
+				}
+			})
+			// on escape, close? might need to have a target check too...
+			.on( "keyup.panel", function( e ) {
+				if ( e.keyCode === 27 && self._open ) {
+					self.close( true );
+				}
+			});
+	},
+
+	// state storage of open or closed
+	_open: false,
+
+	_contentWrapOpenClasses: null,
+	_modalOpenClasses: null,
+
+	open: function( immediate ) {
+		if ( !this._open ) {
+			var self = this,
+				o = self.options,
+				complete = function() {
+					self.element.add( self._wrapper ).add( self._fixedToolbar ).off( self._transitionEndEvents, complete );
+					self._page.addClass( o.classes.pagePanelOpen );
+					self._positionPanel();
+					self._bindFixListener();
+					self._trigger( "open" );
+				};
+
+			if ( this.element.closest( ".ui-page-active" ).length < 0 ) {
+				immediate = true;
+			}
+			self._trigger( "beforeopen" );
+
+			if ( !immediate && $.support.cssTransform3d && !!o.animate ) {
+				self.element.add( self._wrapper ).add( self._fixedToolbar ).on( self._transitionEndEvents, complete );
+			} else {
+				setTimeout( complete, 0 );
+			}
+			if ( self.options.theme ) {
+				self._page.removeClass( self._pageTheme ).addClass( "ui-body-" + self.options.theme );
+			}
+			self.element.removeClass( o.classes.panelClosed );
+			self.element.addClass( o.classes.panelOpen );
+			self._contentWrapOpenClasses = self._getPosDisplayClasses( o.classes.contentWrap );
+			self._wrapper.removeClass( o.classes.contentWrapClosed );
+			self._wrapper.addClass( self._contentWrapOpenClasses + " " + o.classes.contentWrapOpen );
+			self._fixedToolbarOpenClasses = self._getPosDisplayClasses( o.classes.contentFixedToolbar );
+			self._fixedToolbar.removeClass( o.classes.contentFixedToolbarClosed );
+			self._fixedToolbar.addClass( self._fixedToolbarOpenClasses + " " + o.classes.contentFixedToolbarOpen );
+			self._modalOpenClasses = self._getPosDisplayClasses( o.classes.modal ) + " " + o.classes.modalOpen;
+			if ( this._modal ) {
+				self._modal.addClass( self._modalOpenClasses );
+			}
+			self._open = true;
+		}
+	},
+
+	close: function( immediate ) {
+		if ( this._open ) {
+			var o = this.options,
+				self = this,
+				complete = function() {
+					if ( self.options.theme ) {
+						self._page.removeClass( "ui-body-" + self.options.theme ).addClass( self._pageTheme );
+					}
+					self.element.add( self._wrapper ).add( self._fixedToolbar ).off( self._transitionEndEvents, complete );
+					self.element.addClass( o.classes.panelClosed );
+					self._wrapper.removeClass( self._contentWrapOpenClasses );
+					self._wrapper.addClass( o.classes.contentWrapClosed );
+					self._fixedToolbar.removeClass( self._fixedToolbarOpenClasses );
+					self._fixedToolbar.addClass( o.classes.contentFixedToolbarClosed );
+					self._page.removeClass( o.classes.pagePanelOpen );
+					self._fixPanel();
+					self._unbindFixListener();
+					self._trigger( "close" );
+				};
+			if ( this.element.closest( ".ui-page-active" ).length < 0 ) {
+				immediate = true;
+			}
+			self._trigger( "beforeclose" );
+
+			if ( !immediate && $.support.cssTransform3d && !!o.animate ) {
+				self.element.add( self._wrapper ).add( self._fixedToolbar ).on( self._transitionEndEvents, complete );
+			} else{
+				setTimeout( complete, 0 );
+			}
+
+			self.element.removeClass( o.classes.panelOpen );
+			if ( this._modal ) {
+				self._modal.removeClass( self._modalOpenClasses );
+			}
+			self._wrapper.removeClass( o.classes.contentWrapOpen );
+			self._fixedToolbar.removeClass( o.classes.contentFixedToolbarOpen );
+
+			self._open = false;
+		}
+	},
+
+	toggle: function( options ) {
+		this[ this._open ? "close" : "open" ]();
+	},
+
+	_transitionEndEvents: "webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd",
+
+	_destroy: function() {
+		var classes = this.options.classes,
+			theme = this.options.theme,
+			hasOtherSiblingPanels = this.element.siblings( "." + classes.panel ).length;
+
+		// create
+		if ( !hasOtherSiblingPanels ) {
+			this._wrapper.children().unwrap();
+			this._page.find( "a" ).unbind( "panelopen panelclose" );
+			this._page.removeClass( classes.pagePanel );
+			if ( this._open ) {
+				this._page.removeClass( classes.pagePanelOpen );
+				if ( theme ) {
+					self._page.removeClass( "ui-body-" + theme ).addClass( self._pageTheme );
+				}
+			}
+		} else if ( this._open ) {
+			this._wrapper.removeClass( classes.contentWrapOpen );
+			this._fixedToolbar.removeClass( classes.contentFixedToolbarOpen );
+			this._page.removeClass( classes.pagePanelOpen );
+			if ( theme ) {
+				self._page.removeClass( "ui-body-" + theme ).addClass( self._pageTheme );
+			}
+		}
+		
+		this._pannelInner.children().unwrap();
+
+		this.element.removeClass( [ this._getPanelClasses(), classes.panelAnimate ].join( " " ) )
+			.off( "swipe.panel" )
+			.off( "panelbeforeopen" )
+			.off( "panelbeforehide" )
+			.off( "keyup.panel" );
+
+		this._closeLink.off( "click.panel" );
+
+		if ( this._modal ) {
+			this._modal.remove();
+		}
+
+		// open and close
+		this.element.off( this._transitionEndEvents )
+			.removeClass( [ classes.panelUnfixed, classes.panelClosed, classes.panelOpen ].join( " " ) );
+	}
+});
+
+//auto self-init widgets
+$( document ).bind( "pagecreate create", function( e ) {
+	$.mobile.panel.prototype.enhanceWithin( e.target );
+});
+
+})( jQuery );
+//>>excludeStart("jqmBuildExclude", pragmas.jqmBuildExclude);
+//});
+//>>excludeEnd("jqmBuildExclude");
+
 /* 
 *  Copyright 2013 Research In Motion Limited.;
 *
@@ -18484,10 +18873,9 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 		_create: function() {
 			this.actionBarArea = $( this.element );
-			this.showActionOverflow = this.showTabOverflow = false;
+			this.actionOverflow = this.tabOverflow = 0;
 
 			var overflow,
-				item, isItemTab,
 				self = this,
 				o = self.options,
 				bar = $( document.createElement( 'div' ) ),
@@ -18495,26 +18883,27 @@ $( document ).bind( "pagecreate create", function( e ) {
 				itemList = this.actionBarArea.children( ":jqmData(role='action'), :jqmData(role='tab')" ),
 				actionList = itemList.filter( ":jqmData(role='action')" ),
 				tabList = itemList.filter( ":jqmData(role='tab')" ),
-				back = this.actionBarArea.children( ":jqmData(role='back')").first(),
-				maxTabs = (actionList.length > 0 || tabList.length > 4) ? 3 : 4,
-				maxActions = ( tabList.not('[data-overflow]').length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
+				back = this.actionBarArea.children( ":jqmData(role='back')").first();
+
+
+			this.tabOverflow = this.actionBarArea.children(":jqmData(role='tab-overflow')");
+			this.actionOverflow = this.actionBarArea.children(":jqmData(role='action-overflow')");
 
 			$("[data-role=footer]").fixedtoolbar({ tapToggle: !o.disableTapToggle });
 
-			this.actionBarArea.addClass('action-bar-area');
-			bar.addClass('action-bar');
+			this.actionBarArea.addClass('action-bar-area action-bar');
 			actions.addClass('action-bar-actions');
 
 			//If text field is selected, hide the actionbar
 			$(".ui-input-text").focus(function(){
-				$(".ui-footer, .ui-header").addClass('hidden');
+				$(".ui-footer").addClass('bb10-landscape-hidden');
 			}).blur(function(){
-				$(".ui-footer, .ui-header").removeClass('hidden');
+				$(".ui-footer").removeClass('bb10-landscape-hidden');
 			});
 
 			//If we have tabs we can not have a back button
 			if (back.length && !tabList.length) {
-				this._createBackButton(back, bar);
+				this._createBackButton(back, this.actionBarArea);
 			} else {
 				back.remove();
 				actions.addClass('action-bar-actions-full-width');
@@ -18526,99 +18915,39 @@ $( document ).bind( "pagecreate create", function( e ) {
 				actions.append(emptyItem);
 			}
 
-			var overflowNeeded = tabList.length > maxTabs,
-				cloneId;
 			for (var i = 0; i < tabList.length; i++) {
-				item = tabList.eq(i);
-				//add to tab overflow
-				if(overflowNeeded || item.data("overflow")) {
-					var clone = item.clone();
-					this._addToTabOverflow(clone);
-
-					if (i > maxTabs - 1 || item.data("overflow")) {
-						item.remove();
-						continue;
-					} else {
-						if(cloneId = clone.attr("id")) {
-							clone.attr('data-for', cloneId).attr('id',"");
-						}
-					}
-				}
-				//Create Tab item
-				actions.append(this._createTabItem(item));
+				actions.append(this._createTabItem(tabList.eq(i)));
 			}
 
 			for (i = 0; i < actionList.length; i++) {
-				item = actionList.eq(i);
-				if (i > maxActions - 1 || item.data("overflow")) {
-					//add to action overflow
-					this._addToActionOverflow(item);
-					continue;
-				}
-				//Create action item
-				actions.append(this._createActionItem(item));
+				actions.append(this._createActionItem(actionList.eq(i)));
 			}
 
-			if( this.showActionOverflow ) {
-				this.overflowActionMenu.find('.menuItem').bind('vclick', {context: self}, this._hideActionOverflow);
-
-				this._createOverflowButton(this.overflowActionMenu)
-					.addClass("actions")
+			if( this.actionOverflow.length > 0 ) {
+				this.actionOverflow.addClass('action-bar-overflow actions')
 					.appendTo(actions)
-					.bind('touchend', function(){
-						self.overflowActionMenu.addClass("showMenu");
+					.bind('vclick', function(){
+						$(self.element).trigger("actionOverflowPressed");
+                                       });
+                       }
 
-						setTimeout(function() {
-							$(document).bind('vclick', {context: self}, self._hideActionOverflow);
-						}, 0);
-					});
-			}
-
-			if( this.showTabOverflow ) {
-
-				var tabBtn = this._createOverflowButton(this.overflowTabMenu)
-					.addClass("tabs")
-					.addClass("action-bar-tab-item")
+			if( this.tabOverflow.length > 0 ) {
+				var hasContent = (this.tabOverflow.children("p, img").length > 0) ? "" : "noContent";
+				this.tabOverflow.addClass('action-bar-overflow tabs action-bar-tab-item ' + hasContent)
 					.prependTo(actions)
 					.bind('vclick', function(event) {
-						$('.ui-page-active, .ui-footer-fixed, .ui-header-fixed')
-							.addClass('showTabHelper')
-							.addClass('showTabOverflow');
-						setTimeout(function() {
-							$(".ui-page-active").one('touchend touchmove', function (event) {
-								$('.ui-page-active, .ui-footer-fixed, .ui-header-fixed')
-									.removeClass('showTabOverflow')
-									.one("webkitTransitionEnd",function() {
-										$(this).removeClass('showTabHelper');
-									});
-							});
-						}, 0);
-					});
-
-					this.overflowTabMenu.find(".menuItem").bind('vclick',function () {
-						$('.ui-page-active, .ui-footer, .ui-header').removeClass('showTabOverflow');
-						tabBtn.empty();
-						$(this).find('img').clone().appendTo(tabBtn);
-						$('<div class="action-bar-action-item-text"><p>' + $(this).text() + '</p></div>').appendTo(tabBtn);
-						tabBtn.css('background-position-x', '-50%');
-
-						$(".action-bar-tab-item:not(.action-bar-overflow)").one('vclick', function() {
-							tabBtn.css('background-position-x', '50%');
-							tabBtn.find('img').remove();
-							tabBtn.find('.action-bar-action-item-text').remove();
-						});
+						$(self.element).trigger("tabOverflowPressed");
 					});
 			}
 
-			bar.append(actions);
+			this.actionBarArea.append(actions);
 
-			this.actionBarArea.append(bar);
 
 			var itemsLen, actionBarItems, itemsize;
 
 			if ( tabList.not('[data-overflow]').length > 0) {
 				actionBarItems = this.actionBarArea.find(".action-bar-tab-item").not(".tabs");
-				itemsize = "action-bar-grid-" + ( actionList.length > 0 ? "tabAction" : "tabs");
+				itemsize = "action-bar-grid-" + ( (actionList.length || this.actionOverflow.length) > 0 ? "tabAction" : "tabs");
 			} else {
 				actionBarItems = this.actionBarArea.find(".action-bar-action-item");
 				itemsize = "action-bar-grid-actions";
@@ -18628,7 +18957,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 			itemsize +=  "-" + ( ( itemsLen > 5 ) ? "e" : String.fromCharCode( 96 + itemsLen ) );
 			actionBarItems.addClass(itemsize);
 
-			$( '.action-bar-action-item' )
+			$( '.action-bar-action-item, .action-bar-tab-item' )
 				.bind( 'vmousedown', function( event ) {
 					$(event.delegateTarget).addClass( 'pressed' );
 				})
@@ -18644,11 +18973,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 				.bind( 'actionbarOut', function() {
 					self._animateOut( back, actions );
 				});
-
-			$("[data-for]").bind("vclick", function(event) {
-				$("#"+$(this).attr("data-for")).trigger(event.type);
-				event.stopImmediatePropagation();
-			});
 		},
 
 		refresh: function() {
@@ -18669,6 +18993,7 @@ $( document ).bind( "pagecreate create", function( e ) {
 
 		_createActionItem: function(item) {
 			item = this._createBarItem(item);
+			item.addClass("action-bar-action-item");
 			return item;
 		},
 
@@ -18684,7 +19009,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 					.addClass('action-bar-action-item-image')
 					.appendTo(item);
 
-			item.addClass('action-bar-action-item');
 
 			if (label) {
 				var actionItemText = $(document.createElement('div'))
@@ -18694,38 +19018,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 			}
 
 			return item;
-		},
-
-		_hideActionOverflow: function (event) {
-			var self = event.data.context;
-			self.overflowActionMenu.removeClass("showMenu");
-			$(document).unbind('vclick', self._hideActionOverflow);
-		},
-
-		_addToTabOverflow: function(item) {
-			if (!this.overflowTabMenu){
-				this.overflowTabMenu = this._createOverflowMenu(this.actionBarArea, true);
-				this.showTabOverflow = true;
-			}
-
-			this._addToOverflow(item, this.overflowTabMenu);
-		},
-
-		_addToActionOverflow: function(item) {
-			if (!this.overflowActionMenu){
-				this.overflowActionMenu = this._createOverflowMenu(this.actionBarArea, false);
-				this.showActionOverflow = true;
-			}
-			this._addToOverflow(item, this.overflowActionMenu);
-		},
-
-		_addToOverflow: function (item, menu) {
-			if ( !menu ) {
-				//init tab overflow
-				this.showTabOverflow = true;
-			}
-			item = this._createOverFlowItem(item);
-			item.appendTo(menu.children(".overflowMenuContent").first());
 		},
 
 		_createBackButton: function(back, appendto) {
@@ -18746,30 +19038,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 					$(event.delegateTarget).removeClass('pressed');
 				})
 				.appendTo(appendto);
-		},
-
-		_createOverflowMenu: function(element, isLeft) {
-			var overflowMenu = $(document.createElement('div'))
-					.addClass("overflowMenu" + ( isLeft ? " left" : "" ) ),
-				overflowMenuContent = $(document.createElement('div'))
-					.addClass("overflowMenuContent")
-					.appendTo(overflowMenu);
-
-			var closestPage = element.closest( '.ui-page' ).first();
-
-			var overlay = document.createElement('div');
-			overlay.className = "ui-overflow-overlay";
-
-			if(isLeft) {
-
-				closestPage.before(overflowMenu);
-
-			} else {
-				closestPage.append(overflowMenu);
-			}
-			closestPage[0].appendChild(overlay);
-
-			return overflowMenu;
 		},
 
 		_createOverflowButton: function(menu) {
