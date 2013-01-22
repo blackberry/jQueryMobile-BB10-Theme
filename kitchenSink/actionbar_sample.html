@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Action Bar</title>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
+
+
+		<script>
+			var meta = document.createElement("meta");
+			meta.setAttribute('name','viewport');
+			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+			document.getElementsByTagName('head')[0].appendChild(meta);
+		</script>
+
+		<script src="lib/BlackBerry-JQM-all.js"></script>
+	</head>
+	<body>
+		<div data-role="page">
+			<!-- This is how you set up your tab overflow menu (left side panel) -->
+			<div data-role="panel" id="left" data-position="left" data-display="reveal" data-theme="a" class="bb10-panel">
+				<ul data-role="listview" data-theme="a">
+					<li id="o1-p" class="inBar ui-btn-active"><a href="#">1 Options</a></li>
+					<li id="o2-p" class="inBar"><a href="#">2 Options</a></li>
+					<li id="o3-p" class="inBar"><a href="#">3 Options</a></li>
+					<li id="o4-p" class="notInBar"><a href="#">4 Options</a></li>
+					<li id="o5-p" class="notInBar"><a href="#">5 Options</a></li>
+				</ul>
+			</div>
+
+			<!-- This is how you set up your action overflow menu (right side panel) -->
+			<div data-role="panel" id="right" data-position="right" data-display="overlay" data-theme="a" class="bb10-panel">
+				<ul data-role="listview" data-theme="a">
+					<li><a href="#">Acura</a></li>
+					<li><a href="#">Audi</a></li>
+					<li><a href="#">BMW</a></li>
+				</ul>
+			</div>
+
+			<div data-role="header" data-theme="c">
+				<h1>Action Bar</h1>
+			</div><!-- /header -->
+			<div data-role="content">
+				<!-- Put your page content here -->
+			</div><!-- /content -->
+			<div data-role="footer">
+				<div data-role="actionbar">
+					<div id="tover" data-role="tab-overflow" class="">
+						<!-- Uncomment this to have initial content in the tab overflow button
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>0 Options</p>
+						-->
+					</div>
+					<div id="o1" data-role="tab" data-href="actionbar.html" class="active">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>1 Options</p>
+					</div>
+					<div id="o2" data-role="tab" data-href="#page2">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>2 Options</p>
+					</div>
+					<div id="o3" data-role="tab" onclick="javascript&colon;location.href='index.html'" >
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>3 Options</p>
+					</div>
+					<div id="o4" data-role="tab" onclick="javascript&colon;location.href='index.html'" >
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>4 Options</p>
+					</div>
+					<div id="o5" data-role="tab" onclick="javascript&colon;location.href='index.html'" >
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>5 Options</p>
+					</div>
+					<div id="aover" data-role="action-overflow">
+					</div>
+				</div>
+
+			</div>
+		</div><!-- /page -->
+		<div data-role="page" id="page2">
+			<div data-role="header" data-theme="c">
+				<h1>Page 2</h1>
+			</div><!-- /header -->
+			<div data-role="content">
+			</div><!-- /content -->
+		</div><!-- /page -->
+		<script>
+			$(document).one("pageinit", function() {
+				var $tabo = $("#tover"),
+				overflowState = $tabo.hasClass("noContent");
+
+
+				//Open the action overflow menu
+				$("#aover").bind("vclick", function() {
+					$("#right").panel("open");
+				});
+
+				$("#left").on("panelbeforeopen", function() {
+					//Save the state of the overflow button
+					overflowState = $tabo.hasClass("noContent");
+					$tabo.addClass("noContent");
+				})
+				.on("panelbeforeclose", function() {
+					//Put the overflow button into the correct state
+					if(!overflowState) {
+						$tabo.removeClass("noContent");
+					}
+				});
+
+				//Open the tab overflow menu
+				$tabo.bind("vclick", function() {
+					$("#left").panel("open");
+				});
+
+				//Handle overflow menu clicks
+				$(".bb10-panel").bind("vclick", function() {
+					//Close the panel
+					$(this).panel("close");
+				});
+
+				$("#left li").bind("vclick", function() {
+					//Clear the active state from any other buttons that may have been set to active
+					$(this).siblings().removeClass("ui-btn-active");
+					//Add the active state to the selected button
+					$(this).addClass("ui-btn-active");
+					//Clear the contents of the tab overflow button
+					//Add class to put the tab overflow icon in the correct position
+					//Clear the active state from all tab buttons in action bar
+					$('[data-role="tab"], [data-role="tab-overflow"]').removeClass("active");
+				});
+
+				$(".inBar").bind("vclick", function() {
+					//Set the active state to the tab in the actionbar
+					$('#' + this.id.slice(0, 2)).addClass("active");
+					$tabo.addClass("noContent").empty();
+					overflowState = true;
+				});
+
+				$(".notInBar").bind("vclick", function() {
+					//Set the active state to the tab overflow button
+					$tabo.empty()
+					.addClass("active")
+					.html('<img src="img/generic_81_81_placeholder.png" alt=""><p>' + $(this).text() + '</p>')
+					.removeClass("noContent");
+					overflowState = false;
+				});
+
+				$("[data-role='tab']").bind("vclick", function() {
+					//Change page on tab click
+					if($(this).data("href")) {
+						$.mobile.changePage( $(this).data("href"), { transition: "slideup"} );
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
