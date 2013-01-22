@@ -111,8 +111,10 @@
 }
 
 .action-bar-overflow.tabs.active {
-
-	background: url("images_bb/core_actionbar_tab_icon_taboverflow.png") no-repeat top;
+	border-image: none;
+	border-color: #00a8df; /*@BBLightBlue*/
+	background-position-x: -50px, 0;
+	background-image: url("images_bb/core_actionbar_tab_icon_taboverflow.png"), -webkit-linear-gradient(top, #3f3f3f 19%, #333 60%)
 }
 .action-bar-overflow.tabs.noContent {
 	background-position-x: 50%;
