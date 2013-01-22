@@ -16,17 +16,21 @@
 
 /* Global Search & Text Input
 -----------------------------------------------------------------------------------------------------------*/
-div.ui-input-text{
+div.ui-input-text, div.ui-input-search{
 
 	background-image: none;
 	position: relative;
 	height: inherit;
+	width: 351px;
+	margin: 0.5em;
 	padding: 0;
-	box-shadow: 0 0 1px 2px #bebebe, 0 3px 5px -1px #aaaaaa;
+	//box-shadow: 0 0 1px 2px #bebebe, 0 3px 5px -1px #aaaaaa;
+	
 	
 	&.ui-focus {
-		.inputFocused();
-		box-shadow: 0 0 0px 4px @global-active-background-color;
+		input.ui-input-text {
+			.inputFocused();
+		}
 	}	
 	
 	input.ui-input-text {
@@ -53,14 +57,12 @@ div.ui-input-text{
 
 		/*overrides*/
 		border: none;
-		//-webkit-box-shadow: inset 0 0 1px 2px #bebebe, inset 0 3px 5px -1px #aaaaaa;
+		-webkit-box-shadow: inset 0 0 1px 2px #bebebe, inset 0 3px 5px -1px #aaaaaa;
 
 		/*Global Input Swatches*/
 		background: @snow;
 		text-shadow: none;
 		color: @primaryDark;
-
-		
 
 		&.ui-disabled {
 			.inputDisabled();
