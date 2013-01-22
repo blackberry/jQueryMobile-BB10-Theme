@@ -116,7 +116,7 @@
 			itemsize +=  "-" + ( ( itemsLen > 5 ) ? "e" : String.fromCharCode( 96 + itemsLen ) );
 			actionBarItems.addClass(itemsize);
 
-			$( '.action-bar-action-item' )
+			$( '.action-bar-action-item, .action-bar-tab-item' )
 				.bind( 'vmousedown', function( event ) {
 					$(event.delegateTarget).addClass( 'pressed' );
 				})
