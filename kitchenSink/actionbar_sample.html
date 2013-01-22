@@ -142,7 +142,6 @@
 					$(this).addClass("ui-btn-active");
 					//Clear the contents of the tab overflow button
 					//Add class to put the tab overflow icon in the correct position
-					$tabo.empty().addClass("noContent");
 					//Clear the active state from all tab buttons in action bar
 					$('[data-role="tab"], [data-role="tab-overflow"]').removeClass("active");
 				});
@@ -150,12 +149,17 @@
 				$(".inBar").bind("vclick", function() {
 					//Set the active state to the tab in the actionbar
 					$('#' + this.id.slice(0, 2)).addClass("active");
+					$tabo.addClass("noContent").empty();
+					overflowState = true;
 				});
 
 				$(".notInBar").bind("vclick", function() {
 					//Set the active state to the tab overflow button
-					$tabo.empty().addClass("active")
-					.html('<img src="img/generic_81_81_placeholder.png" alt=""><p>' + $(this).text() + '</p>').removeClass("noContent");
+					$tabo.empty()
+					.addClass("active")
+					.html('<img src="img/generic_81_81_placeholder.png" alt=""><p>' + $(this).text() + '</p>')
+					.removeClass("noContent");
+					overflowState = false;
 				});
 
 				$("[data-role='tab']").bind("vclick", function() {
