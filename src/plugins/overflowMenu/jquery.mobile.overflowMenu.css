@@ -15,101 +15,17 @@
 */
 
 
-.overflowMenu {
-	height: 100%;
-	width: 563px;
-	background-color: #121212;
-	-webkit-box-shadow: -10px 0px 25px #121212;
-	-webkit-transition-duration: 0.25s;
-	-webkit-animation-timing-function: ease-out;
-	position: fixed;
-	right: -583px;
-	top: 0px;
-	bottom: 0px;
+.bb10-panel.ui-panel {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-box-pack: center;
-	z-index: 10001;
-	-webkit-transform: translate3d(0,0,0);
 	-webkit-overflow-scrolling: -blackberry-touch;
 }
-.left {
-	right: auto;
-	-webkit-transition-duration: 0.25s;
-	-webkit-animation-timing-function: ease-out;
-	width: 630px;
-	z-index: 0;
-}
 
-.showTabHelper {
-	-webkit-transition-duration: 0.25s;
-	-webkit-animation-timing-function: ease-out;
-}
-
-.showTabOverflow,
-.ui-mobile [data-role="page"].showTabOverflow, .ui-page.showTabOverflow{
-	left: 613px !important;
-}
-
-.showMenu {
-	-webkit-transform:translate(-583px,0);
-}
-
-.hideMenu {
-	-webkit-transform:translate(0px,0);
-}
-
-.overflowMenuContent {
-	font-size: 1.35em;
-}
-
-.menuItem {
-	border-bottom: 2px solid #414141;
-	height: 119px;
-	white-space: nowrap;
-	color: #FAFAFA;
-	font-size: 30pt;
-	font-family: "Slate Pro Condensed", "Slate Pro", "Myriad Pro", "BBAlpha Sans";
-}
-.left .menuItem {
-	font-size: 39pt;
-}
-
-.menuItem:first-child {
-	border-top: 2px solid #414141;
-}
-
-.menuItem img {
-	margin: 20px 19px;
-	vertical-align: middle;
-	max-height: 81px;
-	max-width: 81px;
-}
-.menuItem:active {
-	background: url('images_bb/core_crosscutmenu_selected.png') no-repeat left center;
-}
-.menuImage {
-	width: 81px;
-	height: 81px;
-}
-
-.ui-overflow-overlay {
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 10000;
-	background-color: black;
-	opacity: 0;
-	display: none;
-}
-
-.showTabOverflow .ui-overflow-overlay {
-	opacity: .3;
-	display: block;
+.bb10-panel .ui-panel-inner {
+	padding: 15px 0;
 }
 
 .showMenu ~ .ui-overflow-overlay {
