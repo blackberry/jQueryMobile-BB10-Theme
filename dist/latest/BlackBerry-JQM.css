@@ -1677,15 +1677,24 @@ div.ui-input-search {
   background-image: none;
   position: relative;
   height: inherit;
-  width: 351px;
+  width: 100%;
   margin: 0.5em;
   padding: 0;
+  box-shadow: none;
 }
 div.ui-input-text.ui-focus input.ui-input-text,
 div.ui-input-search.ui-focus input.ui-input-text {
   /*Set Highlight*/
 
   -webkit-box-shadow: inset 0 0 0px 4px #00a8df;
+}
+div.ui-input-text.ui-focus input.ui-input-text.bb-text-invalid,
+div.ui-input-search.ui-focus input.ui-input-text.bb-text-invalid {
+  -webkit-box-shadow: inset 0 0 0 4px #d60000;
+}
+div.ui-input-text .bb-text-validator input.ui-input-text,
+div.ui-input-search .bb-text-validator input.ui-input-text {
+  display: inline-block;
 }
 div.ui-input-text input.ui-input-text,
 div.ui-input-search input.ui-input-text {
@@ -1699,7 +1708,7 @@ div.ui-input-search input.ui-input-text {
 
   height: 2.125em;
   max-height: 2.125em;
-  width: 100%;
+  width: 351px;
   display: block;
   box-sizing: border-box;
   /*Spacing*/
@@ -1771,6 +1780,14 @@ textarea.ui-input-text.ui-disabled {
   background: #b8b8b8 !important;
   -webkit-box-shadow: inset 0 0 0 2px #8c8c8c, inset 0 3px 3px 1px #8e8e8e;
 }
+/*Seach Validation*/
+div.bb-text-validator {
+  margin: 20px 0px;
+}
+div.bb-text-validator div.ui-input-search {
+  margin: 0 0 0 0.5em;
+  width: 351px;
+}
 .ui-input-search {
   display: block;
   font-size: 40px;
@@ -1815,6 +1832,11 @@ textarea.ui-input-text.ui-disabled {
   /*background is overrided in search. Gotta override the override*/
 
   padding: 0.25em 1.3em 0.25em 0.5em;
+}
+@media all and (min-width: 28em) {
+  .ui-field-contain div.ui-input-text input.ui-input-text {
+    width: 100%;
+  }
 }
 /*search clear button*/
 .ui-btn.ui-input-clear {
