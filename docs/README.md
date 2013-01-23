@@ -162,6 +162,43 @@ A complete example of the action bar can be found [here](blackberry/jQueryMobile
 
 To see all the diffent ways to have your actionbar look [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar.html).
 
+Overflow Menus (Panels)
+--------------
+To create an overflow menu use the [jQuery Mobile panel](http://jquerymobile.com/demos/1.3.0-beta.1/docs/panels/index.html).
+
+To create a __tab overflow__ menu, create a panel ```data-role="panel"``` with the following options
+* ```data-position="left"``` - To place it on the left side of the screen
+* ```data-display="reveal"``` - So that when we open it, it uses the reveal animation
+* ```data-theme="a"``` - So that it is using the dark theme
+* ```class="bb10-panel"``` - So that the content is centered and has bounce when scrolled
+
+```
+<div data-role="panel" data-position="left" data-display="reveal" data-theme="a" class="bb10-panel">
+	<ul data-role="listview" data-theme="a">
+		<li class="ui-btn-active"><a href="#">1 Options</a></li>
+		<li><a href="#">2 Options</a></li>
+		<li><a href="#">3 Options</a></li>
+		<li><a href="#">4 Options</a></li>
+		<li><a href="#">5 Options</a></li>
+	</ul>
+</div>
+```
+
+To create an __action overflow__ menu, create a panel ```data-role="panel"``` with the following options
+* ```data-position="right"``` - To place it on the left side of the screen
+* ```data-display="overlay"``` - So that when we open it, it uses the overlay animation
+* ```data-theme="a"``` - So that it is using the dark theme
+* ```class="bb10-panel"``` - So that the content is centered and has bounce when scrolled
+
+```
+<div data-role="panel" data-position="right" data-display="overlay" data-theme="a" class="bb10-panel">
+	<ul data-role="listview" data-theme="a">
+		<li><a href="#">Acura</a></li>
+		<li><a href="#">Audi</a></li>
+		<li><a href="#">BMW</a></li>
+	</ul>
+</div>
+```
 Container
 ---------
 ![Container](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Container.png)
