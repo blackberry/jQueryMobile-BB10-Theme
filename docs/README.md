@@ -1,7 +1,20 @@
 Getting Started
 ===============
 **Important note:** The meta tag `<meta name="viewport" content="width=device-width, initial-scale=1">` recommended by jQuery Mobile
-will need to be removed. This is a temporary issue which should be resolved shortly.
+will need to be removed. This is a temporary issue which should be resolved shortly. Alternately you can replace the meta tag with the following meta tag from this [Knowledge Base article](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/How-to-set-up-the-viewport-for-a-BlackBerry-WebWorks-application/ta-p/1943807)
+```
+<head>
+    <title>BlackBerry 10 jQuery Mobile Kitchensink</title>
+    <link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
+    <script>
+        var meta = document.createElement("meta");
+        meta.setAttribute('name','viewport');
+        meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+        document.getElementsByTagName('head')[0].appendChild(meta);
+   </script>
+   <script src="BlackBerry-JQM-all.min.js"></script>
+</head>
+```
 
 The BlackBerry 10 [UI Guidelines](https://developer.blackberry.com/html5/documentation/ui_guidelines.html) should be followed when
 using this theme to ensure the best possible user experience.
