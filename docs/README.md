@@ -199,6 +199,9 @@ To create an __action overflow__ menu, create a panel ```data-role="panel"``` wi
 	</ul>
 </div>
 ```
+
+A complete example of the overflow menus can be found [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar_sample.html).
+
 Container
 ---------
 ![Container](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Container.png)
