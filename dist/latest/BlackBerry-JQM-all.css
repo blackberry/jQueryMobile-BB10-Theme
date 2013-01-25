@@ -3833,7 +3833,7 @@ around buttons. "ui-btn-inner" represents the actual button face.*/
   width: 100%;
   margin: 0;
 }
-.ui-header input.ui-input-text + .ui-btn:not(.ui-input-clear),
+.ui-header div.ui-input-text + .ui-btn:not(.ui-input-clear),
 .ui-header div.ui-input-search + .ui-btn {
   width: 25.3%;
 }
