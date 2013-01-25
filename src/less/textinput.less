@@ -16,70 +16,8 @@
 
 /* Global Search & Text Input
 -----------------------------------------------------------------------------------------------------------*/
-div.ui-input-text, div.ui-input-search{
 
-	background-image: none;
-	position: relative;
-	height: inherit;
-	width: 100%;
-	margin: 0.5em;
-	padding: 0;
-	box-shadow: none;
-	
-	&.ui-focus {
-		input.ui-input-text {
-			.inputFocused();
-			
-			&.bb-text-invalid{
-				-webkit-box-shadow: inset 0 0 0 4px #d60000;
-			}
-			
-		}
-	}	
-	
-	.bb-text-validator input.ui-input-text{
-		display: inline-block;
-	}
-
-	
-	input.ui-input-text {
-		/*font*/
-		font-size: @inputFontSize;
-		font-style: normal;
-		font-weight: normal;
-		font-family: @global-font-family;
-
-		/*Dimensions*/
-		height: @inputHeight;
-		max-height: @inputHeight;
-		width: @inputWidth;
-		//max-width: @inputMaxWidth;
-		display: block;
-		box-sizing: border-box;
-
-		/*Spacing*/
-		margin: 0;
-		padding: @inputPadding;
-
-		/*Misc*/
-		.rounded(@inputRounding);
-
-		/*overrides*/
-		border: none;
-		-webkit-box-shadow: inset 0 0 1px 2px #bebebe, inset 0 3px 5px -1px #aaaaaa;
-
-		/*Global Input Swatches*/
-		background: @snow;
-		text-shadow: none;
-		color: @primaryDark;
-
-		&.ui-disabled {
-			.inputDisabled();
-		}
-	}
-}
-
-textarea.ui-input-text {
+input.ui-input-text, textarea.ui-input-text {
 	/*font*/
 	font-size: @inputFontSize;
 	font-style: normal;
@@ -118,17 +56,7 @@ textarea.ui-input-text {
 	}
 }
 
-/*Seach Validation*/
-div.bb-text-validator {
-	margin: 20px 0px;
-	
-	div.ui-input-search{
-		margin: 0 0 0 0.5em;
-		width: 351px;
-	}	
-}
-	
-.ui-input-search {
+.ui-input-search, div.ui-input-text {
 	display: block;
 	font-size: @inputFontSize;
 
@@ -168,14 +96,9 @@ div.bb-text-validator {
 		display: inline-block;
 		background: @snow; /*background is overrided in search. Gotta override the override*/
 		padding: @inputPadding-y @inputPadding-x + 0.8em @inputPadding-y @inputPadding-x;
+		box-sizing: border-box;
 	}
 }
-
-
-@media all and (min-width: 28em){
-	.ui-field-contain div.ui-input-text input.ui-input-text { width: 100%; }
-}
-
 
 /*search clear button*/
 .ui-btn.ui-input-clear {

@@ -20853,7 +20853,8 @@ $.mobile.document.bind( "pagecreate create", function( e ) {
 				.addClass("bb-text-validator");
 				
 			// Check whether the target is a search input by inspecting its parent. 
-			var parent = $(this.element).parent('div.ui-input-search');
+			var parent = $(this.element).parent('div.ui-input-search, div.ui-input-text');
+			
 			if (parent.length !== 0) {
 				//Bubble the wrapper target to the input's parent
 				parent.addClass("bb-text-validated");
@@ -20880,7 +20881,7 @@ $.mobile.document.bind( "pagecreate create", function( e ) {
 		//@param input		A jQuery object representing the input to validate
 		_validate: function(input) {
 			var pattern = new RegExp(input.attr("pattern")),
-				parent = input.parent('div.ui-input-search'),
+				parent = input.parent('div.ui-input-search, div.ui-input-text'),
 				watched = input.add(parent);
 			
 			if (input.attr('required') === undefined) {
