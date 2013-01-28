@@ -1,7 +1,20 @@
 Getting Started
 ===============
 **Important note:** The meta tag `<meta name="viewport" content="width=device-width, initial-scale=1">` recommended by jQuery Mobile
-will need to be removed. This is a temporary issue which should be resolved shortly.
+will need to be removed. This is a temporary issue which should be resolved shortly. Alternately you can replace the meta tag with the following meta tag from this [Knowledge Base article](http://supportforums.blackberry.com/t5/Web-and-WebWorks-Development/How-to-set-up-the-viewport-for-a-BlackBerry-WebWorks-application/ta-p/1943807)
+```
+<head>
+    <title>BlackBerry 10 jQuery Mobile Kitchensink</title>
+    <link rel="stylesheet" href="BlackBerry-JQM-all.min.css" />
+    <script>
+        var meta = document.createElement("meta");
+        meta.setAttribute('name','viewport');
+        meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+        document.getElementsByTagName('head')[0].appendChild(meta);
+   </script>
+   <script src="BlackBerry-JQM-all.min.js"></script>
+</head>
+```
 
 The BlackBerry 10 [UI Guidelines](https://developer.blackberry.com/html5/documentation/ui_guidelines.html) should be followed when
 using this theme to ensure the best possible user experience.
@@ -69,25 +82,54 @@ To set it durning the ```mobileinit``` event, consider the following.
 ```
 
 
-Add tabs to the action bar using ```<div data-role="tab">```. Each tab should have an image. If there are more than 5 tabs in the actionbar a tab overflow button will be automatically added to the action bar and the remaining tab items will be added to the tab overflow menu.
-To manually place a tab item into the overflow menu use ```<div data-role="tab" data-overflow="true">```.
-Each tab should have an ```img``` and a ```p```.
-
-Add actions to the action bar using ```<div data-role="action">```. Each action should have an image. If there are more than 3 actions in the actionbar an action overflow button will be automatically added to the action bar and the remaining action items will be added to the action overflow menu.
-To manually place an action item into the overflow menu use ```<div data-role="action" data-overflow="true">```.
-Each action should have an ```img``` and a ```p```. To place an action at the bottom of the overflow menu, use ```<div data-role="action" data-overflow="true" data-position="bottom">```, this is reserved for only one action.
-
-To give actions or tabs an active state add the class ```pressed```.
-The following code will remove the pressed state from all actionbar items add the active state to the tab clicked.
-
+Action bar tabs are used for navigational purposes (i.e. switching between views). Add tabs to the action bar using ```<div data-role="tab">```.
+Each tab should have an ```img``` and a ```p```. In landscape mode the text ```p``` will be hidden and the actionbar height will decrease.
 ```
-$('[data-role="tab"]').bind('vclick', function(data) {
-	$(".action-bar-tab-item").removeClass('pressed');
-	$(this).addClass('pressed');
-});
+<div id="o1" data-role="tab">
+    <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
+    <p>1 Settings</p>
+</div>
 ```
+
+To create a tab overflow button use ```data-role="tab-overflow"```. A tab overflow button can be with or without tab content at initialization.
+
+e.g. Without content, shows the tab overflow icon centered in the button.
+```
+<div id="tover" data-role="tab-overflow">
+</div>
+```
+e.g. With content, shows the tab overflow icon offset to the right and the img and p centered in the button.
+```
+<div id="tover" data-role="tab-overflow">
+    <img src="img/generic_81_81_placeholder.png" alt="" />
+    <p>0 Options</p>
+</div>
+```
+
+Content can be added to the tab overflow button at anytime dynamically, just like you would change the contents of any ```div```.
+```
+$("#tover").html("<img src='path/to/image.png' alt="" /><p>My Text</p>");
+```
+
+If the tab overflow content is changing state from not having content to having content or vice versa. The class ```noContent``` will have to be removed or added respectively.
+
+
+Action bar actions are used for actions, such as 'Add', 'Share', and 'Edit'. Add actions to the action bar using ```<div data-role="action">```.
+Each action should have an ```img``` and a ```p```. 
+
+To create an action overflow button user ```data-role="action-overflow"```. An action overflow button does not have text or an image.
+```
+<div id="aover" data-role="action-overflow">
+</div>
+```
+
+Tabs and actions both have a pressed state. This will be applied on 'vmousedown' and removed on 'vmouseup'
+Tabs have an active state. This should be manually added by the developer. 
+To add the active state, add the class ```active``` to the element with ```data-role="tab"```.
 
 An action bar should always been used in a fixed footer.
+
+In landscape mode when a text input has focus the actionbar will be hidden, so that there is enough space when the keyboard is up.
 
 
 
@@ -116,7 +158,49 @@ An action bar should always been used in a fixed footer.
 ```
 In this example a back button is present and an overflow button will be created. Items o1, o2, o3 will appear in the action bar and o4 will appear in the overflow menu.
 
-A complete example of this can be found in samples/actionbar.
+A complete example of the action bar can be found [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar_sample.html).
+
+To see all the diffent ways to have your actionbar look [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar.html).
+
+Overflow Menus (Panels)
+--------------
+To create an overflow menu use the [jQuery Mobile panel](http://jquerymobile.com/demos/1.3.0-beta.1/docs/panels/index.html).
+
+To create a __tab overflow__ menu, create a panel ```data-role="panel"``` with the following options
+* ```data-position="left"``` - To place it on the left side of the screen
+* ```data-display="reveal"``` - So that when we open it, it uses the reveal animation
+* ```data-theme="a"``` - So that it is using the dark theme
+* ```class="bb10-panel"``` - So that the content is centered and has bounce when scrolled
+
+```
+<div data-role="panel" data-position="left" data-display="reveal" data-theme="a" class="bb10-panel">
+	<ul data-role="listview" data-theme="a">
+		<li class="ui-btn-active"><a href="#">1 Options</a></li>
+		<li><a href="#">2 Options</a></li>
+		<li><a href="#">3 Options</a></li>
+		<li><a href="#">4 Options</a></li>
+		<li><a href="#">5 Options</a></li>
+	</ul>
+</div>
+```
+
+To create an __action overflow__ menu, create a panel ```data-role="panel"``` with the following options
+* ```data-position="right"``` - To place it on the left side of the screen
+* ```data-display="overlay"``` - So that when we open it, it uses the overlay animation
+* ```data-theme="a"``` - So that it is using the dark theme
+* ```class="bb10-panel"``` - So that the content is centered and has bounce when scrolled
+
+```
+<div data-role="panel" data-position="right" data-display="overlay" data-theme="a" class="bb10-panel">
+	<ul data-role="listview" data-theme="a">
+		<li><a href="#">Acura</a></li>
+		<li><a href="#">Audi</a></li>
+		<li><a href="#">BMW</a></li>
+	</ul>
+</div>
+```
+
+A complete example of the overflow menus can be found [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar_sample.html).
 
 Container
 ---------
@@ -158,7 +242,7 @@ This is the standard list divider from jQuery Mobile
 ###Solid List Divider
 ![Dividers-list-solid](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers-list-solid.png)
 
-To creat a solid list divider add `ui-header-solid' class to your list-divider
+To create a solid list divider add `ui-header-solid' class to your list-divider
 ```html
 <ul data-role="listview" data-dividertheme="b">
     <li data-role="list-divider" class="ui-header-solid">Last Played</li>

@@ -9,7 +9,11 @@ RIM has been committed to providing the best Web support possible for its BlackB
 
 Check out the getting started [guide](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/README.md).
 
+Looking for __Official Icons__ to take your BlackBerry 10 app to the next level? Get them [here](https://developer.blackberry.com/design/bb10/).
+
 ![logo](/blackberry/jQueryMobile-BB10-Theme/raw/master/kitchenSink/kitchensink.png)
+
+
 Quick Start
 -----------
 ```

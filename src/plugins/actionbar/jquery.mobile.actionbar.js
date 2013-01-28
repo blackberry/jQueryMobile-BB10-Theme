@@ -30,10 +30,9 @@
 
 		_create: function() {
 			this.actionBarArea = $( this.element );
-			this.showActionOverflow = this.showTabOverflow = false;
+			this.actionOverflow = this.tabOverflow = 0;
 
 			var overflow,
-				item, isItemTab,
 				self = this,
 				o = self.options,
 				bar = $( document.createElement( 'div' ) ),
@@ -41,26 +40,27 @@
 				itemList = this.actionBarArea.children( ":jqmData(role='action'), :jqmData(role='tab')" ),
 				actionList = itemList.filter( ":jqmData(role='action')" ),
 				tabList = itemList.filter( ":jqmData(role='tab')" ),
-				back = this.actionBarArea.children( ":jqmData(role='back')").first(),
-				maxTabs = (actionList.length > 0 || tabList.length > 4) ? 3 : 4,
-				maxActions = ( tabList.not('[data-overflow]').length > 0 ) ? ((actionList.length > 1) ? 0 : 1 ): 3;
+				back = this.actionBarArea.children( ":jqmData(role='back')").first();
+
+
+			this.tabOverflow = this.actionBarArea.children(":jqmData(role='tab-overflow')");
+			this.actionOverflow = this.actionBarArea.children(":jqmData(role='action-overflow')");
 
 			$("[data-role=footer]").fixedtoolbar({ tapToggle: !o.disableTapToggle });
 
-			this.actionBarArea.addClass('action-bar-area');
-			bar.addClass('action-bar');
+			this.actionBarArea.addClass('action-bar-area action-bar');
 			actions.addClass('action-bar-actions');
 
 			//If text field is selected, hide the actionbar
 			$(".ui-input-text").focus(function(){
-				$(".ui-footer, .ui-header").addClass('hidden');
+				$(".ui-footer").addClass('bb10-landscape-hidden');
 			}).blur(function(){
-				$(".ui-footer, .ui-header").removeClass('hidden');
+				$(".ui-footer").removeClass('bb10-landscape-hidden');
 			});
 
 			//If we have tabs we can not have a back button
 			if (back.length && !tabList.length) {
-				this._createBackButton(back, bar);
+				this._createBackButton(back, this.actionBarArea);
 			} else {
 				back.remove();
 				actions.addClass('action-bar-actions-full-width');
@@ -72,102 +72,39 @@
 				actions.append(emptyItem);
 			}
 
-			var overflowNeeded = tabList.length > maxTabs,
-				cloneId;
 			for (var i = 0; i < tabList.length; i++) {
-				item = tabList.eq(i);
-				//add to tab overflow
-				if(overflowNeeded || item.data("overflow")) {
-					var clone = item.clone();
-					this._addToTabOverflow(clone);
-
-					if (i > maxTabs - 1 || item.data("overflow")) {
-						item.remove();
-						continue;
-					} else {
-						if(cloneId = clone.attr("id")) {
-							clone.attr('data-for', cloneId).attr('id',"");
-						}
-					}
-				}
-				//Create Tab item
-				actions.append(this._createTabItem(item));
+				actions.append(this._createTabItem(tabList.eq(i)));
 			}
 
 			for (i = 0; i < actionList.length; i++) {
-				item = actionList.eq(i);
-				if (i > maxActions - 1 || item.data("overflow")) {
-					//add to action overflow
-					this._addToActionOverflow(item);
-					continue;
-				}
-				//Create action item
-				actions.append(this._createActionItem(item));
+				actions.append(this._createActionItem(actionList.eq(i)));
 			}
 
-			if( this.showActionOverflow ) {
-				this.overflowActionMenu.find('.menuItem').bind('vclick', {context: self}, this._hideActionOverflow);
-
-				this.overflowActionMenu.bind('vclick', function(event){
-					return false;
-				});
-				this._createOverflowButton(this.overflowActionMenu)
-					.addClass("actions")
+			if( this.actionOverflow.length > 0 ) {
+				this.actionOverflow.addClass('action-bar-overflow actions')
 					.appendTo(actions)
-					.bind('touchend', function(){
-						self.overflowActionMenu.addClass("showMenu");
+					.bind('vclick', function(){
+						$(self.element).trigger("actionOverflowPressed");
+                                       });
+                       }
 
-						setTimeout(function() {
-							$(document).bind('vclick', {context: self}, self._hideActionOverflow);
-						}, 0);
-					});
-			}
-
-			if( this.showTabOverflow ) {
-
-				var tabBtn = this._createOverflowButton(this.overflowTabMenu)
-					.addClass("tabs")
-					.addClass("action-bar-tab-item")
+			if( this.tabOverflow.length > 0 ) {
+				var hasContent = (this.tabOverflow.children("p, img").length > 0) ? "" : "noContent";
+				this.tabOverflow.addClass('action-bar-overflow tabs action-bar-tab-item ' + hasContent)
 					.prependTo(actions)
 					.bind('vclick', function(event) {
-						$('.ui-page-active, .ui-footer-fixed, .ui-header-fixed')
-							.addClass('showTabHelper')
-							.addClass('showTabOverflow');
-						setTimeout(function() {
-							$(".ui-page-active").one('touchend touchmove', function (event) {
-								$('.ui-page-active, .ui-footer-fixed, .ui-header-fixed')
-									.removeClass('showTabOverflow')
-									.one("webkitTransitionEnd",function() {
-										$(this).removeClass('showTabHelper');
-									});
-							});
-						}, 0);
-					});
-
-					this.overflowTabMenu.find(".menuItem").bind('vclick',function () {
-						$('.ui-page-active, .ui-footer, .ui-header').removeClass('showTabOverflow');
-						tabBtn.empty();
-						$(this).find('img').clone().appendTo(tabBtn);
-						$('<div class="action-bar-action-item-text"><p>' + $(this).text() + '</p></div>').appendTo(tabBtn);
-						tabBtn.css('background-position-x', '-50%');
-
-						$(".action-bar-tab-item:not(.action-bar-overflow)").one('vclick', function() {
-							tabBtn.css('background-position-x', '50%');
-							tabBtn.find('img').remove();
-							tabBtn.find('.action-bar-action-item-text').remove();
-						});
+						$(self.element).trigger("tabOverflowPressed");
 					});
 			}
 
-			bar.append(actions);
+			this.actionBarArea.append(actions);
 
-			this.actionBarArea.append(bar);
 
 			var itemsLen, actionBarItems, itemsize;
 
 			if ( tabList.not('[data-overflow]').length > 0) {
 				actionBarItems = this.actionBarArea.find(".action-bar-tab-item").not(".tabs");
-				itemsize = "action-bar-grid-" + ( actionList.length > 0 ? "tabAction" : "tabs");
+				itemsize = "action-bar-grid-" + ( (actionList.length || this.actionOverflow.length) > 0 ? "tabAction" : "tabs");
 			} else {
 				actionBarItems = this.actionBarArea.find(".action-bar-action-item");
 				itemsize = "action-bar-grid-actions";
@@ -177,7 +114,7 @@
 			itemsize +=  "-" + ( ( itemsLen > 5 ) ? "e" : String.fromCharCode( 96 + itemsLen ) );
 			actionBarItems.addClass(itemsize);
 
-			$( '.action-bar-action-item' )
+			$( '.action-bar-action-item, .action-bar-tab-item' )
 				.bind( 'vmousedown', function( event ) {
 					$(event.delegateTarget).addClass( 'pressed' );
 				})
@@ -193,11 +130,6 @@
 				.bind( 'actionbarOut', function() {
 					self._animateOut( back, actions );
 				});
-
-			$("[data-for]").bind("vclick", function(event) {
-				$("#"+$(this).attr("data-for")).trigger(event.type);
-				event.stopImmediatePropagation();
-			});
 		},
 
 		refresh: function() {
@@ -218,6 +150,7 @@
 
 		_createActionItem: function(item) {
 			item = this._createBarItem(item);
+			item.addClass("action-bar-action-item");
 			return item;
 		},
 
@@ -233,7 +166,6 @@
 					.addClass('action-bar-action-item-image')
 					.appendTo(item);
 
-			item.addClass('action-bar-action-item');
 
 			if (label) {
 				var actionItemText = $(document.createElement('div'))
@@ -243,38 +175,6 @@
 			}
 
 			return item;
-		},
-
-		_hideActionOverflow: function (event) {
-			var self = event.data.context;
-			self.overflowActionMenu.removeClass("showMenu");
-			$(document).unbind('vclick', self._hideActionOverflow);
-		},
-
-		_addToTabOverflow: function(item) {
-			if (!this.overflowTabMenu){
-				this.overflowTabMenu = this._createOverflowMenu(this.actionBarArea, true);
-				this.showTabOverflow = true;
-			}
-
-			this._addToOverflow(item, this.overflowTabMenu);
-		},
-
-		_addToActionOverflow: function(item) {
-			if (!this.overflowActionMenu){
-				this.overflowActionMenu = this._createOverflowMenu(this.actionBarArea, false);
-				this.showActionOverflow = true;
-			}
-			this._addToOverflow(item, this.overflowActionMenu);
-		},
-
-		_addToOverflow: function (item, menu) {
-			if ( !menu ) {
-				//init tab overflow
-				this.showTabOverflow = true;
-			}
-			item = this._createOverFlowItem(item);
-			item.appendTo(menu.children(".overflowMenuContent").first());
 		},
 
 		_createBackButton: function(back, appendto) {
@@ -295,28 +195,6 @@
 					$(event.delegateTarget).removeClass('pressed');
 				})
 				.appendTo(appendto);
-		},
-
-		_createOverflowMenu: function(element, isLeft) {
-			var overflowMenu = $(document.createElement('div'))
-					.addClass("overflowMenu" + ( isLeft ? " left" : "" ) ),
-				overflowMenuContent = $(document.createElement('div'))
-					.addClass("overflowMenuContent")
-					.appendTo(overflowMenu);
-
-			var closestPage = element.closest( '.ui-page' ).first();
-
-			if(isLeft) {
-				var overlay = document.createElement('div');
-				overlay.className = "ui-overflow-overlay";
-
-				closestPage.before(overflowMenu);
-				closestPage[0].appendChild(overlay);
-
-			} else {
-				closestPage.append(overflowMenu);
-			}
-			return overflowMenu;
 		},
 
 		_createOverflowButton: function(menu) {

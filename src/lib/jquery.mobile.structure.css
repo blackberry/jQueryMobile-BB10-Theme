@@ -882,7 +882,9 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 	padding-top: 2.6875em;
 }
 .ui-page-footer-fixed {
+	/*
 	padding-bottom: 2.6875em;
+	*/
 }
 .ui-page-header-fullscreen > .ui-content,
 .ui-page-footer-fullscreen > .ui-content {
