@@ -16,21 +16,28 @@
 -->
 
 <html>
-    <head>
-        <meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
 		<title>BlackBerry 10 Jquery Mobile Kitchensink</title>
-        <!--
-        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-        -->
-        <link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
+		<!--
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+		-->
+		<script>
+			var meta = document.createElement("meta");
+			meta.setAttribute('name','viewport');
+			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+			document.getElementsByTagName('head')[0].appendChild(meta);
+		</script>
+
+		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
 		<script src="lib/BlackBerry-JQM-all.js"></script>
-    </head>
-    <body>
-        <div data-role="page">
-            <div data-role="header" data-theme="c" data-position="fixed">
-                <h1>Button Groups</h1>
-            </div><!-- /header -->
-            <div data-role="content">
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-theme="c" data-position="fixed">
+				<h1>Button Groups</h1>
+			</div><!-- /header -->
+			<div data-role="content">
 				<!-- 1 -->
 				<div data-role="controlgroup" data-type="horizontal">
 					<a href="#" data-role="button" >Button</a>
@@ -103,12 +110,12 @@
 					<a href="#" data-role="button" >Button</a>
 					<a href="#" data-role="button" >Button</a>
 				</div>
-            </div><!-- /content -->
+			</div><!-- /content -->
 			<div data-role="footer" data-position="fixed">
 				<div id="action-bar-area" data-role="actionbar">
 					<div data-role="back"></div>
 				</div>
 			</div>
-        </div><!-- /page -->
-    </body>
+		</div><!-- /page -->
+	</body>
 </html>
