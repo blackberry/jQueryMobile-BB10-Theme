@@ -29,6 +29,7 @@
 	$.mobile.listview.prototype.options.icon = false;
 	$.mobile.selectmenu.prototype.options.nativeMenu = false;
 	$.mobile.fixedtoolbar.prototype.options.tapToggle = false;
+	$.mobile.fixedtoolbar.prototype.options.updatePagePadding = false;
 
   });
 })(jQuery);

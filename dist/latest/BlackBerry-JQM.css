@@ -1667,7 +1667,7 @@ around buttons. "ui-btn-inner" represents the actual button face.*/
 .ui-header + .ui-content,
 .ui-listview-filter + .ui-listview {
   position: relative;
-  top: -10px;
+  top: 20px;
 }
 .ui-content .ui-header {
   z-index: 0;
@@ -1678,6 +1678,11 @@ around buttons. "ui-btn-inner" represents the actual button face.*/
   }
   .ui-header .ui-title {
     top: 0.25em;
+  }
+  .ui-header + .ui-content,
+  .ui-listview-filter + .ui-listview {
+    position: relative;
+    top: -10px;
   }
 }
 /* Global Search & Text Input
