@@ -22,6 +22,13 @@
 		<!--
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 		-->
+		<script>
+			var meta = document.createElement("meta");
+			meta.setAttribute('name','viewport');
+			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+			document.getElementsByTagName('head')[0].appendChild(meta);
+		</script>
+
 		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
 		<script src="lib/BlackBerry-JQM-all.js"></script>
 	</head>
@@ -35,6 +42,7 @@
 					<li data-role="list-divider">Light Theme</li>
 					<li><a href="activityIndicator.html" rel="external">Activity Indicator</a></li>
 					<li><a href="actionbar.html" rel="external">Action Bar</a></li>
+					<li><a href="actionbar_sample.html" rel="external">Action Bar Sample</a></li>
 					<li><a href="bb_activity_indicator.html" rel="external">BB10 Activity Indicator</a></li>
 					<li><a href="building_blocks.html" data-transition="cover" >Building Blocks - Light</a></li>
 					<li><a href="buttons.html">Buttons</a></li>

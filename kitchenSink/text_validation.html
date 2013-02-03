@@ -19,6 +19,13 @@
 	<head>
 		<title>Text Validation</title>
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<script>
+			var meta = document.createElement("meta");
+			meta.setAttribute('name','viewport');
+			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
+			document.getElementsByTagName('head')[0].appendChild(meta);
+		</script>
+
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.css" />
 		<link rel="stylesheet" href="lib/BlackBerry-JQM.css" />
 		<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
