@@ -7,11 +7,11 @@ RIM has been committed to providing the best Web support possible for its BlackB
 
 [Live Demo](http://blackberry.github.com/jQueryMobile-BB10-Theme/)
 
-Check out the getting started [guide](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/README.md).
+Check out the getting started [guide](/docs/README.md).
 
 Looking for __Official Icons__ to take your BlackBerry 10 app to the next level? Get them [here](https://developer.blackberry.com/design/bb10/).
 
-![logo](/blackberry/jQueryMobile-BB10-Theme/raw/master/kitchenSink/kitchensink.png)
+![logo](/kitchenSink/kitchensink.png)
 
 
 Quick Start
@@ -43,7 +43,7 @@ Quick Start
 ```
 All of the files you need to get started are in ```dist/``` folder
 
-You will notice that this example does not include jQuery or jQuery mobile, this is because all of the files need are combined into ```BlackBerry-JQM-all.min.css``` and ```BlackBerry-JQM-all.min.js```, this is done to reduce download overhead on the device and improve overall performance. If you prefer to include each file seperatly please check out the [getting started](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/README.md) documentation.
+You will notice that this example does not include jQuery or jQuery mobile, this is because all of the files need are combined into ```BlackBerry-JQM-all.min.css``` and ```BlackBerry-JQM-all.min.js```, this is done to reduce download overhead on the device and improve overall performance. If you prefer to include each file seperatly please check out the [getting started](/docs/README.md) documentation.
 
 
 Building the kitchenSink sample
@@ -55,7 +55,7 @@ Building the kitchenSink sample
 
 Advanced
 --------
-Information on how to modify and build this theme can be found [here](/blackberry/jQueryMobile-BB10-Theme/blob/master/docs/advanced/README.md).
+Information on how to modify and build this theme can be found [here](/docs/advanced/README.md).
 
 Authors
 -------
