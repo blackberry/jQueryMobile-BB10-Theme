@@ -59,7 +59,7 @@ New Controls
 **Note**: All of the core jQuery Mobile controls are still available for use.
 Action Bar
 ----------
-![Actionbar](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Actionbar.png)
+![Actionbar](/figures/Actionbar.png)
 
 To create a actionbar use ```<div data-role="actionbar">```.
 
@@ -158,9 +158,9 @@ In landscape mode when a text input has focus the actionbar will be hidden, so t
 ```
 In this example a back button is present and an overflow button will be created. Items o1, o2, o3 will appear in the action bar and o4 will appear in the overflow menu.
 
-A complete example of the action bar can be found [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar_sample.html).
+A complete example of the action bar can be found [here](/kitchenSink/actionbar_sample.html).
 
-To see all the diffent ways to have your actionbar look [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar.html).
+To see all the diffent ways to have your actionbar look [here](/kitchenSink/actionbar.html).
 
 Overflow Menus (Panels)
 --------------
@@ -200,11 +200,11 @@ To create an __action overflow__ menu, create a panel ```data-role="panel"``` wi
 </div>
 ```
 
-A complete example of the overflow menus can be found [here](blackberry/jQueryMobile-BB10-Theme/blob/master/kitchenSink/actionbar_sample.html).
+A complete example of the overflow menus can be found [here](/kitchenSink/actionbar_sample.html).
 
 Container
 ---------
-![Container](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Container.png)
+![Container](/figures/Container.png)
 
 A container to wrap content in.
 
@@ -216,7 +216,7 @@ An example of this can be found in kitchenSink/building_blocks.html
 
 Divider
 -------
-![Dividers](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers.png)
+![Dividers](/figures/Dividers.png)
 
 Three new dividers have been added for both the dark and light themes
 An example of all these can be found in kitchenSink/building_blocks.html
@@ -231,7 +231,7 @@ An example of all these can be found in kitchenSink/building_blocks.html
 `<hr class="BB10gradient">`
 
 ###List Divider
-![Dividers-list-line](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers-list-line.png)
+![Dividers-list-line](/figures/Dividers-list-line.png)
 
 This is the standard list divider from jQuery Mobile
 ```html
@@ -240,7 +240,7 @@ This is the standard list divider from jQuery Mobile
 ```
 
 ###Solid List Divider
-![Dividers-list-solid](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Dividers-list-solid.png)
+![Dividers-list-solid](/figures/Dividers-list-solid.png)
 
 To create a solid list divider add `ui-header-solid' class to your list-divider
 ```html
@@ -250,7 +250,7 @@ To create a solid list divider add `ui-header-solid' class to your list-divider
 
 Gridview
 --------
-![Gridview](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Gridview.png)
+![Gridview](/figures/Gridview.png)
 
 To create a grid view use ```<div data-role="gridview">```.
 Each row in the grid needs to be separated by ```<div data-role="row">```.
@@ -281,7 +281,7 @@ An example of this can be found in kitchenSink/gridview.html.
 
 Progress Indicator
 ------------------
-![Progress](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/Progress.png)
+![Progress](/figures/Progress.png)
 
 To create a progress indicator use the HTML5 progress tag. ```<progress id="p" value="40" max="100"></progress>```
 
@@ -295,9 +295,9 @@ An example of this can be found in kitchenSink/progress.html
 
 BlackBerry Activity Indicator
 -------
-![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-small.png)
-![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-medium.png)
-![BlackBerry Activity Indicator](/blackberry/jQueryMobile-BB10-Theme/raw/master/docs/figures/bb-activity-large.png)
+![BlackBerry Activity Indicator](/figures/bb-activity-small.png)
+![BlackBerry Activity Indicator](/figures/bb-activity-medium.png)
+![BlackBerry Activity Indicator](/figures/bb-activity-large.png)
 
 Activity indicators are used to notify the user that a processes is in progress. They typically denote a process that will complete in an unspecified amount of time. Alternately they are suitable for processes that will complete relatively quickly; where progress bars are not meaningful.
 
