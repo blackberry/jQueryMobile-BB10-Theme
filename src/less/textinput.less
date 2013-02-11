@@ -16,6 +16,7 @@
 
 /* Global Search & Text Input
 -----------------------------------------------------------------------------------------------------------*/
+
 input.ui-input-text, textarea.ui-input-text {
 	/*font*/
 	font-size: @inputFontSize;
@@ -55,7 +56,7 @@ input.ui-input-text, textarea.ui-input-text {
 	}
 }
 
-.ui-input-search {
+.ui-input-search, div.ui-input-text {
 	display: block;
 	font-size: @inputFontSize;
 
@@ -95,6 +96,7 @@ input.ui-input-text, textarea.ui-input-text {
 		display: inline-block;
 		background: @snow; /*background is overrided in search. Gotta override the override*/
 		padding: @inputPadding-y @inputPadding-x + 0.8em @inputPadding-y @inputPadding-x;
+		box-sizing: border-box;
 	}
 }
 
