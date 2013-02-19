@@ -18909,12 +18909,6 @@ $( document ).bind( "pagecreate create", function( e ) {
 				actions.addClass('action-bar-actions-full-width');
 			}
 
-			if (!itemList || itemList.length < 1) {
-				var emptyItem = $(document.createElement('div'));
-				emptyItem.addClass('action-bar-action-item');
-				actions.append(emptyItem);
-			}
-
 			for (var i = 0; i < tabList.length; i++) {
 				actions.append(this._createTabItem(tabList.eq(i)));
 			}

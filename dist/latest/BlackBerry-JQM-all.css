@@ -4740,7 +4740,9 @@ h5,
 h6,
 a:not(.ui-btn):not(.ui-link-inherit),
 input,
-textarea {
+textarea,
+[contenteditable],
+[contenteditable] * {
   -webkit-user-select: text;
 }
 .ui-footer {
