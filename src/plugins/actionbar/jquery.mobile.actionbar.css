@@ -16,7 +16,7 @@
 
 .action-bar {
 	-webkit-transition: opacity 0.25s ease-in;
-	-webkit-box-shadow: 0px -15px 13px -8px #AAA;
+	-webkit-box-shadow: rgba(50, 50, 50, 0.447059) 0 -10px 20px;
 
 	position: relative;
 	width: 100%;
