@@ -19,26 +19,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Toggle Switch</title>
-		<!--
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		-->
-		<script>
-			var meta = document.createElement("meta");
-			meta.setAttribute('name','viewport');
-			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
-			document.getElementsByTagName('head')[0].appendChild(meta);
-		</script>
-
 		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
 		<script src="lib/BlackBerry-JQM-all.js"></script>
-		<script type="text/javascript">
-			$(document).live('pageinit', function () {
-				$('#flip-disabled').slider('disable');
-			});
-		</script>
+		<script type="text/javascript" src="lib/app.js"></script>
 	</head>
 	<body>
-		<div data-role="page" data-theme="a">
+		<div id="togglePageDark" data-role="page" data-theme="a">
 			<div data-role="header">
 				<h1>Toggle Switches</h1>
 			</div>

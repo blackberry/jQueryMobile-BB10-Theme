@@ -4761,7 +4761,7 @@ label.ui-select,
 
 .action-bar {
 	-webkit-transition: opacity 0.25s ease-in;
-	-webkit-box-shadow: 0px -15px 13px -8px #AAA;
+	-webkit-box-shadow: rgba(50, 50, 50, 0.447059) 0 -10px 20px;
 
 	position: relative;
 	width: 100%;
@@ -5397,7 +5397,7 @@ div.ui-input-search.bb-text-invalid + .bb-validation-icon{
 	display: block;
 }
 
-.overflowMenuContent [data-position="bottom"] {
+.bb10-panel [data-position="bottom"] {
   bottom: 0;
   position:absolute;
   width: 100%;

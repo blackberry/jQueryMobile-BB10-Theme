@@ -19,18 +19,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Forms Gallery</title>
-		<!--
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		-->
-		<script>
-			var meta = document.createElement("meta");
-			meta.setAttribute('name','viewport');
-			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
-			document.getElementsByTagName('head')[0].appendChild(meta);
-		</script>
-
 		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
 		<script src="lib/BlackBerry-JQM-all.js"></script>
+		<script type="text/javascript" src="lib/app.js"></script>
+	</head>
+	<body>
 		<style type="text/css" media="screen">
 			.ui-radio, .ui-radio * { 
 				outline: none;
@@ -55,8 +48,6 @@
 				width: 75%;
 			}
 		</style>
-	</head>
-	<body>
 		<div data-role="page" data-theme="a" >
 			<div data-role="header" data-position="fixed">
 				<h1>Form Gallery</h1>
