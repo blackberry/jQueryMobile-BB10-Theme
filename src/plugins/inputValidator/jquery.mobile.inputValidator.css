@@ -20,13 +20,13 @@
 	margin: 20px;
 }
 
-input.ui-input-text.bb-text-validated,
-div.ui-input-search.bb-text-validated {
+.ui-input-text.bb-text-validated,
+.ui-input-search.bb-text-validated {
 	display: inline-block;
 }
 
-.bb-text-validator > div.ui-input-search, 
-.bb-text-validator > input.ui-input-text {
+.bb-text-validator > .ui-input-search, 
+.bb-text-validator > .ui-input-text {
 	margin: 0px;
 }
 
@@ -42,18 +42,18 @@ div.ui-input-search.bb-text-validated {
 }
 
 /*Validated Icon*/
-input.ui-input-text.bb-text-valid + .bb-validation-icon, 
-div.ui-input-search.bb-text-valid + .bb-validation-icon {
+.ui-input-text.bb-text-valid + .bb-validation-icon, 
+.ui-input-search.bb-text-valid + .bb-validation-icon {
 	background-image: url('images_bb/input_validation.png');
 }
 
-input.ui-input-text.bb-text-empty + .bb-validation-icon{
+.ui-input-text.bb-text-empty + .bb-validation-icon{
 	background-image: none;
 }
 
 /*Error Highlight*/
 .bb-text-invalid.ui-focus .ui-input-text, 
-input.ui-input-text.ui-focus.bb-text-invalid {
+div.ui-input-text.ui-focus.bb-text-invalid .ui-input-text{
 	-webkit-box-shadow: inset 0 0 0 4px #d60000;
 }
 
@@ -62,7 +62,7 @@ input.ui-input-text.ui-focus.bb-text-invalid {
 }
 
 /*Error Icon*/
-input.ui-input-text.bb-text-invalid + .bb-validation-icon,
-div.ui-input-search.bb-text-invalid + .bb-validation-icon{
+.ui-input-text.bb-text-invalid + .bb-validation-icon,
+.ui-input-search.bb-text-invalid + .bb-validation-icon{
 	background-image: url('images_bb/input_error.png');
 }
