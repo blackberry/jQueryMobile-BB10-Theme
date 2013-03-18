@@ -19,18 +19,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Forms Gallery</title>
-		<!--
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		-->
-		<script>
-			var meta = document.createElement("meta");
-			meta.setAttribute('name','viewport');
-			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
-			document.getElementsByTagName('head')[0].appendChild(meta);
-		</script>
-
 		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
 		<script src="lib/BlackBerry-JQM-all.js"></script>
+		<script type="text/javascript" src="lib/app.js"></script>
+		
+	</head>
+	<body>
 		<style type="text/css" media="screen">
 			.ui-radio, .ui-radio * { 
 				outline: none;
@@ -55,8 +49,6 @@
 				width: 75%;
 			}
 		</style>
-	</head>
-	<body>
 		<div data-role="page">
 			<div data-role="header" data-theme="c" data-position="fixed">
 				<h1>Form Gallery</h1>
@@ -99,6 +91,7 @@
 				<!--<select name="select-choice-1" id="select-choice-custom" data-native-menu="false">-->
 				<select name="select-choice-1" id="select-choice-custom">
 					<option value="standard">Standard: 7 day</option>
+					<option value="standard">Standard: 7 dayasdasdasdasdasdasdasdd12312123123334444</option>
 					<option value="rush">Rush: 3 days</option>
 					<option value="express">Express: next day</option>
 					<option value="overnight">Overnight</option>

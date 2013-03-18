@@ -19,18 +19,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Progress Bar</title>
-		<!--
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		-->
-		<script>
-			var meta = document.createElement("meta");
-			meta.setAttribute('name','viewport');
-			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
-			document.getElementsByTagName('head')[0].appendChild(meta);
-		</script>
-
 		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
 		<script src="lib/BlackBerry-JQM-all.js"></script>
+		<script type="text/javascript" src="lib/app.js"></script>
+	</head>
+	<body>
 		<style>
 			#shift {
 				margin: 50px 0px;
@@ -39,8 +32,6 @@
 				margin: 50px 20px;
 			}
 		</style>
-	</head>
-	<body>
 		<div id="progressPage" data-role="page" >
 			<div data-role="header" data-theme="c">
 				<h1>Progress Bar</h1>
@@ -65,39 +56,5 @@
 				</div>
 			</div>
 		</div><!-- /page -->
-		<script type="text/javascript">
-			var p = 0;
-			var error = pause = false;
-
-			function watchProgress() {
-				if( p > 100 || error || pause) {
-					return;
-				}
-				$('#rogress').progressbar("setValue", p);
-				p+= 4;
-				setTimeout(watchProgress, 100);
-			}
-
-$('#progressPage').bind('pageinit', function () {
-		$('#start').bind('vclick', function () {
-			error = false;
-			watchProgress();
-			});
-
-		$('#error').bind('vclick', function () {
-			$('#rogress').progressbar("setError", error = !error);
-			});
-
-		$('#pause').bind('vclick', function () {
-			$('#rogress').progressbar("pause", pause = !pause);
-			});
-
-		$('#reset').bind('vclick', function () {
-			p = 0;
-			error = pause = false;
-			$('#rogress').progressbar("setValue", p);
-			});
-		});
-</script>
 	</body>
 </html>
