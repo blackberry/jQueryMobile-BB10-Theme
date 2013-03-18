@@ -19,59 +19,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>BB10 Activity Indicator</title>
-	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-		<script>
-			var meta = document.createElement("meta");
-			meta.setAttribute('name','viewport');
-			meta.setAttribute('content','initial-scale='+ (1/window.devicePixelRatio) + ',user-scalable=no');
-			document.getElementsByTagName('head')[0].appendChild(meta);
-		</script>
-
 	<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
 	<script src="lib/BlackBerry-JQM-all.js"></script>
-	<script>
-		$('#show').live('click', function () {
-			$.mobile.loading('show');
-		});
-		$('#text').live('click', function() {
-			$.mobile.loading('show', {
-				text: 'Loading',
-				textVisible: true,
-				textonly: true,
-				theme: 'a'
-			});
-		});
-		$('#swatch-a').live('click', function() {
-			$.mobile.loading( 'show', {
-				text: 'Loading',
-				textVisible: true,
-				theme: 'a'
-			});
-		});
-		$('#swatch-a-notext').live('click', function() {
-			$.mobile.loading( 'show', {
-				theme: 'a'
-			});
-		});
-		$('#swatch-c').live('click', function() {
-			$.mobile.loading( 'show', {
-				text: 'Loading',
-				textVisible: true,
-				theme: 'c'
-			});
-		});
-		$('#swatch-c-notext').live('click', function() {
-			$.mobile.loading( 'show', {
-				theme: 'c'
-			});
-		});
-		$('#hide').live('click', function () {
-			$.mobile.loading('hide');
-		});
-	</script>
+	<script type="text/javascript" src="lib/app.js"></script>
+
 </head>
 <body>
-	<div data-role="page" data-theme="c">
+	<div id="activity" data-role="page" data-theme="c">
 		<div data-role="header" data-theme="c"> 
 			<h1>Activity Indicator</h1>
 		</div>
