@@ -38,8 +38,17 @@ div.ui-slider {
 
 	.ui-slider-bg {
 		.rounded(1em);
+		border: none;
 	}
 
+	.ui-slider-track{
+		position: relative;
+		overflow: visible;
+		height: 0.3em;
+		margin: 0;
+		top: 0;
+	}
+	
 	/*Handle Common Properties*/
 	.ui-btn-inner {
 		/*Dimensions*/
@@ -60,60 +69,93 @@ div.ui-slider {
 		-webkit-transition: 0.15s ease-in 0;
 		-webkit-transition-property: top, left;
 	}
-
-	.ui-slider-handle {
-		/*Dimensions*/
-		width: 1.6em;
-		height: 1.6em;
-		min-width: 0;
-		box-sizing: border-box;
-
-		/*overrides*/
-		.noBorder();
-		background: transparent;
-
-		/*Spacing*/
-
-		/*Misc*/
-		display: block;
-		.rounded(50%);
-
-		top: -0.6em;
-		margin-left: -0.8em;
-
-		/*Transition*/
-		-webkit-transition: width 0.15s ease-in 0, height 0.15s ease-in 0, top 0.15s ease-in 0, margin 0.15s ease-in 0, box-shadow 0.15s ease-in 0;
-
-		/* Pressed State*/
-		&.ui-btn-hover-a, &.ui-btn-hover-c {
-
+	
+		.ui-slider-track .ui-slider-handle, .ui-slider-inneroffset .ui-slider-handle
+		{		
 			/*Dimensions*/
-			width: 2.6em;
-			height: 2.6em;
-			.rounded(1.3em);
+			width: 1.6em;
+			height: 1.6em;
+			min-width: 0;
+			box-sizing: border-box;
 
-			/*Positioning*/
-			top: -1.1em;
-			margin-left: -1.3em;
+			/*overrides*/
+			.noBorder();
+			background: transparent;
 
-			/*Aura*/
-			background: rgba(0,168,223,0.2);
-			-webkit-box-shadow: inset 0 0 15px 5px rgba(0,168,223,0.6);
+			/*Spacing*/
 
-			.ui-btn-inner {
-				/*Gradient colours sampled from spec image: light = #3cbce7, dark = #01a8df */
-				.background-img-gradient(@BBLightBlue, rgb(60,188,231), rgb(1,168,233));
-				top: 1.3em - 0.8;
-				left: 1.3em - 0.8;
+			/*Misc*/
+			display: block;
+			.rounded(50%);
+
+			top: -0.6em;
+			margin-left: -0.8em;
+
+			/*Transition*/
+			-webkit-transition: width 0.15s ease-in 0, height 0.15s ease-in 0, top 0.15s ease-in 0, margin 0.15s ease-in 0, box-shadow 0.15s ease-in 0;
+
+			/* Pressed State*/
+			&.ui-btn-hover-a, &.ui-btn-hover-c {
+
+				/*Dimensions*/
+				width: 2.6em;
+				height: 2.6em;
+				.rounded(1.3em);
+
+				/*Positioning*/
+				top: -1.1em;
+				margin-left: -1.3em;
+
+				/*Aura*/
+				background: rgba(0,168,223,0.2);
+				-webkit-box-shadow: inset 0 0 15px 5px rgba(0,168,223,0.6);
+
+				.ui-btn-inner {
+					/*Gradient colours sampled from spec image: light = #3cbce7, dark = #01a8df */
+					.background-img-gradient(@BBLightBlue, rgb(60,188,231), rgb(1,168,233));
+					top: 1.3em - 0.8;
+					left: 1.3em - 0.8;
+				}
 			}
 		}
-	}
-
+	
+	
+	
 	/*Disabled Toggle State*/
-	&.ui-disabled {
+	&.ui-disabled, .ui-slider-track.ui-disabled {
 		opacity: 1;
 	}
 }
+
+//at rule to override the rule inside jquery.mobile.structure.css
+@media all and (min-width: 28em){
+	.ui-field-contain label.ui-slider {
+		vertical-align: top;
+		display: inline-block;
+		width: 20%;
+		margin: 0 2% 0 0;
+	}
+
+	.ui-field-contain div.ui-slider{
+		display: inline-block;
+		margin: 1em 0.5em;
+	}
+	
+	.ui-field-contain.ui-hide-label div.ui-slider {
+		display: block;
+		width: auto;
+	}
+	.ui-field-contain div.ui-slider-switch,
+	.ui-field-contain.ui-hide-label div.ui-slider-switch {
+		display: inline-block;
+		width: 5.5em;
+		margin: 0.5em;
+	}
+	.ui-field-contain div.ui-slider-switch.ui-mini {
+		width: 5em;
+	}
+}
+
 
 /*Toggle Switches*/
 div.ui-slider-switch {
@@ -140,7 +182,7 @@ div.ui-slider-switch {
 	}
 
 	/*Slider Handle*/
-	.ui-slider-handle{
+	.ui-slider-inneroffset .ui-slider-handle{
 
 		/*overrides*/
 		top: 0;
