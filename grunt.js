@@ -183,7 +183,11 @@ module.exports = function(grunt) {
 			latest: {
 				src: 'compiled/*',
 				dest: 'dist/latest/',
-				exclude: [/less/i]
+				exclude: [/less/i],
+				modify : {
+					pattern: /\./,
+					text: '-<%= pkg.version %>'
+				}
 			},
 			versioned: {
 				src: 'compiled/*',
