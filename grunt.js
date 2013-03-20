@@ -56,7 +56,9 @@ module.exports = function(grunt) {
 					'<file_strip_banner:src/less/list.less>', '<file_strip_banner:src/less/slider_toggle.less>',
 					'<file_strip_banner:src/less/radiocheck.less>','<file_strip_banner:src/less/containers.less>',
 					'<file_strip_banner:src/less/pageloader.less>','<file_strip_banner:src/less/controlgroup.less>',
-					'<file_strip_banner:src/less/collapsible.less>','<file_strip_banner:src/less/misc.less>'
+					'<file_strip_banner:src/less/collapsible.less>','<file_strip_banner:src/less/misc.less>',
+					'<file_strip_banner:src/less/oled.less>'
+
 				],
 				dest: 'compiled/<%= pkg.name %>.less'
 			},
