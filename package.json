@@ -20,11 +20,16 @@
   "dependencies": {
     "grunt": "*",
     "grunt-css": "0.2.1",
-    "grunt-less": "*",
-    "grunt-clean": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-clean": "*",
     "grunt-exec": "*",
     "grunt-html": "*",
-    "grunt-image-embed": "*"
+    "grunt-image-embed": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-cssmin": "*"
   },
   "keywords": []
 }

@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
-		pkg: '<json:package.json>',
+		pkg: grunt.file.readJSON('package.json'),
 		meta: {
 			filePrefix: 'BlackBerry-JQM',
 			banner:'/* \n' +
@@ -39,10 +39,6 @@ module.exports = function(grunt) {
 				'* See the License for the specific language governing permissions and \n' +
 				'* limitations under the License.\n' +
 				'*/\n'
-		},
-
-		lint: {
-			files: ['grunt.js', 'src/plugins/**/*.js', 'tests/**/*.js']
 		},
 		htmllint: {
 			all: ["kitchensink/*.html", "samples/*.html"]
@@ -73,7 +69,7 @@ module.exports = function(grunt) {
 				dest: 'compiled/<%= pkg.name %>.js'
 			},
 			theme_css : {
-				src: ['<banner:meta.banner>', '<config:less.all.dest>',
+				src: ['<banner:meta.banner>', '<%= less.all.dest %>',
 					'<file_strip_banner:src/plugins/actionbar/jquery.mobile.actionbar.css>',
 					'<file_strip_banner:src/plugins/activityIndicator/jquery.mobile.activityindicator.css>',
 					'<file_strip_banner:src/plugins/buttonGroup/jquery.mobile.buttonGroup.css>',
@@ -87,49 +83,49 @@ module.exports = function(grunt) {
 				dest: 'compiled/<%= pkg.name %>.css'
 			},
 			all_js: {
-				src: ['src/lib/jquery-1.7.1.js', '<config:min.init.src>',
-					'src/lib/jquery.mobile.js', 'src/lib/panel.js', '<config:concat.theme_js.dest>'
+				src: ['src/lib/jquery-1.7.1.js', '<%= uglify.init.src %>',
+					'src/lib/jquery.mobile.js', 'src/lib/panel.js', '<%= concat.theme_js.dest %>'
 				],
 				dest: 'compiled/<%= pkg.name %>-all.js'
 			},
 			all_css: {
-				src: ['src/lib/jquery.mobile.structure.css', 'src/lib/jquery.mobile.panel.css', '<config:concat.theme_css.dest>'],
+				src: ['src/lib/jquery.mobile.structure.css', 'src/lib/jquery.mobile.panel.css', '<%= concat.theme_css.dest% >'],
 				dest: 'compiled/<%= pkg.name %>-all.css'
 			}
 		},
 		less: {
 			all: {
-				src: '<config:concat.less.dest>',
+				src: '<%= concat.less.dest %>',
 				dest: 'compiled/<%= pkg.name %>-Less.css'
 			}
 		},
-		min: {
+		uglify: {
 			init: {
 				src: 'src/init/<%= pkg.name %>-Init.js',
 				dest: 'compiled/<%= pkg.name %>-Init.min.js'
 			},
 			dist: {
-				src: '<config:concat.theme_js.dest>',
+				src: '<%= concat.theme_js.dest %>',
 				dest: 'compiled/<%= pkg.name %>.min.js'
 			},
 			all: {
-				src: '<config:concat.all_js.dest>',
+				src: '<%= concat.all_js.dest %>',
 				dest: 'compiled/<%= pkg.name %>-all.min.js'
 			}
 		},
 		cssmin: {
 			dist: {
-				src: '<config:concat.theme_css.dest>',
+				src: '<%= concat.theme_css.dest %>',
 				dest: 'compiled/<%= pkg.name %>.min.css'
 			},
 			all: {
-				src: ['<config:concat.all_css.dest>'],
+				src: ['<%= concat.all_css.dest %>'],
 				dest: 'compiled/<%= pkg.name %>-all.min.css'
 			}
 		},
 		watch: {
 			watchables: {
-				files: ['<config:lint.files>', 'src/less/*.less', 'src/plugins/**/*.css'],
+				files: ['<%= lint.files %>', 'src/less/*.less', 'src/plugins/**/*.css'],
 				tasks: 'default'
 			}
 		},
@@ -148,24 +144,25 @@ module.exports = function(grunt) {
 				undef: true,
 				boss: true,
 				eqnull: true,
-				browser: true
+				browser: true,
+				globals: {
+					jQuery: true,
+					"$": true,
+					module: true,
+					ok: true,
+					test: true,
+					asyncTest: true,
+					same: true,
+					start: true,
+					stop: true,
+					expect: true,
+					equal: true,
+					notEqual: true
+				}
 			},
-			globals: {
-				jQuery: true,
-				"$": true,
-				module: true,
-				ok: true,
-				test: true,
-				asyncTest: true,
-				same: true,
-				start: true,
-				stop: true,
-				expect: true,
-				equal: true,
-				notEqual: true
-			}
+			
+			files: ['Gruntfile.js', 'src/plugins/**/*.js', 'tests/**/*.js']
 		},
-		uglify: {},
 		copy: {
 			images: {
 				src: ['src/plugins/**/*.png', 'src/assets/*.png'],
@@ -202,14 +199,14 @@ module.exports = function(grunt) {
 		},
 		imageEmbed: {
 			less: {
-				src:  '<config:less.all.dest>',
-				dest: '<config:less.all.dest>',
+				src:  '<%= less.all.dest %>',
+				dest: '<%= less.all.dest %>',
 				deleteAfterEncoding : false,
 				options: {}
 			},
 			theme_css: {
-				src:  '<config:concat.theme_css.dest>',
-				dest: '<config:concat.theme_css.dest>',
+				src:  '<%= concat.theme_css.dest %>',
+				dest: '<%= concat.theme_css.dest %>',
 				deleteAfterEncoding : false,
 				options: {}
 			}
@@ -217,15 +214,20 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'lint concat:less less copy:images copy:init_js imageEmbed:less concat imageEmbed:theme_css concat:all_css min cssmin copy:kitchenLib');
+	grunt.registerTask('default', ['jshint', 'concat:less', 'less', 'copy:images', 'copy:init_js', 'imageEmbed:less', 'concat', 'imageEmbed:theme_css', 'concat:all_css', 'uglify', 'cssmin', 'copy:kitchenLib']);
 	grunt.registerTask('latest', 'default copy:latest');
 	grunt.registerTask('release', 'latest copy:versioned');
 	grunt.registerTask('htmllint', 'htmllint');
 	grunt.loadNpmTasks('grunt-html');
 	grunt.loadNpmTasks('grunt-css');
-	grunt.loadNpmTasks('grunt-less');
-	grunt.loadNpmTasks('grunt-clean');
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-image-embed');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadTasks('src/tasks');
 };
