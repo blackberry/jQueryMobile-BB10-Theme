@@ -1,46 +1,45 @@
 {
-  "name": "BlackBerry-JQM",
-  "title": "BlackBerry 10 - jQuery Mobile Theme",
-  "description": "jQuery Mobile Theme for BlackBerry 10",
-  "version": "0.9.1",
-  "homepage": "",
-  "author": {
-    "name": "Research In Motion Limited."
-  },
-  "repository": {
-    "type": "git",
-    "url": "none"
-  },
-  "bugs": {
-    "url": ""
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
-  "devDependencies": {
-    "grunt": "0.4.x",
+	"name": "BlackBerry-JQM",
+	"title": "BlackBerry 10 - jQuery Mobile Theme",
+	"description": "jQuery Mobile Theme for BlackBerry 10",
+	"version": "0.9.1",
+	"homepage": "",
+	"author": {
+		"name": "Research In Motion Limited."
+	},
+	"repository": {
+		"type": "git",
+		"url": "none"
+	},
+	"bugs": {
+		"url": ""
+	},
+	"licenses": [
+		{
+			"type": "MIT"
+		}
+	],
+	"devDependencies": {
+		"grunt": "0.4.x",
 	"grunt-init": "*",
 	"grunt-contrib-concat": "*",
 	"grunt-contrib-jshint": "*",
 	"grunt-contrib-uglify": "*",
 	"grunt-contrib-cssmin": "*",
-    "grunt-css": "*",
-    "grunt-contrib-less": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-exec": "*",
-    "grunt-html": "*",
-    "grunt-image-embed": "*"
-  },
-  "main": "Gruntfile.js",
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "scripts": {
-    "test": "grunt jshint",
-    "lint": "grunt jshint",
-    "all": "grunt"
-  },
-  "keywords": []
+		"grunt-css": "*",
+		"grunt-contrib-less": "*",
+		"grunt-contrib-clean": "*",
+		"grunt-exec": "*",
+		"grunt-html": "*",
+		"grunt-image-embed": "*"
+	},
+	"main": "Gruntfile.js",
+	"engines": {
+		"node": ">= 0.8.0"
+	},
+	"scripts": {
+		"test": "grunt jshint",
+		"all": "grunt"
+	},
+	"keywords": []
 }
