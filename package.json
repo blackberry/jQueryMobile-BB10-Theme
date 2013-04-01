@@ -37,5 +37,10 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "scripts": {
+    "test": "grunt jshint",
+    "lint": "grunt jshint",
+    "all": "grunt"
+  },
   "keywords": []
 }
