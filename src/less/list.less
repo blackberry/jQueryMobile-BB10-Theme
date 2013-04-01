@@ -74,14 +74,13 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 	}
 
 	&.ui-btn-down-c, &.ui-btn-down-a {
+		border-width: 0;
 		.ui-btn-inner {
-			border-color: @BBLightBlue;
 			box-shadow: inset 0px 0px 0px 4px @BBLightBlue;
-			border-width: 4px;
+			border-color: @BBLightBlue;
 		}
-		.ui-li-thumb, .ui-listview .ui-li-icon {
-			max-height: 113px;
-			max-width: 113px;
+		img {
+			-webkit-mask-box-image: url(images_bb/list-item-selected-img-mask.png);
 		}
 	}
 
@@ -182,6 +181,7 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 }
 
 .ui-li-heading, .ui-li .ui-btn-text {
+	text-overflow: -blackberry-fade;
 	font-size: @global-listview-title-font-size;
 	font-weight: normal;
 	& , .ui-li-desc {
