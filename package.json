@@ -14,17 +14,28 @@
   "bugs": {
     "url": ""
   },
-  "licenses": [{
-    "type": "MIT"
-  }], 
-  "dependencies": {
-    "grunt": "*",
-    "grunt-css": "0.2.1",
-    "grunt-less": "*",
-    "grunt-clean": "*",
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "0.4.x",
+	"grunt-init": "*",
+	"grunt-contrib-concat": "*",
+	"grunt-contrib-jshint": "*",
+	"grunt-contrib-uglify": "*",
+	"grunt-contrib-cssmin": "*",
+    "grunt-css": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-clean": "*",
     "grunt-exec": "*",
     "grunt-html": "*",
     "grunt-image-embed": "*"
+  },
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
   },
   "keywords": []
 }
