@@ -6,8 +6,3 @@ before_script:
 branches:
   only:
     - master
-env:
-  - JQUERIES=1.7.2
-  - JQUERIES=1.8.3
-  - JQUERIES=1.9.1
-  - JQUERIES=git
