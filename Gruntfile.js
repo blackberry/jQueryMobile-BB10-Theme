@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 					'src/less/list.less', 'src/less/slider_toggle.less',
 					'src/less/radiocheck.less','src/less/containers.less',
 					'src/less/pageloader.less','src/less/controlgroup.less',
-					'src/less/collapsible.less','src/less/misc.less'
+					'src/less/collapsible.less','src/less/misc.less', 'src/less/oled.less'
 				],
 				dest: 'compiled/<%= pkg.name %>.less'
 			},
