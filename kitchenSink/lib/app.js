@@ -18,6 +18,9 @@ App.init = function () {
 	$("#togglePage, #togglePageDark").live("pageinit", function(){
 		App.page.toggle.init();
 	});
+	$("#actionBarSample").live("pageinit", function() {
+		App.page.actionBarSample.init();
+	});
 }
 
 App.utils = {
@@ -34,7 +37,8 @@ App.page = {
 	bb_activity: {},
 	progress: {},
 	slider: {},
-	toggle: {}
+	toggle: {},
+	actionBarSample: {}
 }
 
 App.page.activity.init = function() {
@@ -129,6 +133,75 @@ App.page.slider.init = function() {
 App.page.toggle.init = function() {
 	console.log("toggle init");
 	$('#flip-disabled').slider('disable');
+}
+
+App.page.actionBarSample.init = function() {
+
+	var $tabo = $("#tover"),
+	overflowState = $tabo.hasClass("noContent");
+
+
+	//Open the action overflow menu
+	$("#aover").bind("vclick", function() {
+		$("#right").panel("open");
+	});
+
+	$("#left").on("panelbeforeopen", function() {
+		//Save the state of the overflow button
+		overflowState = $tabo.hasClass("noContent");
+		$tabo.addClass("noContent");
+	})
+	.on("panelbeforeclose", function() {
+		//Put the overflow button into the correct state
+		if(!overflowState) {
+			$tabo.removeClass("noContent");
+		}
+	});
+
+	//Open the tab overflow menu
+	$tabo.bind("vclick", function() {
+		$("#left").panel("open");
+	});
+
+	//Handle overflow menu clicks
+	$(".bb10-panel").bind("vclick", function() {
+		//Close the panel
+		$(this).panel("close");
+	});
+
+	$("#left li").bind("vclick", function() {
+		//Clear the active state from any other buttons that may have been set to active
+		$(this).siblings().removeClass("ui-btn-active");
+		//Add the active state to the selected button
+		$(this).addClass("ui-btn-active");
+		//Clear the contents of the tab overflow button
+		//Add class to put the tab overflow icon in the correct position
+		//Clear the active state from all tab buttons in action bar
+		$('[data-role="tab"], [data-role="tab-overflow"]').removeClass("active");
+	});
+
+	$(".inBar").bind("vclick", function() {
+		//Set the active state to the tab in the actionbar
+		$('#' + this.id.slice(0, 2)).addClass("active");
+		$tabo.addClass("noContent").empty();
+		overflowState = true;
+	});
+
+	$(".notInBar").bind("vclick", function() {
+		//Set the active state to the tab overflow button
+		$tabo.empty()
+		.addClass("active")
+		.html('<img src="img/generic_81_81_placeholder.png" alt=""><p>' + $(this).text() + '</p>')
+		.removeClass("noContent");
+		overflowState = false;
+	});
+
+	$("[data-role='tab']").bind("vclick", function() {
+		//Change page on tab click
+		if($(this).data("href")) {
+			$.mobile.changePage( $(this).data("href"), { transition: "slideup"} );
+		}
+	});
 }
 
 
