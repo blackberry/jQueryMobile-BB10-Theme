@@ -11,7 +11,3 @@ env:
   - JQUERIES=1.8.3
   - JQUERIES=1.9.1
   - JQUERIES=git
-notifications:
-  irc:
-    channels:
-      - "chat.freenode.net#jquerymobile-dev"
