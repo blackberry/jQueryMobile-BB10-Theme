@@ -221,16 +221,18 @@ module.exports = function(grunt) {
 	grunt.registerTask('release', ['latest', 'copy:versioned']);
 	grunt.registerTask('htmllint', 'htmllint');
 	
-	grunt.loadNpmTasks('grunt-html');
-	grunt.loadNpmTasks('grunt-css');
-	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-css');
 	grunt.loadNpmTasks('grunt-exec');
+	grunt.loadNpmTasks('grunt-html');
 	grunt.loadNpmTasks('grunt-image-embed');
 	grunt.loadNpmTasks('grunt-init');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
+
 	grunt.loadTasks('src/tasks');
 };
