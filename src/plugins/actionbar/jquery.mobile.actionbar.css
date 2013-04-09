@@ -363,3 +363,9 @@
 		opacity: 0;
 	}
 }
+
+@media screen and (-blackberry-display-technology: -blackberry-display-oled) {
+	.action-bar-actions {
+		border-image-source: url('images_bb/core_actionbar_cut_mod_n.png');
+	}
+}
