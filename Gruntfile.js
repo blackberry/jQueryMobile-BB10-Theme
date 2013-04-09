@@ -19,9 +19,7 @@ module.exports = function(grunt) {
 
 	var meta= {
 		banner:'/* \n' +
-			'*  Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;\n' +
-			'*\n' +
-			'* Copyright 2012 Research In Motion Limited.\n' +
+			'*  Copyright 2012-<%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;\n' +
 			'*\n' +
 			'* Licensed under the Apache License, Version 2.0 (the "License");\n' +
 			'* you may not use this file except in compliance with the License.\n' +
@@ -92,7 +90,7 @@ module.exports = function(grunt) {
 				dest: 'compiled/<%= pkg.name %>.css'
 			},
 			all_js: {
-				src: ['src/lib/jquery-1.7.1.js', '<config:min.init.src>',
+				src: ['src/lib/jquery-1.7.1.js', '<%= uglify.init.src %>',
 					'src/lib/jquery.mobile.js', 'src/lib/panel.js', '<%= concat.theme_js.dest %>'
 				],
 				dest: 'compiled/<%= pkg.name %>-all.js'

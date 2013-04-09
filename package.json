@@ -1,41 +1,36 @@
 {
-  "name": "BlackBerry-JQM",
-  "title": "BlackBerry 10 - jQuery Mobile Theme",
-  "description": "jQuery Mobile Theme for BlackBerry 10",
-  "version": "0.9.1",
-  "homepage": "",
-  "author": {
-    "name": "Research In Motion Limited."
-  },
-  "repository": {
-    "type": "git",
-    "url": "none"
-  },
-  "bugs": {
-    "url": ""
-  },
-  "licenses": [
-    {
-      "type": "MIT"
-    }
-  ],
-  "devDependencies": {
-    "grunt": "0.4.x",
-	"grunt-init": "*",
-	"grunt-contrib-concat": "*",
-	"grunt-contrib-jshint": "*",
-	"grunt-contrib-uglify": "*",
-	"grunt-contrib-cssmin": "*",
-    "grunt-css": "*",
-    "grunt-contrib-less": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-exec": "*",
-    "grunt-html": "*",
-    "grunt-image-embed": "*"
-  },
-  "main": "Gruntfile.js",
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "keywords": []
+	"name": "BlackBerry-JQM",
+	"title": "BlackBerry 10 - jQuery Mobile Theme",
+	"description": "jQuery Mobile Theme for BlackBerry 10",
+	"version": "0.9.1",
+	"homepage": "http://blackberry.github.io/jQueryMobile-BB10-Theme/kitchenSink/index.html",
+	"author": {
+		"name": "BlackBerry"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/blackberry/jQueryMobile-BB10-Theme"
+	},
+	"bugs": {
+		"url": "https://github.com/blackberry/jQueryMobile-BB10-Theme/issues"
+	},
+	"devDependencies": {
+		"grunt": "0.4.x",
+		"grunt-init": "0.2.0",
+		"grunt-contrib-concat": "0.2.0",
+		"grunt-contrib-jshint": "0.4.3",
+		"grunt-contrib-uglify": "0.2.0",
+		"grunt-contrib-cssmin": "0.6.0",
+		"grunt-css": "0.5.4",
+		"grunt-contrib-less": "0.5.0",
+		"grunt-contrib-clean": "0.4.0",
+		"grunt-exec": "0.4.0",
+		"grunt-html": "0.3.3",
+		"grunt-image-embed": "0.3.0"
+	},
+	"main": "Gruntfile.js",
+	"engines": {
+		"node": ">= 0.8.0"
+	},
+	"keywords": ["jQuery Mobile", "Theme", "BlackBerry", "BlackBerry 10"]
 }
