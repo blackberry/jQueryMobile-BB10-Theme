@@ -208,11 +208,16 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
 /* Q10 */
 @media screen and (device-aspect-ratio: 1/1) {
 	.ui-li:not(.ui-li-divider){
-		min-height: 93px;
+		min-height: @q10-listview-height;
 	}
 	.ui-li .ui-btn-text {
-		line-height: 91px;
+		line-height: @q10-listview-lineheight;
 	}
+	.ui-li-thumb, .ui-listview .ui-li-icon {
+		max-height: @q10-listview-iconsize;
+		max-width: @q10-listview-iconsize;
+	}
+
 }
 
 @media screen and (-blackberry-display-technology: -blackberry-display-oled) {
