@@ -129,7 +129,10 @@
 .ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open,
 .ui-panel-content-wrap-position-left.ui-panel-content-wrap-open,
 .ui-panel-dismiss-position-left.ui-panel-dismiss-open {
-	left: 17em;
+	left: 0;
+	-webkit-transform: translate3d(17em,0,0);
+	-moz-transform: translate3d(17em,0,0);
+	transform: translate3d(17em,0,0);
 }
 /* animated: panel left open (for reveal and push) */
 .ui-panel-animate.ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-reveal,
@@ -145,7 +148,10 @@
 .ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open,
 .ui-panel-content-wrap-position-right.ui-panel-content-wrap-open,
 .ui-panel-dismiss-position-right.ui-panel-dismiss-open {
-	left: -17em;
+	left: 0;
+	-webkit-transform: translate3d(-17em,0,0);
+	-moz-transform: translate3d(-17em,0,0);
+	transform: translate3d(-17em,0,0);
 }
 /* animated: panel right open (for reveal and push) */
 .ui-panel-animate.ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open.ui-panel-content-fixed-toolbar-display-reveal, 
@@ -309,13 +315,13 @@
 .background-opaque{
 	opacity: 0.5;
 	transition: opacity 350ms ease;
-	-webkit-transition: opacity 350ms ease;
+	-webkit-transition: opacity 350ms ease, -webkit-transform 350ms ease;
 	-moz-transition: opacity 350ms ease;
 }
 
 .background-bright{
 	transition: opacity 350ms ease, visibility 0s 350ms;
-	-webkit-transition: opacity 350ms ease, visibility 0s 350ms;
+	-webkit-transition: opacity 350ms ease, visibility 0s 350ms, -webkit-transform 350ms ease;
 	-moz-transition: opacity 350ms ease, visibility 0s 350ms;
 }
 

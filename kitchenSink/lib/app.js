@@ -140,12 +140,6 @@ App.page.actionBarSample.init = function() {
 	var $tabo = $("#tover"),
 	overflowState = $tabo.hasClass("noContent");
 
-
-	//Open the action overflow menu
-	$("#aover").bind("vclick", function() {
-		$("#right").panel("open");
-	});
-
 	$("#left").on("panelbeforeopen", function() {
 		//Save the state of the overflow button
 		overflowState = $tabo.hasClass("noContent");
@@ -156,11 +150,6 @@ App.page.actionBarSample.init = function() {
 		if(!overflowState) {
 			$tabo.removeClass("noContent");
 		}
-	});
-
-	//Open the tab overflow menu
-	$tabo.bind("vclick", function() {
-		$("#left").panel("open");
 	});
 
 	//Handle overflow menu clicks

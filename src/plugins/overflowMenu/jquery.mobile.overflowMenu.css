@@ -16,6 +16,8 @@
 
 
 .bb10-panel.ui-panel {
+	height: 100%;
+	position: fixed;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	display: -webkit-box;
