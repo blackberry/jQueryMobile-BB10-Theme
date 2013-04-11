@@ -249,15 +249,16 @@ $.widget( "mobile.panel", $.mobile.widget, {
 		
 		// on swipe, close the panel
 		if( !!self.options.swipeClose ) {
+			
+			self._modal.on( "scrollstart.panel", function( e ){
+				e.preventDefault();		//prevent scrolling
+				self.close();
+			});
 			if ( self.options.position === "left" ) {
 				area.on( "swipeleft.panel", function( e ) {
 					self.close();
 				});
 			} else if( self.options.position === "top" || self.options.position === 'bottom' ){
-				self._modal.on( "scrollstart.panel", function( e ){
-					e.preventDefault();		//prevent scrolling
-					self.close();
-				});
 				self.element.on( "scrollstart.panel", function( e ){
 					e.preventDefault();
 				});
