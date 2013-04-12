@@ -287,9 +287,6 @@
 	width: 20%;
 }
 
-
-
-
 /* When a back button is present */
 .action-bar-back + .action-bar-actions .action-bar-grid-a,
 .action-bar-back + .action-bar-actions .action-bar-grid-b,
@@ -316,8 +313,6 @@
 	width: 18%;
 }
 
-
-
 .action-bar-tab-item + .action-bar-action-item {
 	background-image: url("images_bb/core_actionbar_tab_action_shadow.png");
 	background-position: 0 0;
@@ -327,12 +322,6 @@
 .action-bar-tab-item + .action-bar-overflow {
 	background-image: url("images_bb/core_actionbar_tab_action_shadow.png"), url("images_bb/core_actionbar_icon_actionoverflow.png");
 	background-position: 0 0, top;
-}
-
-.action-bar-tab-item ~ .action-bar-action-item ~ .action-bar-action-item {
-	/*
-	display: none;
-	*/
 }
 
 .action-bar-back ~ .action-bar-actions > .action-bar-overflow {
@@ -352,9 +341,6 @@
 }
 
 @media screen and (orientation: landscape), screen and (device-aspect-ratio: 1/1) {
-	.action-bar {
-		height: 113px;
-	}
 	.action-bar-action-item-text, .action-bar-action-item-text p, .action-bar-overflow > p {
 		display: none;
 	}
@@ -362,6 +348,22 @@
 		display: none;
 		opacity: 0;
 	}
+}
+
+@media screen and (orientation: landscape) {
+	.action-bar {
+		height: 113px;
+	}
+}
+
+@media screen and (device-aspect-ratio: 1/1) {
+	.action-bar {
+		height: 101px;
+	}
+	.action-bar-overflow.tabs.noContent {
+		background-position-y: -13px;
+	}
+
 }
 
 @media screen and (-blackberry-display-technology: -blackberry-display-oled) {
