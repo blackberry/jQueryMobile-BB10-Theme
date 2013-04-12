@@ -127,7 +127,10 @@
 /* positioning: content wrap, fixed toolbars and dismiss */
 /* panel left open */
 .ui-panel-content-fixed-toolbar-position-left.ui-panel-content-fixed-toolbar-open,
-.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open,
+.ui-panel-content-wrap-position-left.ui-panel-content-wrap-open{
+	left: 17em;
+}
+/* panel left dismiss open */
 .ui-panel-dismiss-position-left.ui-panel-dismiss-open {
 	left: 0;
 	-webkit-transform: translate3d(17em,0,0);
@@ -146,7 +149,10 @@
 }
 /* panel right open */
 .ui-panel-content-fixed-toolbar-position-right.ui-panel-content-fixed-toolbar-open,
-.ui-panel-content-wrap-position-right.ui-panel-content-wrap-open,
+.ui-panel-content-wrap-position-right.ui-panel-content-wrap-open {
+	left:-17em;
+}
+/* panel right dismiss open */
 .ui-panel-dismiss-position-right.ui-panel-dismiss-open {
 	left: 0;
 	-webkit-transform: translate3d(-17em,0,0);
