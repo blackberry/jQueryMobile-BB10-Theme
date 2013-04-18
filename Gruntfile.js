@@ -64,16 +64,7 @@ module.exports = function(grunt) {
 				dest: 'compiled/<%= pkg.name %>.less'
 			},
 			theme_js: {
-				src: [
-					'src/plugins/actionbar/jquery.mobile.actionbar.js',
-					'src/plugins/activityIndicator/jquery.mobile.activityindicator.js',
-					'src/plugins/buttonGroup/jquery.mobile.buttonGroup.js',
-					'src/plugins/gridview/jquery.mobile.gridview.js',
-					'src/plugins/inputValidator/jquery.mobile.inputValidator.js',
-					'src/plugins/progressbar/jquery.mobile.progressbar.js',
-					'src/plugins/dropdown/jquery.mobile.dropdown.js',
-					'src/plugins/applicationmenu/jquery.mobile.applicationmenu.js'
-				],
+				src: ['src/plugins/**/*.js'],
 				dest: 'compiled/<%= pkg.name %>.js'
 			},
 			theme_css : {
