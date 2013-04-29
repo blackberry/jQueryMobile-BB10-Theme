@@ -19,11 +19,15 @@
 	height: 100%;
 	position: fixed;
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y:	scroll;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-box-pack: center;
 	-webkit-overflow-scrolling: -blackberry-touch;
+}
+
+.bb10-panel.ui-panel.panel-fixed-button{
+	overflow: hidden;
 }
 
 .bb10-panel .ui-panel-inner {
@@ -38,4 +42,25 @@
   bottom: 0;
   position:absolute;
   width: 100%;
+}
+
+/* panel with fixed buttons */
+.ui-panel-fixed-buttons-bottom{
+	padding:0;
+	position: fixed;
+	bottom: 0;
+	width:17em;
+	z-index:10;
+}
+
+.ui-panel-fixed-buttons-scrollable-top{
+	box-sizing:border-box;
+	overflow-x:hidden;
+	overflow-y:scroll;
+	position:absolute;
+	top:0;
+	width:100%;
+	display: -webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-pack: center;
 }
