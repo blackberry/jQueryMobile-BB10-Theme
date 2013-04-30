@@ -164,7 +164,9 @@ To see all the diffent ways to have your actionbar look [here](/kitchenSink/acti
 
 Application Menu
 --------------
-To create an __application menu__, first create a panel ```data-role="panel"``` with the following options
+![Application Menu](/figures/applicationMenu.png)
+
+To create an __application menu__, first create a top-panel ```data-role="panel"``` with the following options
 * ```data-position="top"``` - To place it on the top of the screen
 * ```data-display="push"``` - So that when we open it, it uses the push animation
 * ```data-theme="a"``` - So that it is using the dark theme
