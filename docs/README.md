@@ -162,6 +162,60 @@ A complete example of the action bar can be found [here](/kitchenSink/actionbar_
 
 To see all the diffent ways to have your actionbar look [here](/kitchenSink/actionbar.html).
 
+Application Menu
+--------------
+![Application Menu](/figures/applicationMenu.png)
+
+To create an __application menu__, first create a top-panel ```data-role="panel"``` with the following options
+* ```data-position="top"``` - To place it on the top of the screen
+* ```data-display="push"``` - So that when we open it, it uses the push animation
+* ```data-theme="a"``` - So that it is using the dark theme
+* ```data-dark-modal="true"``` - So that the content becomes opaque when the menu is open
+
+To make the panel work as an __application menu__, add a ```div``` with ```data-role="applicationmenu"```, 
+and inside this ```div``` add the desired __menu action items__.
+
+```
+<div data-role="panel" id="top" data-dark-modal="true" data-position="top" data-display="push" data-theme="a" class="">
+	<div data-role="applicationmenu">
+		<a data-role="action" href="#">
+			<img src="img/Core_applicationmenu_icon_help.png" alt="" />
+			<p>Help</p>
+		</a>
+		<a data-role="action" href="#">
+			<img src="img/generic_81_81_placeholder.png" alt="" />
+			<p>Option1</p>
+		</a>			
+		<a data-role="SettingsActionItem" href="#">
+			<img src="img/Core_applicationmenu_icon_settings.png" alt="" />
+			<p>Settings</p>
+		</a>	
+	</div>
+</div>
+```
+
+Notice that each__menu action item__ is specified in the following format:
+```
+<a data-role="action" href="desired_url">
+	<img src="action_icon_url" />
+	<p>action_name</p>
+</a>
+```
+
+__Menu action items__  can have one of two data-roles (case sensitive):
+* ```data-role="SettingsActionItem"``` for a "Settings" item 
+*  ```data-role="action"``` for any other action items.  
+
+```data-role="SettingsActionItem"``` is only needed if the action is the only one in the menu. 
+It ensures that the action is placed on the right side when it is the only item.
+
+ There are several key points to consider when building an application menu:
+* There is a maximum of 5 action items that can be displayed in the menu. Any extra items will not show. 
+* The order of the menu actions from left to right is determined by the order of the items in the markup from top to bottom. 
+* The default icon size used in each action item is 81x81 px. 
+
+To see a more complete example of the application menu look [here](/kitchenSink/application_menu.html).
+
 Overflow Menus (Panels)
 --------------
 To create an overflow menu use the [jQuery Mobile panel](http://jquerymobile.com/demos/1.3.0-beta.1/docs/panels/index.html).

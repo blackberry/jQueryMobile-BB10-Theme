@@ -71,7 +71,8 @@ module.exports = function(grunt) {
 					'src/plugins/gridview/jquery.mobile.gridview.js',
 					'src/plugins/inputValidator/jquery.mobile.inputValidator.js',
 					'src/plugins/progressbar/jquery.mobile.progressbar.js',
-					'src/plugins/dropdown/jquery.mobile.dropdown.js'
+					'src/plugins/dropdown/jquery.mobile.dropdown.js',
+					'src/plugins/applicationmenu/jquery.mobile.applicationmenu.js'
 				],
 				dest: 'compiled/<%= pkg.name %>.js'
 			},
@@ -85,7 +86,8 @@ module.exports = function(grunt) {
 					'src/plugins/overflowMenu/jquery.mobile.overflowMenu.css',
 					'src/plugins/progressbar/jquery.mobile.progressbar.css',
 					'src/transitions/jquery.mobile.transition.cover.css',
-					'src/plugins/dropdown/jquery.mobile.dropdown.css'
+					'src/plugins/dropdown/jquery.mobile.dropdown.css',
+					'src/plugins/applicationmenu/jquery.mobile.applicationmenu.css'
 				],
 				dest: 'compiled/<%= pkg.name %>.css'
 			},
