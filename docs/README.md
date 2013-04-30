@@ -199,8 +199,9 @@ To create an __action overflow__ menu, create a panel ```data-role="panel"``` wi
 	</ul>
 </div>
 ```
-To add an __action-overflow fixed button__ to the __action overflow__ menu, add a new ```div``` with ```data-role="fixedpanelbutton"```
-Adding this to the previous example would look like the following:
+To add an __action overflow fixed button__ to the __action overflow__ menu, add a new ```div``` with ```data-role="fixedpanelbutton"``` at
+the end of the panel content.
+Expanding on the previous example would look like the following:
 
 ```
 <div data-role="panel" data-position="right" data-display="overlay" data-theme="a" class="bb10-panel">
@@ -209,11 +210,12 @@ Adding this to the previous example would look like the following:
 		<li><a href="#">Audi</a></li>
 		<li><a href="#">BMW</a></li>
 	</ul>
-	__<div data-role="fixedpanelbutton">
+	
+	<div data-role="fixedpanelbutton">
 		<ul data-role="listview" data-theme="a">
 			<li><a href="#">Delete</a></li>
 		</ul>
-	</div>__
+	</div>
 </div>
 ```
 
