@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Application Menu</title>
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+		<link rel="stylesheet" href="lib/BlackBerry-JQM-all.css" />
+		<script src="lib/BlackBerry-JQM-all.js"></script>
+		<script type="text/javascript" src="lib/app.js"></script>
+	</head>
+	<body>
+		<div id="applicationMenu" data-role="page">
+			<!-- This is how you set up your application menu (top panel) -->
+			<div data-role="panel" id="top" data-dark-modal="true" data-position="top" data-display="push" data-theme="a" class="">
+				<div data-role="applicationmenu">
+	
+					<a data-role="action" href="#">
+						<img src="img/Core_applicationmenu_icon_help.png" alt="" />
+						<p>Help</p>
+					</a>
+					<a data-role="action" href="#">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>Option1</p>
+					</a>
+					<a data-role="action" href="#">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>Option2</p>
+					</a>
+					<a data-role="action" href="#">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>Option3</p>
+					</a>					
+					<!-- data-role=SettingsActionItem places the settings action on the right side when it is the only item in the menu -->
+					<a data-role="SettingsActionItem" href="#">
+						<img src="img/Core_applicationmenu_icon_settings.png" alt="" />
+						<p>Settings</p>
+					</a>
+					
+					<!-- Maximum of 5 actions. Any extra actions will not appear on the menu -->
+					<a data-role="action" href="#">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>This option should not show up</p>
+					</a>			
+				</div>
+			</div>
+
+			<div data-role="header" data-theme="c">
+				<h1>Application Menu</h1>
+			</div><!-- /header -->
+			<div data-role="content">
+				<!-- Put your page content here -->
+				<a id="menuBtn" data-role="button" href="#top">Open application menu </a>
+				<h2 id="simulInst" style="text-align: center">Open application menu by firing "blackberry.event.swipedown"<h2>
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-position="fixed">
+				<div id="action-bar-area" data-role="actionbar">
+					<div data-role="back"></div>
+				</div>
+			</div>
+		</div><!-- /page -->
+	</body>
+</html>

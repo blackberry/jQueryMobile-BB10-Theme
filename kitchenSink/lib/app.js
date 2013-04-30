@@ -21,6 +21,9 @@ App.init = function () {
 	$("#actionBarSample").live("pageinit", function() {
 		App.page.actionBarSample.init();
 	});
+	$('#applicationMenu').live("pageinit", function() {
+		App.page.applicationMenu.init();
+	});
 }
 
 App.utils = {
@@ -38,7 +41,8 @@ App.page = {
 	progress: {},
 	slider: {},
 	toggle: {},
-	actionBarSample: {}
+	actionBarSample: {},
+	applicationMenu: {}
 }
 
 App.page.activity.init = function() {
@@ -193,7 +197,17 @@ App.page.actionBarSample.init = function() {
 	});
 }
 
-
+App.page.applicationMenu.init = function() {
+	if(typeof blackberry != 'undefined'){
+		blackberry.event.addEventListener('swipedown', function(){
+			$('#top').panel("open");
+		});
+		$('#menuBtn').css('display','none');
+	}
+	else{
+		$('#simulInst').css('display','none');
+	}
+}
 
 App.init();
 

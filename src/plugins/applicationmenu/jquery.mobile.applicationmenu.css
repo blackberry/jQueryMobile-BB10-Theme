@@ -1,0 +1,107 @@
+/*
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
+/* application menu styling */
+
+.application-menu{
+	display:-webkit-box;
+	-webkit-box-orient: horizontal;
+}
+
+/* hide any extra action item */
+.application-menu .ui-link:not(.visible){
+	display:none;
+}
+
+/* menu action item styling */
+.application-menu-item.visible {
+	display:block;
+	width:20%;
+	height: 100%;
+	text-align:center;
+}
+/* item separation for 2 items in the bar */
+.application-menu-item:first-child:nth-last-child(2){
+	margin-right: 60%;
+}
+/* item separation for 3 items in the bar */
+.application-menu-item:first-child:nth-last-child(3),
+.application-menu-item:first-child:nth-last-child(3) ~ a {
+	margin-right: 20%;
+}
+/* item separation for 4 items in the bar */
+.application-menu-item:first-child:nth-last-child(4),
+.application-menu-item:first-child:nth-last-child(4) ~ a {
+	margin-right: 6.6666%;
+}
+
+.application-menu-item-settings{
+	margin-left: 80%;	
+}
+
+/* override panel padding */		
+.ui-panel-inner.ui-panel-inner-application-menu{
+	padding:0;
+}
+
+/* styling for the action-pressed indicator */
+.application-menu-item-pressed-indicator{
+	width:95px;
+	height:6px;
+	margin: 0 auto;
+}
+
+.application-menu-item-pressed-indicator.pressed{
+	background-image: url('images_bb/core_applicationmenu_pressed.png');
+}
+
+.application-menu-item-image{
+	margin-top:8px;
+	width:81px;
+	height:81px;
+}
+.application-menu-item-text{
+	width:100%;
+	font-size:0.625em;
+	font-weight:normal;
+	color: #FAFAFA;
+	
+}
+
+.application-menu-item-text p{
+	text-overflow: ellipsis;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+}
+
+.application-menu-item-text{
+	margin-bottom:6px;
+}
+
+@media screen and (orientation: landscape), screen and (device-aspect-ratio: 1/1){
+	.application-menu-item-pressed-indicator{
+		height:2px;
+	}
+	.application-menu-item-image{
+		margin-top:0;
+	}
+	.application-menu-item-text{
+		margin-top:-8px;
+	}
+
+}
