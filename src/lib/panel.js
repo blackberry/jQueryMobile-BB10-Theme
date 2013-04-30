@@ -177,6 +177,11 @@ $.widget( "mobile.panel", $.mobile.widget, {
 			panelInnerHeight = self._panelInner.outerHeight(),
 			expand = panelInnerHeight > $.mobile.getScreenHeight();
 
+		if( self.options.position === "top" ){
+			var panelHeight = self.element.height();
+			self._setVerticalCssTransform( self._wrapper, panelHeight );
+		}
+
 		if ( expand || !self.options.positionFixed ) {
 			if ( expand ) {
 				self._unfixPanel();
