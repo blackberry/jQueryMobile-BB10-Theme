@@ -29,7 +29,10 @@ $.widget( "mobile.panel", $.mobile.widget, {
 			contentFixedToolbarClosed: "ui-panel-content-fixed-toolbar-closed",
 			animate: "ui-panel-animate",
 			modalOpaque: "background-opaque",
-			modalBright: "background-bright"
+			modalBright: "background-bright",
+			panelFixedButtonsTop: "ui-panel-fixed-buttons-scrollable-top",
+			panelFixedButtonsBottom: "ui-panel-fixed-buttons-bottom",
+			panelFixedButton: "panel-fixed-button"
 		},
 		animate: true,
 		theme: null,
@@ -49,6 +52,7 @@ $.widget( "mobile.panel", $.mobile.widget, {
 	_panelInner: null,
 	_wrapper: null,
 	_fixedToolbar: null,
+	_fixedPanelBtn: null,
 
 	_create: function() {
 		var self = this,
@@ -62,7 +66,7 @@ $.widget( "mobile.panel", $.mobile.widget, {
 			_getPanelInner = function() {
 				var $panelInner = $el.find( "." + self.options.classes.panelInner );
 				if ( $panelInner.length === 0 ) {
-					$panelInner = $el.children().wrapAll( '<div class="' + self.options.classes.panelInner + '" />' ).parent();
+					$panelInner = $el.children().not(":jqmData(role='fixedpanelbutton')").wrapAll( '<div class="' + self.options.classes.panelInner + '" />' ).parent();
 				}
 				return $panelInner;
 			},
@@ -98,6 +102,16 @@ $.widget( "mobile.panel", $.mobile.widget, {
 			_fixedToolbar: _getFixedToolbar()
 		});
 		
+		// if there is a fixed panel button wrap the content with two separate divs
+		var $fixedPanelBtn = $el.find(":jqmData(role='fixedpanelbutton')");
+		if($fixedPanelBtn.length != 0){
+			self._panelInner.wrapAll( '<div class="' + self.options.classes.panelFixedButtonsTop + '" />');
+			$fixedPanelBtn.addClass( self.options.classes.panelFixedButtonsBottom )
+				.children().wrapAll('<div class="' + self.options.classes.panelInner + '" />');	
+			self._fixedPanelBtn = $fixedPanelBtn;
+			self.element.addClass( self.options.classes.panelFixedButton );
+		}
+
 		self._addPanelClasses();
 		self._wrapper.addClass( this.options.classes.contentWrapClosed );
 		self._fixedToolbar.addClass( this.options.classes.contentFixedToolbarClosed );
@@ -174,7 +188,12 @@ $.widget( "mobile.panel", $.mobile.widget, {
 
 	_positionPanel: function() {
 		var self = this,
-			panelInnerHeight = self._panelInner.outerHeight(),
+			panelHeight = self.element.height();
+
+		//adjust the height of the scrollable area
+		self._setPanelAreaInnerHeight( panelHeight );
+
+		var	panelInnerHeight = self._panelInner.outerHeight(),
 			expand = panelInnerHeight > $.mobile.getScreenHeight();
 
 		if ( expand || !self.options.positionFixed ) {
@@ -247,6 +266,12 @@ $.widget( "mobile.panel", $.mobile.widget, {
 		var self = this,
 			area = self._modal ? self.element.add( self._modal ) : self.element;
 		
+		if( self._fixedPanelBtn != null ){
+			self._fixedPanelBtn.on( "scrollstart", function( e ){
+				e.preventDefault();
+			});
+		}
+
 		// on swipe, close the panel
 		if( !!self.options.swipeClose ) {
 			
@@ -320,6 +345,14 @@ $.widget( "mobile.panel", $.mobile.widget, {
 			}
 		);
 	},
+	_setPanelAreaInnerHeight: function( panelHeight ){
+		var self = this;
+		//adjust the scrollable area height only if there are fixed buttons
+		if( self._fixedPanelBtn != null ){
+			var areaHeight = panelHeight - self._fixedPanelBtn.height();
+			self._panelInner.parent().css( 'height',areaHeight );
+		}
+	},
 
 	open: function( immediate ) {
 		if ( !this._open ) {
@@ -331,6 +364,9 @@ $.widget( "mobile.panel", $.mobile.widget, {
 					
 					self.element.removeClass( o.classes.panelClosed ).addClass( o.classes.panelOpen );
 					var panelHeight = self.element.height();
+
+					//adjust the height of the scrollable area
+					self._setPanelAreaInnerHeight( panelHeight );
 
 					if ( !immediate && $.support.cssTransform3d && !!o.animate ) {
 						self.element.add( self._wrapper ).on( self._transitionEndEvents, complete );
