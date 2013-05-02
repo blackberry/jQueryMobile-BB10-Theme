@@ -65,7 +65,7 @@ To create a actionbar use ```<div data-role="actionbar">```.
 
 To create an optional back button add ```<div data-role="back"></div>```. The back button is not present when tabs are in the action bar.
 To change the text of the back button set ```$.mobile.page.prototype.options.backBtnText``` to the new value, you will need to do this in the ```mobileinit``` event or before your actionbar is created. 
-To set it durning the ```mobileinit``` event, consider the following.
+To set it during the ```mobileinit``` event, consider the following.
 ```
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.
 <link rel="stylesheet" href="../dist/latest/BlackBerry-JQM.css" />
