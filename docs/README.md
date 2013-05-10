@@ -82,28 +82,28 @@ To set it during the ```mobileinit``` event, consider the following.
 ```
 
 
-Action bar tabs are used for navigational purposes (i.e. switching between views). Add tabs to the action bar using ```<div data-role="tab">```.
+Action bar tabs are used for navigational purposes (i.e. switching between views). Add tabs to the action bar using ```<a data-role="tab">```.
 Each tab should have an ```img``` and a ```p```. In landscape mode the text ```p``` will be hidden and the actionbar height will decrease.
 ```
-<div id="o1" data-role="tab">
+<a id="o1" data-role="tab">
     <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
     <p>1 Settings</p>
-</div>
+</a>
 ```
 
 To create a tab overflow button use ```data-role="tab-overflow"```. A tab overflow button can be with or without tab content at initialization.
 
 e.g. Without content, shows the tab overflow icon centered in the button.
 ```
-<div id="tover" data-role="tab-overflow">
-</div>
+<a id="tover" data-role="tab-overflow">
+</a>
 ```
 e.g. With content, shows the tab overflow icon offset to the right and the img and p centered in the button.
 ```
-<div id="tover" data-role="tab-overflow">
+<a id="tover" data-role="tab-overflow">
     <img src="img/generic_81_81_placeholder.png" alt="" />
     <p>0 Options</p>
-</div>
+</a>
 ```
 
 Content can be added to the tab overflow button at anytime dynamically, just like you would change the contents of any ```div```.
@@ -114,13 +114,13 @@ $("#tover").html("<img src='path/to/image.png' alt="" /><p>My Text</p>");
 If the tab overflow content is changing state from not having content to having content or vice versa. The class ```noContent``` will have to be removed or added respectively.
 
 
-Action bar actions are used for actions, such as 'Add', 'Share', and 'Edit'. Add actions to the action bar using ```<div data-role="action">```.
+Action bar actions are used for actions, such as 'Add', 'Share', and 'Edit'. Add actions to the action bar using ```<a data-role="action">```.
 Each action should have an ```img``` and a ```p```. 
 
 To create an action overflow button user ```data-role="action-overflow"```. An action overflow button does not have text or an image.
 ```
-<div id="aover" data-role="action-overflow">
-</div>
+<a id="aover" data-role="action-overflow">
+</a>
 ```
 
 Tabs and actions both have a pressed state. This will be applied on 'vmousedown' and removed on 'vmouseup'
@@ -137,22 +137,22 @@ In landscape mode when a text input has focus the actionbar will be hidden, so t
 <div data-role="footer" data-position="fixed">
     <div data-role="actionbar">
         <div data-role="back"></div>
-        <div id="o1" data-role="action">
+        <a id="o1" data-role="action">
             <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>1 Settings</p>
-        </div>
-        <div id="o2" data-role="action">
+        </a>
+        <a id="o2" data-role="action">
             <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>2 Options</p>
-        </div>
-        <div id="o3" data-role="action">
+        </a>
+        <a id="o3" data-role="action">
             <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>3 Options</p>
-        </div>
-        <div id="o4" data-role="action">
+        </a>
+        <a id="o4" data-role="action">
             <img src="../src/plugins/actionbar/assets/generic_81_81_placeholder.png" alt="" />
             <p>4 Options</p>
-        </div>
+        </a>
     </div>
 </div>
 ```
