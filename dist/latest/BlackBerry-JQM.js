@@ -1,7 +1,5 @@
 /* 
-*  Copyright 2013 Research In Motion Limited.;
-*
-* Copyright 2012 Research In Motion Limited.
+*  Copyright 2012-2013 BlackBerry;
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -15,8 +13,6 @@
 * See the License for the specific language governing permissions and 
 * limitations under the License.
 */
-
-
 (function($) {
 
 	$.widget("mobile.actionbar", $.mobile.widget, {
@@ -271,6 +267,87 @@
     });
 })(jQuery);
 
+(function($) {
+
+	$.widget("mobile.applicationmenu", $.mobile.widget, {
+
+		options: {
+			initSelector: ":jqmData(role='applicationmenu')",
+			maxItems: 5
+		},
+
+		_init: function() {
+		},
+
+		_create: function() {
+			this.actionsArea = this.element;
+			this.actionsArea.parent('.ui-panel-inner').addClass('ui-panel-inner-application-menu');
+			var self = this,		
+				o = self.options,
+				actions = $( document.createElement( 'div' ) ),
+				itemList = this.actionsArea.children( ":jqmData(role='action'), :jqmData(role='SettingsActionItem')" ),
+				barItemsTotal = (self.options.maxItems < itemList.length) ? self.options.maxItems : itemList.length,
+				isSettingsActionFound = false;
+			
+			for (var i = 0; i < barItemsTotal; i++) {
+				this.actionsArea.append(this._createActionItem(itemList.eq(i)));
+			}
+			
+			//display SettingsActionItem on the right side when it is the only item
+			if( barItemsTotal === 1 ){
+				this.actionsArea.children(":jqmData(role='SettingsActionItem')").addClass('application-menu-item-settings');
+			}
+
+			this.actionsArea.addClass('application-menu');
+
+			$( '.application-menu-item' )
+				.bind( 'vmousedown', function( event ) {
+					$(event.delegateTarget)
+						.children('.application-menu-item-pressed-indicator')
+						.addClass( 'pressed' );
+				})
+				.bind ('vmouseup', function(event) {
+					$(event.delegateTarget)
+							.children('.application-menu-item-pressed-indicator')
+							.removeClass( 'pressed' );
+				});
+		},
+
+		refresh: function() {
+		},
+
+		destroy: function() {
+
+		},
+
+		_createActionItem: function(item) {
+			var label = item.find('p').first(),
+				itemImage = item.find('img').first()
+					.addClass('application-menu-item-image')
+					.appendTo(item);
+
+			if (label) {
+				var actionItemText = $(document.createElement('div'))
+						.addClass('application-menu-item-text')
+						.html(label)
+						.appendTo(item);
+			}
+
+			var pressedIndicator = $(document.createElement('div'))
+				.addClass('application-menu-item-pressed-indicator')
+				.prependTo(item);
+
+			item.addClass('application-menu-item visible');
+
+			return item;
+		}
+
+	});
+	$( document ).bind( "pagecreate create", function( e ){
+		$.mobile.applicationmenu.prototype.enhanceWithin( e.target );
+	});
+})(jQuery);
+
 (function ($) {
 	$.widget("mobile.buttonGroup", $.mobile.widget, {
 		options: {
@@ -372,6 +449,84 @@
 	$( document ).bind( "pageinit create", function( e ){
 		$.mobile.buttonGroup.prototype.enhanceWithin( e.target );
 	});
+})(jQuery);
+
+(function($) {
+
+	$.widget("mobile.dropdown", $.mobile.widget, {
+
+		options: {
+			initSelector: ""//":jqmData(role='dropdown')"
+		},
+
+		_init: function() {
+		},
+
+		_create: function() {
+
+			var	self = this,
+				parent = $(this.element).parent(),
+				collapse = $('<div data-role="collapsible" data-content-theme=' + $.mobile.getInheritedTheme( parent, "c" ) + ' data-collapsed="true" data-iconpos="right">'),
+				select = $(this.element),
+				list = $('<ul data-role="listview"></ul>').appendTo(collapse);
+
+			this.header = $('<h1></h1>').appendTo(collapse);
+
+			select.find('option').each( function (i,el){
+				var item = $(document.createElement('li')).text($(el).text());
+				if($(el).attr("selected") === "selected") {
+					self._setHeader($(el).text());
+					item.addClass("checked");
+				}
+				list.append(item);
+
+			});
+
+			select.css("display", "none");
+
+			$("<div>").attr("data-enhance", "false").wrap(select);
+
+			parent.after(collapse);
+
+			collapse.parent().trigger("create");
+			parent.remove();
+			select.remove();
+
+			setTimeout(function(){
+				select.appendTo(collapse);
+			}, 0);
+
+			list.bind("vclick", function(event){
+				var item = $(event.target);
+				self._setHeader(item.text());
+				$(".checked").removeClass("checked");
+				item.addClass("checked");
+				select.prop('value', select.find('option:contains("' + item.text() + '")').attr('value'));
+				select.trigger("change");
+				collapse.trigger('collapse');
+			});
+		},
+
+		_setHeader: function(text) {
+			var headerText = this.header.find('.ui-btn-text'),
+				headerStatusText = headerText.find('.ui-collapsible-heading-status');
+
+			//Check if the content has been enhanced yet
+			if(headerText.length === 0){
+				this.header.text(text);
+			} else {
+				headerText.text(text).append(headerStatusText);
+			}
+		},
+
+		refresh: function() {
+		}
+	});
+
+	$( document ).unbind( "selectmenubeforecreate" );
+	$( document ).bind( "selectmenubeforecreate", function(event){
+		$( event.target ).dropdown();
+	} );
 })(jQuery);
 
 (function($) {
@@ -481,7 +636,8 @@
 				.addClass("bb-text-validator");
 				
 			// Check whether the target is a search input by inspecting its parent. 
-			var parent = $(this.element).parent('div.ui-input-search');
+			var parent = $(this.element).parent('div.ui-input-search, div.ui-input-text');
+			
 			if (parent.length !== 0) {
 				//Bubble the wrapper target to the input's parent
 				parent.addClass("bb-text-validated");
@@ -508,7 +664,7 @@
 		//@param input		A jQuery object representing the input to validate
 		_validate: function(input) {
 			var pattern = new RegExp(input.attr("pattern")),
-				parent = input.parent('div.ui-input-search'),
+				parent = input.parent('div.ui-input-search, div.ui-input-text'),
 				watched = input.add(parent);
 			
 			if (input.attr('required') === undefined) {
@@ -630,80 +786,3 @@
     });
 })(jQuery);
 
-
-(function($) {
-
-	$.widget("mobile.dropdown", $.mobile.widget, {
-
-		options: {
-			initSelector: ""//":jqmData(role='dropdown')"
-		},
-
-		_init: function() {
-		},
-
-		_create: function() {
-
-			var	self = this,
-				parent = $(this.element).parent(),
-				collapse = $('<div data-role="collapsible" data-content-theme=' + $.mobile.getInheritedTheme( parent, "c" ) + ' data-collapsed="true" data-iconpos="right">'),
-				select = $(this.element),
-				list = $('<ul data-role="listview"></ul>').appendTo(collapse);
-
-			this.header = $('<h1></h1>').appendTo(collapse);
-
-			select.find('option').each( function (i,el){
-				var item = $(document.createElement('li')).text($(el).text());
-				if($(el).attr("selected") === "selected") {
-					self._setHeader($(el).text());
-					item.addClass("checked");
-				}
-				list.append(item);
-
-			});
-
-			select.css("display", "none");
-
-			$("<div>").attr("data-enhance", "false").wrap(select);
-
-			parent.after(collapse);
-
-			collapse.parent().trigger("create");
-			parent.remove();
-
-			setTimeout(function(){
-				select.appendTo(collapse);
-			}, 0);
-
-			list.bind("vclick", function(event){
-				var item = $(event.target);
-				self._setHeader(item.text());
-				$(".checked").removeClass("checked");
-				item.addClass("checked");
-				select.prop('value', select.find('option:contains("' + item.text() + '")').attr('value'));
-				select.trigger("change");
-				collapse.trigger('collapse');
-			});
-		},
-
-		_setHeader: function(text) {
-			var headerText = this.header.find('.ui-btn-text'),
-				headerStatusText = headerText.find('.ui-collapsible-heading-status');
-
-			//Check if the content has been enhanced yet
-			if(headerText.length === 0){
-				this.header.text(text);
-			} else {
-				headerText.text(text).append(headerStatusText);
-			}
-		},
-
-		refresh: function() {
-		}
-	});
-
-	$( document ).unbind( "selectmenubeforecreate" );
-	$( document ).bind( "selectmenubeforecreate", function(event){
-		$( event.target ).dropdown();
-	} );
-})(jQuery);
