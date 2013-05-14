@@ -195,15 +195,11 @@ module.exports = function(grunt) {
 		imageEmbed: {
 			less: {
 				src:  '<%= less.all.dest %>',
-				dest: '<%= less.all.dest %>',
-				deleteAfterEncoding : false,
-				options: {}
+				dest: '<%= less.all.dest %>'
 			},
 			theme_css: {
 				src:  '<%= concat.theme_css.dest %>',
-				dest: '<%= concat.theme_css.dest %>',
-				deleteAfterEncoding : false,
-				options: {}
+				dest: '<%= concat.theme_css.dest %>'
 			}
 		}
 	});
