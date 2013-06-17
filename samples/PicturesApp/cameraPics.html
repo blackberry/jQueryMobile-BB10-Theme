@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<!--
+* Copyright 2012 Research In Motion Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and 
+* limitations under the License.
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>BB10 Pictures WebApp</title>
+		<link rel="stylesheet" href="BlackBerry-JQM-all.css" />
+		<script src="BlackBerry-JQM-all.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="cameraPics" data-theme="a">
+			<div data-role="panel" id="top" data-dark-modal="true" data-position="top" data-display="push" data-theme="a" class="panel-top">
+				<div data-role="applicationmenu">
+					<a data-role="action" href="#">
+						<img src="img/Core_applicationmenu_icon_help.png" alt="" />
+						<p>Help</p>
+					</a>		
+				</div>
+			</div>
+			<div data-role="panel" id="right" data-position="right" data-display="overlay" data-theme="a" class="bb10-panel">
+				<ul data-role="listview" data-theme="a">
+					<li><a href="#">Start Camera</a></li>
+					<li><a href="#">SlideShow</a></li>
+					<li><a href="#">Select Items</a></li>
+				</ul>
+			</div>
+			
+			<div data-role="content">
+				<div data-role="gridview">
+					<div data-role="list-divider">
+					<h1>May 2013</h1>
+					</div>
+					
+					<div data-role="row">
+						<div><a href="#"><img src="img/img4.jpg" alt="" /></a></div>
+						<div><a href="#"><img src="img/img3.jpg" alt="" /></a></div>
+						<div><a href="#"><img src="img/img6.jpg" alt="" /></a></div>
+					</div>
+					<div data-role="row">
+						<div><a href="#"><img src="img/img2.jpg" alt="" /></a></div>
+						<div><a href="#"><img src="img/img7.jpg" alt="" /></a></div>
+						<div><a href="#"><img src="img/img5.jpg" alt="" /></a></div>
+					</div>
+				</div>
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed">
+				<div data-role="actionbar">
+
+					<a id="o1" data-role="tab" data-ajax="false" href="index.html">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>Recent</p>
+					</a>
+					<a id="o2" data-role="tab" data-ajax="false" href="cameraPics.html" class="active">
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>Camera</p>
+					</a>
+					<a id="o3" data-role="tab" onclick="#" >
+						<img src="img/generic_81_81_placeholder.png" alt="" />
+						<p>Albums</p>
+					</a>
+
+					<a id="aover" data-role="action-overflow" href="#right">
+					</a>
+				</div>
+
+			</div>
+		</div><!-- /page -->
+	</body>
+</html>
