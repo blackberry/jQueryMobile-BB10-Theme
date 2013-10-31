@@ -1,6 +1,8 @@
 jQuery Mobile BlackBerry 10 Theme - Beta
 =========================
 
+Note: In its current state, the jQuery Mobile BlackBerry 10 Theme does not enable developers to meet the Built for BlackBerry Program criteria.  Learn More About [Built for BlackBerry](https://developer.blackberry.com/builtforblackberry/documentation/getting_started.html).
+
 Content is subject to change
 
 BlackBerry has been committed to providing the best Web support possible for its BlackBerry platform. Part of that story is to support popular tools and frameworks that Web developers are already familiar with. Our strategy has included experimental efforts such as [bbUI.js](https://github.com/blackberry/bbui.js) where we have honed the details of bringing the BlackBerry 10 design language to the Web, a partnership with [Sencha](http://www.sencha.com/) to make sure the Sencha Touch gets first-class BlackBerry 10 support, and direct contributions and support to [jQuery Mobile](http://www.jquerymobile.com) which today is at the forefront of open source Mobile Web development. This project is the official BlackBerry 10 Theme for jQuery Mobile, which will help developers build Web apps that sport the full BlackBerry 10 look and feel using the framework.
