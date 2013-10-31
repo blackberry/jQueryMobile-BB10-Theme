@@ -1,7 +1,7 @@
 jQuery Mobile BlackBerry 10 Theme - Beta
 =========================
 
-Note: In its current state, the jQuery Mobile BlackBerry 10 Theme does not enable developers to meet the Built for BlackBerry Program criteria.  Learn More About [Built for BlackBerry](https://developer.blackberry.com/builtforblackberry/documentation/getting_started.html).
+**Note**: In its current state, the jQuery Mobile BlackBerry 10 Theme does not enable developers to meet the Built for BlackBerry Program criteria.  Learn More About [Built for BlackBerry](https://developer.blackberry.com/builtforblackberry/documentation/getting_started.html).
 
 Content is subject to change
 
