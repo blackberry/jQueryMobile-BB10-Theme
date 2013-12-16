@@ -4929,12 +4929,20 @@ li.ui-btn.ui-btn-icon-right .ui-btn-inner {
   background: transparent;
 }
 .ui-li.ui-btn .ui-btn-inner .ui-link-inherit {
+  border-bottom: 2px solid #2D2D2D;
+  padding: 0px 0px 5px 40px;
   text-align: left;
-  padding: 0;
-  padding-left: 20px;
 }
 .ui-li.ui-btn .ui-btn-inner .ui-link-inherit .ui-btn-text {
-  padding-left: 20px;
+  /*padding-left: 20px;*/
+
+  padding: 0px 0px 5px 40px;
+}
+.ui-li.ui-btn .ui-btn-inner .ui-link-inherit p {
+  color: #fafafa;
+}
+.ui-li.ui-btn .ui-btn-inner .ui-link-inherit .ui-li-thumb {
+  padding-top: 10px;
 }
 .ui-li.ui-btn.ui-btn-active .ui-link-inherit {
   background: #00a8df;
